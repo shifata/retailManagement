@@ -28,6 +28,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         registerPanel.setBackground(Color.black);
         registerPanel.setBounds(150, 200, 500, 770);
 
+
         JLabel caption = new JLabel("Online Registration of new User of VideoCo");
         caption.setForeground(Color.white);
         caption.setBounds(0, 100, 500, 200);
@@ -117,6 +118,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         registerPanel.setLayout(null); // **to make the objects move, make sure this line is included for panel**
         captionPanel.setLayout(null);
 
+
         frame.add(registerPanel);
         frame.setVisible(true);
     }
@@ -156,9 +158,21 @@ public class RegisterPage extends JFrame implements ActionListener {
         confirmRegMsg.setTitle("Registration Message");
         confirmRegMsg.setVisible(true); //visibility of any newly frame creation
 
+        JPanel confirmMsgRegistration = new JPanel();
+        confirmMsgRegistration.setBackground(Color.black);
+        confirmMsgRegistration.setBounds(0, 0, 300,300);
+
         okaybutton = new JButton("OK");
-        okaybutton.setBounds(200, 100, 100, 25);
+        okaybutton.setBounds(100, 200, 100, 25);
         confirmRegMsg.add(okaybutton);
+        confirmRegMsg.add(confirmMsgRegistration);
+
+        JLabel message1 = new JLabel("User registered successfully!");
+        message1.setForeground(Color.white);
+        message1.setBounds(30, 100, 280, 125);
+        confirmMsgRegistration.add(message1);
+        confirmMsgRegistration.setLayout(null);
+        message1.setFont(new Font("Arial", Font.BOLD, 16));
 
         ActionListener okayListener = new ActionListener() {
             @Override
@@ -167,12 +181,10 @@ public class RegisterPage extends JFrame implements ActionListener {
                     System.out.println("HIT");
                     confirmRegMsg.dispose();
                     LoginPage lp = new LoginPage();
-                } else {
-                    System.out.println("MISS");
-                    System.out.println(e2);
                 }
             }
         };
+
         okaybutton.addActionListener(okayListener);
         frame.dispose();
 

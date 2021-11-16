@@ -27,8 +27,8 @@ public class MaintainUser {
             writer.write(user.getUname());
             writer.write(user.getPassword());
             writer.endRecord();
-//            writer.write("\n");
             writer.close();
+//            writer.write("\n");
             return true;
         } catch (Exception e) {
             e.printStackTrace();
