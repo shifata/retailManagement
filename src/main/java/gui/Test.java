@@ -7,7 +7,8 @@ import javax.swing.JLabel;
 
 public class Test {
     public static void main(String[] args) {
-         LoginPage lp = new LoginPage();
+//         LoginPage lp = new LoginPage();
        // Register register = new Register();
+        MoviesDisplayPage display = new MoviesDisplayPage();
     }
 }

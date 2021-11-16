@@ -7,10 +7,6 @@ import java.io.FileWriter;
 public class MaintainUser {
     private String path;
 
-    public MaintainUser() {
-
-    }
-
     public MaintainUser(String path) {
         this.path = path;
     }
