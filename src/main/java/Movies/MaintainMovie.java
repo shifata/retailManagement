@@ -4,6 +4,7 @@ import com.csvreader.CsvReader;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MaintainMovie {
     private final String path;
@@ -14,7 +15,7 @@ public class MaintainMovie {
         collection = new ArrayList<>();
     }
 
-    private ArrayList<Movie> readDatabase() throws Exception {
+    public ArrayList<Movie> readDatabaseList() throws Exception {
         FileReader fileReader = new FileReader(path);
         CsvReader reader = new CsvReader(fileReader);
 
@@ -35,7 +36,27 @@ public class MaintainMovie {
             e.printStackTrace();
         }
 
+        reader.close();
         return collection;
+    }
+
+    public Object[][] readDatabase() throws Exception {
+        readDatabaseList();
+        Object[][] output = new Object[collection.size()][7];
+
+        for (int i = 0; i < collection.size(); i++) {
+            Movie current = collection.get(i);
+            output[i][0] = current.getTitle();
+            output[i][1] = current.getActor();
+            output[i][2] = current.getDirector();
+            output[i][3] = current.getDescription();
+            output[i][4] = current.getGenre();
+            output[i][5] = current.getReleaseDate();
+            output[i][6] = current.getCopiesAvailable();
+//            System.out.println(Arrays.toString(output[i]));
+        }
+
+        return output;
     }
 
     private void writeToDatabase(Movie movie) {

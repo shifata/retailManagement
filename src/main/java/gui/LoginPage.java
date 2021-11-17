@@ -11,16 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginPage extends JFrame implements ActionListener {
-    private JButton regbutton;
+    private JButton regbutton, loginbutton;
     private JFrame frame;
     private JTextField userText;
     private JPasswordField passwordText;
 
+
     LoginPage() {
-        // TODO: 2021-11-02
-        /*
-           Fix image path. Make sure it takes relative path
-         */
+
         ImageIcon image = new ImageIcon("../project/src/main/resources/images/videoCo.png"); // imported wallpaper
 
         Border border = BorderFactory.createLineBorder(Color.white, 5);
@@ -80,7 +78,7 @@ public class LoginPage extends JFrame implements ActionListener {
         passwordText.setBounds(150, 50, 165, 25);
         loginpanel.add(passwordText);
 
-        JButton loginbutton = new JButton("Login");
+        loginbutton = new JButton("Login");
         loginbutton.setBounds(90, 100, 100, 25);
 
         loginbutton.addActionListener(this);
@@ -121,6 +119,11 @@ public class LoginPage extends JFrame implements ActionListener {
         if (e.getSource() == regbutton) {
             frame.dispose();
             RegisterPage register = new RegisterPage();
+        }
+
+        if (e.getSource() == loginbutton) {
+            frame.dispose();
+            MoviesDisplayPage displayPage = new MoviesDisplayPage();
         }
     }
 
