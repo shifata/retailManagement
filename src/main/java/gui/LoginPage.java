@@ -1,6 +1,7 @@
 package gui;
 
 import UserMaintainance.Login;
+import UserMaintainance.User;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -15,10 +16,13 @@ public class LoginPage extends JFrame implements ActionListener {
     private JFrame frame;
     private JTextField userText;
     private JPasswordField passwordText;
+    private Login login;
 
+    LoginPage(Login login){
+        this.login = login;
+    }
 
     LoginPage() {
-
         ImageIcon image = new ImageIcon("../project/src/main/resources/images/videoCo.png"); // imported wallpaper
 
         Border border = BorderFactory.createLineBorder(Color.white, 5);
@@ -100,14 +104,15 @@ public class LoginPage extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         final String filePath = "../project/src/main/java/database/users.csv";
-        Login login = new Login(filePath);
 
         String uname = userText.getText();
         String password = passwordText.getText();
+        login = new Login(filePath);
 
         try {
             boolean verified = login.verify(uname, password);
             if (verified) {
+                System.out.println(login.getCurrentUser(uname, password));
                 System.out.println("LOGIN SUCCESSFUL");
             } else {
                 System.out.println("WRONG CREDENTIALS");
@@ -123,8 +128,12 @@ public class LoginPage extends JFrame implements ActionListener {
 
         if (e.getSource() == loginbutton) {
             frame.dispose();
-            MoviesDisplayPage displayPage = new MoviesDisplayPage();
+            MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
         }
+    }
+
+    public Login getLogin() {
+        return login;
     }
 
 

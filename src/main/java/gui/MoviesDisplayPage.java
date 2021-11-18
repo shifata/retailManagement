@@ -2,6 +2,7 @@ package gui;
 
 import Movies.MaintainMovie;
 import Movies.Movie;
+import UserMaintainance.Login;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -12,7 +13,6 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class MoviesDisplayPage {
     private JButton myProfile, logout, searchByName, searchByGenre;
@@ -23,10 +23,12 @@ public class MoviesDisplayPage {
     final String path = "../project/src/main/java/database/movies.csv";
     private JTextField searchField;
     private String[] columns;
+    private Login login;
 
-
-    MoviesDisplayPage() {
+    MoviesDisplayPage(Login login) {
+        this.login = login;
         ImageIcon image2 = new ImageIcon("../project/src/main/resources/images/rentalPage.png");
+        ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
 
         frame = new JFrame();
         tablePanel = new JPanel();
@@ -78,7 +80,7 @@ public class MoviesDisplayPage {
 
         JLabel searchLabel = new JLabel("SEARCH");
         searchLabel.setForeground(Color.white);
-        searchLabel.setBounds(780,60,80,25);
+        searchLabel.setBounds(780, 60, 80, 25);
         searchLabel.setFont(new Font("Arial", 16, 20));
         searchPanel.add(searchLabel);
 
@@ -123,10 +125,11 @@ public class MoviesDisplayPage {
         myProfile.addActionListener(profileListener);
         logout.addActionListener(logoutListener);
 
+
+        //search implementation
         TableModel model = new DefaultTableModel(data, columns);
         TableRowSorter sorter = new TableRowSorter(model);
         table.setRowSorter(sorter);
-
 
 
         table.getColumnModel().getColumn(0).setPreferredWidth(500);
@@ -138,6 +141,8 @@ public class MoviesDisplayPage {
         table.getColumnModel().getColumn(6).setPreferredWidth(20);
         tablePanel.add(new JScrollPane(table));
 
+
+        //search implementation listener
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -155,11 +160,21 @@ public class MoviesDisplayPage {
             }
 
             public void search(String s) {
-
                 if (s.length() == 0) {
                     sorter.setRowFilter(null);
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
+                    if(sorter.getViewRowCount() == 0){
+                        JFrame popup = new JFrame("ERROR MESSAGE");
+                        JLabel noMoviesFound = new JLabel("NO MOVIES FOUND");
+                        noMoviesFound.setIcon(image3);
+                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                        popup.setSize(300, 300);
+                        popup.setBounds(700,500,300,100);
+                        popup.add(noMoviesFound);
+                        popup.setVisible(true);
+
+                    }
                 }
             }
         });
@@ -179,8 +194,8 @@ public class MoviesDisplayPage {
         @Override
         public void actionPerformed(ActionEvent e1) {
             // todo
-            int counter = 0;
-            System.out.println(counter++);
+            frame.dispose();
+            MyProfilePage myProfilePage = new MyProfilePage(login);
         }
     };
 
