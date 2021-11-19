@@ -15,16 +15,15 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MoviesDisplayPage {
-    private JButton myProfile, logout, searchByName, searchByGenre;
+    private static ArrayList<String> cart;
+    private JButton myProfile, logout, proceedCheckout;
     private MaintainMovie maintainMovie;
     private JFrame frame;
-    private JTable table, table2;
+    private JTable table;
     private JPanel tablePanel;
     final String path = "../project/src/main/java/database/movies.csv";
     private JTextField searchField;
-    private String[] columns;
     private Login login;
-    private ArrayList<String> cart;
     private JButton addMovieToCart;
 
     MoviesDisplayPage(Login login) {
@@ -105,9 +104,10 @@ public class MoviesDisplayPage {
         addMovieToCart.setBounds(600, 100, 200, 25);
         bottomPanel.add(addMovieToCart);
 
-        JButton proceedCheckout = new JButton("Proceed to Checkout");
+        proceedCheckout = new JButton("Proceed to Checkout");
         proceedCheckout.setBounds(800, 100, 200, 25);
         bottomPanel.add(proceedCheckout);
+        proceedCheckout.addActionListener(checkOutListener);
 
         maintainMovie = new MaintainMovie(path);
         Object[][] data = null;
@@ -128,10 +128,10 @@ public class MoviesDisplayPage {
         myProfile.addActionListener(profileListener);
         logout.addActionListener(logoutListener);
 
-        table2 = new JTable(data, columns);
-        table2.setPreferredScrollableViewportSize(new Dimension(100, 100));
-        table2.setFillsViewportHeight(true);
-        table2.setRowHeight(50);
+//        table2 = new JTable(data, columns);
+//        table2.setPreferredScrollableViewportSize(new Dimension(100, 100));
+//        table2.setFillsViewportHeight(true);
+//        table2.setRowHeight(50);
 
         //search implementation
         TableModel model = new DefaultTableModel(data, columns);
@@ -151,11 +151,6 @@ public class MoviesDisplayPage {
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(true);
         tablePanel.add(new JScrollPane(table));
-//
-//        table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//        table.setColumnSelectionAllowed(false);
-//        table.setRowSelectionAllowed(true);
-//        table.addRowSelectionInterval(1, 2);
 
 
         //search implementation listener
@@ -194,7 +189,7 @@ public class MoviesDisplayPage {
                 }
             }
         });
-        bottomPanel.add(table2);
+//        bottomPanel.add(table2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
         frame.setVisible(true);
@@ -207,7 +202,7 @@ public class MoviesDisplayPage {
 
     }
 
-    public ArrayList<String> getCart() {
+    public static ArrayList<String> getCart() {
         return cart;
     }
 
@@ -244,23 +239,17 @@ public class MoviesDisplayPage {
         }
     };
 
-//    private ActionListener cartListener = new ActionListener() {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            TableModel tableModel = table.getModel();
-//            Object[] row = new Object[1];
-//            int[] index = table.getSelectedRows();
-//
-////            DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
-//
-//            for (int i = 0; i < index.length; i++) {
-//                cart.add(tableModel.getValueAt(index[i], 0).toString());
-//                System.out.println(cart.get(i));
-//            }
-//
-//        }
-//    };
+    private ActionListener checkOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (cart.size() != 0) {
+                CheckOutPage checkOutPage = new CheckOutPage(login);
+            } else {
+                //todo: add error message
+                System.out.println("cart is empty. add movie to cart to proceed to checkout");
+            }
+        }
+    };
 
     private ActionListener profileListener = new ActionListener() {
         @Override

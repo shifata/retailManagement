@@ -16,6 +16,8 @@ public class Test {
         //searchTable searchT = new searchTable();
 //        MyProfilePage profile = new MyProfilePage(new Login());
 
+//        TableTwo table2 = new TableTwo();
+//        CheckOutPage checkout = new CheckOutPage(new Login());
 
 //        Login login = new Login("../project/src/main/java/database/users.csv");
 //        try {
