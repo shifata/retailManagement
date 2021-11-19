@@ -11,22 +11,25 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.ArrayList;
 
 public class MoviesDisplayPage {
     private JButton myProfile, logout, searchByName, searchByGenre;
     private MaintainMovie maintainMovie;
     private JFrame frame;
-    private JTable table;
+    private JTable table, table2;
     private JPanel tablePanel;
     final String path = "../project/src/main/java/database/movies.csv";
     private JTextField searchField;
     private String[] columns;
     private Login login;
+    private ArrayList<String> cart;
+    private JButton addMovieToCart;
 
     MoviesDisplayPage(Login login) {
         this.login = login;
+        cart = new ArrayList<>();
         ImageIcon image2 = new ImageIcon("../project/src/main/resources/images/rentalPage.png");
         ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
 
@@ -98,7 +101,7 @@ public class MoviesDisplayPage {
         bottomPanel.setBounds(0, 830, 1800, 200);
         bottomPanel.setLayout(null);
 
-        JButton addMovieToCart = new JButton("Add Order To Cart");
+        addMovieToCart = new JButton("Add Order To Cart");
         addMovieToCart.setBounds(600, 100, 200, 25);
         bottomPanel.add(addMovieToCart);
 
@@ -125,12 +128,17 @@ public class MoviesDisplayPage {
         myProfile.addActionListener(profileListener);
         logout.addActionListener(logoutListener);
 
+        table2 = new JTable(data, columns);
+        table2.setPreferredScrollableViewportSize(new Dimension(100, 100));
+        table2.setFillsViewportHeight(true);
+        table2.setRowHeight(50);
 
         //search implementation
         TableModel model = new DefaultTableModel(data, columns);
         TableRowSorter sorter = new TableRowSorter(model);
         table.setRowSorter(sorter);
 
+        addMovieToCart.addMouseListener(cartListener);
 
         table.getColumnModel().getColumn(0).setPreferredWidth(500);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -139,7 +147,15 @@ public class MoviesDisplayPage {
         table.getColumnModel().getColumn(4).setPreferredWidth(100);
         table.getColumnModel().getColumn(5).setPreferredWidth(50);
         table.getColumnModel().getColumn(6).setPreferredWidth(20);
+        table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        table.setRowSelectionAllowed(true);
+        table.setColumnSelectionAllowed(true);
         tablePanel.add(new JScrollPane(table));
+//
+//        table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+//        table.setColumnSelectionAllowed(false);
+//        table.setRowSelectionAllowed(true);
+//        table.addRowSelectionInterval(1, 2);
 
 
         //search implementation listener
@@ -164,13 +180,13 @@ public class MoviesDisplayPage {
                     sorter.setRowFilter(null);
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
-                    if(sorter.getViewRowCount() == 0){
+                    if (sorter.getViewRowCount() == 0) {
                         JFrame popup = new JFrame("ERROR MESSAGE");
                         JLabel noMoviesFound = new JLabel("NO MOVIES FOUND");
                         noMoviesFound.setIcon(image3);
                         popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                         popup.setSize(300, 300);
-                        popup.setBounds(700,500,300,100);
+                        popup.setBounds(700, 500, 300, 100);
                         popup.add(noMoviesFound);
                         popup.setVisible(true);
 
@@ -178,7 +194,7 @@ public class MoviesDisplayPage {
                 }
             }
         });
-
+        bottomPanel.add(table2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
         frame.setVisible(true);
@@ -188,7 +204,63 @@ public class MoviesDisplayPage {
         frame.add(bottomPanel);
         //panel.setLayout(null);
         frame.setLayout(null);
+
     }
+
+    public ArrayList<String> getCart() {
+        return cart;
+    }
+
+    private MouseListener cartListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            int row = table.getSelectedRow();
+            int column = table.getSelectedColumn();
+
+            cart.add(table.getModel().getValueAt(row, column).toString());
+            System.out.println("row: " + row + " column: " + column);
+            System.out.println(cart.toString());
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
+
+//    private ActionListener cartListener = new ActionListener() {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            TableModel tableModel = table.getModel();
+//            Object[] row = new Object[1];
+//            int[] index = table.getSelectedRows();
+//
+////            DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+//
+//            for (int i = 0; i < index.length; i++) {
+//                cart.add(tableModel.getValueAt(index[i], 0).toString());
+//                System.out.println(cart.get(i));
+//            }
+//
+//        }
+//    };
 
     private ActionListener profileListener = new ActionListener() {
         @Override
