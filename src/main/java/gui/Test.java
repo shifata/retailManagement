@@ -14,7 +14,7 @@ public class Test {
 
         //MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage();
         //searchTable searchT = new searchTable();
-//        MyProfilePage profile = new MyProfilePage();
+//        MyProfilePage profile = new MyProfilePage(new Login());
 
 
 //        Login login = new Login("../project/src/main/java/database/users.csv");

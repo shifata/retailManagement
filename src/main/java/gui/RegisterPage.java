@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 
 public class RegisterPage extends JFrame implements ActionListener {
     private JButton registerbutton;
-    private JTextField fnameText, lnameText, emailText, contactText, unameText, passwordText, addressText;
+    private JTextField fnameText, lnameText, emailText, contactText, unameText, passwordText,
+            addressText, idText, pointsText, balanceText;
     private JFrame frame;
 
     RegisterPage() {
@@ -137,8 +138,12 @@ public class RegisterPage extends JFrame implements ActionListener {
         String inputAddress = addressText.getText();
         String inputUName = unameText.getText();
         String inputPassword = passwordText.getText();
+        String inputId = "";
+        String inputPoints = "0";
+        String inputBalance = "0";
 
-        User newUser = new User(inputFName, inputLName, inputEmail, inputContact, inputAddress, inputUName, inputPassword);
+        User newUser = new User(inputFName, inputLName, inputEmail, inputContact, inputAddress,
+                inputUName, inputPassword, inputId, inputPoints, inputBalance);
 
         if (e1.getSource() == registerbutton) {
             try {
@@ -160,7 +165,7 @@ public class RegisterPage extends JFrame implements ActionListener {
 
         JPanel confirmMsgRegistration = new JPanel();
         confirmMsgRegistration.setBackground(Color.black);
-        confirmMsgRegistration.setBounds(0, 0, 300,300);
+        confirmMsgRegistration.setBounds(0, 0, 300, 300);
 
         okaybutton = new JButton("OK");
         okaybutton.setBounds(100, 200, 100, 25);

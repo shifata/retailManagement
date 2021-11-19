@@ -13,7 +13,7 @@ public class MaintainUser {
 
     public boolean addUser(User user) throws Exception {
         CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
-        System.out.println("here");
+
         try {
             writer.write(user.getFname());
             writer.write(user.getLname());
@@ -36,7 +36,7 @@ public class MaintainUser {
         return false;
     }
 
-    public boolean updateUser() {
+    public boolean updateUser(User user) {
         return false;
     }
 }

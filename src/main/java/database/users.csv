@@ -1,5 +1,5 @@
-FName,LName,email,Contact,Address,Uname,Password
-nafis,awsaf,nfs9blues@live.com,123,Pacha,nfs9,nunuchoto
-shifat,akte,shifata@gmail.com,456,dojokh,shifata,nunuboro
-shovon,saha,mxsaha@69.com,789,pacha,mxsaha,nunuchela
-shif,akt,shifa@gmail.com,46,dojokh,shifa,nunuboro
+FName,LName,email,Contact,Address,Uname,Password,ID,Points,Balance
+nafis,awsaf,nfs9blues@live.com,123,Pacha,nfs9,nunuchoto,1,10,78.99
+shifat,akte,shifata@gmail.com,456,dojokh,shifata,nunuboro,2,15,14.99
+shovon,saha,mxsaha@69.com,789,pacha,mxsaha,nunuchela,3,41,45.99
+shif,akt,shifa@gmail.com,46,dojokh,shifa,nunuboro,4,14,29.99

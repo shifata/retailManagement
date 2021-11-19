@@ -2,7 +2,6 @@ package UserMaintainance;
 
 import com.csvreader.CsvReader;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class Login {
@@ -10,10 +9,9 @@ public class Login {
     private User user;
     Login login;
 
-    public Login(){
+    public Login() {
 
     }
-
 
     public Login(String path) {
         this.path = path;
@@ -98,11 +96,15 @@ public class Login {
                 String email = reader.get("email");
                 String contact = reader.get("Contact");
                 String address = reader.get("Address");
+                String id = reader.get("ID");
+                String points = reader.get("Points");
+                String balance = reader.get("Balance");
 
                 boolean verified = uname.equals(inputUName) && pass.equals(inputPassword);
 
                 if (verified) {
-                    user = new User(fName, lName, email, contact, address, inputUName, inputPassword);
+                    user = new User(fName, lName, email, contact, address, inputUName,
+                            inputPassword, id, points, balance);
                     return user;
                 }
             }
