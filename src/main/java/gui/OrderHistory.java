@@ -99,30 +99,4 @@ public class OrderHistory {
         frame.setVisible(true);
 
     }
-
-
-
-//    OrderHistory(Login login) {
-//        this.login = login;
-//
-//        JFrame frame = new JFrame("Order History");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(1800, 1800);
-//
-//        JPanel orderCaptionPanel = new JPanel();
-//        orderCaptionPanel.setBackground(Color.CYAN);
-//        orderCaptionPanel.setBounds(0, 600, 200, 200);
-//
-//
-//        JPanel orderHistoryTablePanel = new JPanel();
-//        orderHistoryTablePanel.setBackground(Color.yellow);
-//        orderHistoryTablePanel.setBounds(0, 800, 400, 300);
-//
-//        frame.add(orderHistoryTablePanel);
-//        frame.add(orderCaptionPanel);
-//        frame.setLayout(null);
-//        frame.setVisible(true); //***always leave setVisible at the end of the class***
-//
-//
-//    }
 }

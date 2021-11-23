@@ -4,17 +4,22 @@ import UserMaintainance.Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CheckOutPage {
-
+    JButton proceedToPaymentButton;
+    JFrame frame;
     private Login login;
 
     CheckOutPage(Login login) {
+
+
         this.login = login;
         ArrayList<String> cart = MoviesDisplayPage.getCart();
 
-        JFrame frame = new JFrame("Cart");
+        frame = new JFrame("Cart");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
 
@@ -71,8 +76,9 @@ public class CheckOutPage {
         JButton backButton = new JButton("Back");
         backButton.setBounds(800, 40, 100, 25);
 
-        JButton proceedToPaymentButton = new JButton("Proceed To Payment");
+        proceedToPaymentButton = new JButton("Proceed To Payment");
         proceedToPaymentButton.setBounds(900, 40, 200, 25);
+        proceedToPaymentButton.addActionListener(paymentListener);
 
         buttonPanel.add(removeButton);
         buttonPanel.add(backButton);
@@ -112,4 +118,15 @@ public class CheckOutPage {
 
 
     }
+
+    private ActionListener paymentListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            if (e2.getSource() == proceedToPaymentButton ) {
+                PaymentPage payment = new PaymentPage(login);
+                frame.dispose();
+            }
+        }
+
+    };
 }
