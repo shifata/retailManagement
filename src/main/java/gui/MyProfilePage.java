@@ -11,12 +11,13 @@ import java.awt.event.ActionListener;
 public class MyProfilePage {
 
     private Login login;
+    private JFrame frame;
     private JTextField fnameText, lnameText, emailText, contactText, addressText, unameText, passwordText;
 
     MyProfilePage(Login login) {
 //        login = new Login("../project/src/main/java/database/users.csv");
         this.login = login;
-        JFrame frame = new JFrame("My Profile");
+        frame = new JFrame("My Profile");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 1200);
@@ -30,12 +31,12 @@ public class MyProfilePage {
 
         JPanel pointsPanel = new JPanel();
         pointsPanel.setBackground(Color.green);
-        pointsPanel.setBounds(820,155,200,100);
+        pointsPanel.setBounds(820, 155, 200, 100);
         pointsPanel.setLayout(null);
 
         JPanel balancePanel = new JPanel();
         balancePanel.setBackground(Color.yellow);
-        balancePanel.setBounds(300,155,200,100);
+        balancePanel.setBounds(300, 155, 200, 100);
         balancePanel.setLayout(null);
 
         JPanel profileFieldsPanel = new JPanel();
@@ -52,6 +53,7 @@ public class MyProfilePage {
 
         JButton orderHistoryButton = new JButton("Order History");
         orderHistoryButton.setBounds(0, 340, 100, 25);
+        orderHistoryButton.addActionListener(orderListener);
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(0, 340, 100, 25);
@@ -166,13 +168,13 @@ public class MyProfilePage {
 
         JLabel balanceDue = new JLabel("Balance Due");
         balanceDue.setForeground(Color.black);
-        balanceDue.setBounds(60,10,100,25);
+        balanceDue.setBounds(60, 10, 100, 25);
         balancePanel.add(balanceDue);
         balanceDue.setLayout(null);
 
         JLabel balanceDueLabel = new JLabel("balance");
         balanceDueLabel.setForeground(Color.black);
-        balanceDueLabel.setFont(new Font("Arial",20,32));
+        balanceDueLabel.setFont(new Font("Arial", 20, 32));
         balanceDueLabel.setBounds(70, 50, 100, 25);
         balancePanel.add(balanceDueLabel);
 
@@ -186,11 +188,11 @@ public class MyProfilePage {
 
         JLabel loyaltyPoints = new JLabel("Loyalty Points");
         loyaltyPoints.setForeground(Color.black);
-        loyaltyPoints.setBounds(60,10,100,25);
+        loyaltyPoints.setBounds(60, 10, 100, 25);
         pointsPanel.add(loyaltyPoints);
 
         JLabel loyaltyPointsLabel = new JLabel("points");
-        loyaltyPointsLabel.setFont(new Font("Arial",20,32));
+        loyaltyPointsLabel.setFont(new Font("Arial", 20, 32));
         loyaltyPointsLabel.setForeground(Color.black);
         loyaltyPointsLabel.setBounds(70, 50, 80, 25);
         //captionPanel.add(loyaltyPoints);
@@ -237,6 +239,14 @@ public class MyProfilePage {
         frame.setLayout(null);
         frame.setVisible(true);
     }
+
+    private ActionListener orderListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            OrderHistory orderHistory = new OrderHistory(login);
+        }
+    };
 
     private ActionListener changeListener = new ActionListener() {
         @Override

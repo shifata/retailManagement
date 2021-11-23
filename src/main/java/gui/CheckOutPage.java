@@ -78,6 +78,7 @@ public class CheckOutPage {
         buttonPanel.add(backButton);
         buttonPanel.add(proceedToPaymentButton);
         cartCaptionPanel.add(logOutButton);
+
         String[] columns = {"Name", "Price"};
         Object[][] data = new Object[cart.size()][2];
 

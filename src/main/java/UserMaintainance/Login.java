@@ -74,6 +74,10 @@ public class Login {
 //        return null;
 //    }
 
+    public String getPath() {
+        return path;
+    }
+
     public String getUName() {
         return user.getUname();
     }

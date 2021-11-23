@@ -4,7 +4,6 @@ import com.csvreader.CsvReader;
 
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MaintainMovie {
     private final String path;
