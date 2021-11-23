@@ -1,20 +1,20 @@
-OrderID, OrderType, OrderPlacedDate, OrderDeliveryDate, ShippingAddress, OrderStatus, MovieTitle, Uname,movieID
-102456, Store, 22-Nov-2021, null, 1-Fountainhead Road: North York: M3J 1K6, Delivered, Harry Potter and the Philosopher's Stone (2001) Dune,nfs9,456;123
-202464, Online, 25-August-2021, 28-August-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Spider-Man (2002), shifata
-202467, Online, 25-Nov-2021, 2-Dec-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Placed Order, Harry Potter and the Chamber of Secrets (2002), shifata
-202469, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata
-202500, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Goblet of Fire(2005), shifata
-202600, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Order Of The Phoenix(2007), shifata
-202700, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Half-Blood Prince(2009), shifata
-202800, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter & The Deathly Hallows Pt 1 (2010), shifata
-202900, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter & The Deathly Hallows Pt 2 (2011), shifata
-202912, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, The Fast and the Furious (2001), shifata
-202913, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata
-202914, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, 2 Fast 2 Furious(2002), shifata
-202915, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Fast and Furious: Tokyo Drift(2006), shifata
-202916, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata
-245917, Online, 20-January-2020, 2-February-2020 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, American Pie (1999),mxsaha
-345918, Phone, 20-January-2019, 25-January-2019 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, Spider-Man3 (2007),null
-245679, Online, 20-January-2020, 2-February-2020 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, American Pie (1999),a
+OrderID, OrderType, OrderPlacedDate, OrderDeliveryDate, ShippingAddress, OrderStatus, MovieTitle, Uname,movieID, Province
+102456, Store, 22-Nov-2021, null, 1-Fountainhead Road: North York: M3J 1K6, Delivered, Harry Potter and the Philosopher's Stone (2001) Dune,nfs9,002;001, Ontario
+202464, Online, 25-August-2021, 28-August-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Spider-Man (2002), shifata,013,Ontario
+202467, Online, 25-Nov-2021, 2-Dec-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Placed Order, Harry Potter and the Chamber of Secrets (2002), shifata,003,Ontario
+202469, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata,004,Ontario
+202500, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Goblet of Fire(2005), shifata,005,Ontario
+202600, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Order Of The Phoenix(2007), shifata,006,Ontario
+202700, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Half-Blood Prince(2009), shifata,007,Ontario
+202800, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter & The Deathly Hallows Pt 1 (2010), shifata,008,Ontario
+202900, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter & The Deathly Hallows Pt 2 (2011), shifata,009,Ontario
+202912, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, The Fast and the Furious (2001), shifata,010,Ontario
+202913, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata,004,Ontario
+202914, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, 2 Fast 2 Furious(2002), shifata,011,Ontario
+202915, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Fast and Furious: Tokyo Drift(2006), shifata,012,Ontario
+202916, Online, 14-April-2021, 16-April-2021, 154 Voltaire Crescent: Mississauga: ON L5A 2A4, Delivered, Harry Potter and the Prisoner of Azkaban (2004), shifata,010,Ontario
+245917, Online, 20-January-2020, 2-February-2020 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, American Pie (1999),mxsaha,014,Ontario
+345918, Phone, 20-January-2019, 25-January-2019 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, Spider-Man3 (2007),null,015,Ontario
+245679, Online, 20-January-2020, 2-February-2020 ,99 Broadview AveToronto:ON M4M 2E4,Delivered, American Pie (1999),,014,Ontario
 
 
