@@ -46,6 +46,9 @@ public class UpdateOrdersPage {
         JButton updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040,40,200,55);
 
+        JButton backButton = new JButton("BACK");
+        backButton.setBounds(1540,40,200,55);
+
 
         searchField = new JTextField(20);
         searchField.setBounds(400, 25, 800, 25);
@@ -115,7 +118,7 @@ public class UpdateOrdersPage {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
                     if (sorter.getViewRowCount() == 0) {
                         JFrame popup = new JFrame("ERROR MESSAGE");
-                        JLabel noMoviesFound = new JLabel("NO MOVIES FOUND");
+                        JLabel noMoviesFound = new JLabel("NO ORDERS FOUND");
                         noMoviesFound.setIcon(image3);
                         popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                         popup.setSize(300, 300);
@@ -132,6 +135,7 @@ public class UpdateOrdersPage {
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         buttonPanel.add(updateButton);
+        buttonPanel.add(backButton);
         frame.add(searchPanel);
         frame.add(tablePanel);
         frame.add(buttonPanel);

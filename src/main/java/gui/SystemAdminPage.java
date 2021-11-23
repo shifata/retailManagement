@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SystemAdminPage {
-    JButton changeMovie, changeOrders;
+    JButton changeMovie, changeOrders, changeUsers;
     JFrame frame;
     SystemAdminPage(){
 
@@ -40,8 +40,9 @@ public class SystemAdminPage {
         changeMovie.setBounds(0,440,267,45);
         changeMovie.addActionListener(changeMovieListener);
 
-        JButton changeUsers = new JButton("CHANGE USERS");
+        changeUsers = new JButton("CHANGE USERS");
         changeUsers.setBounds(267,440,267,45);
+        changeUsers.addActionListener(changeUserListener);
 
         changeOrders = new JButton("CHANGE ORDERS");
         changeOrders.setBounds(534,440,267,45);
@@ -159,6 +160,17 @@ public class SystemAdminPage {
         public void actionPerformed(ActionEvent e2) {
             if (e2.getSource() == changeOrders ) {
                 UpdateOrdersPage up = new UpdateOrdersPage();
+                frame.dispose();
+            }
+        }
+
+    };
+
+    private ActionListener changeUserListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            if (e2.getSource() == changeUsers ) {
+                UpdateUsersPage up = new UpdateUsersPage();
                 frame.dispose();
             }
         }

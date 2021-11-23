@@ -25,11 +25,82 @@ public class UpdateMoviePage {
 
         JPanel tablePanel = new JPanel();
         tablePanel.setBackground(Color.gray);
-        tablePanel.setBounds(0,100,1800,700);
+        tablePanel.setBounds(0,100,1800,400);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.darkGray);
         buttonPanel.setBounds(0,800,1800,400);
+
+
+        //infopanel for adding movie
+        JPanel addinfoPanel = new JPanel();
+        addinfoPanel.setBackground(Color.CYAN);
+        addinfoPanel.setBounds(0,500, 1800,300);
+
+
+        JLabel movieLabel = new JLabel("Movie");
+        movieLabel.setForeground(Color.BLACK);
+        movieLabel.setBounds(10,0,200,25);
+
+        JTextField movieText = new JTextField();
+        movieText.setBounds(10,25,200,25);
+
+        JLabel titleLabel = new JLabel("Title");
+        titleLabel.setForeground(Color.BLACK);
+        titleLabel.setBounds(250,0,200,25);
+
+        JTextField titleText = new JTextField();
+        titleText.setForeground(Color.BLACK);
+        titleText.setBounds(250,25,200,25);
+
+        JLabel actorLabel = new JLabel("Actor");
+        actorLabel.setForeground(Color.BLACK);
+        actorLabel.setBounds(490,0,200,25);
+
+        JTextField actorText = new JTextField();
+        actorText.setForeground(Color.BLACK);
+        actorText.setBounds(490,25,200,25);
+
+        JLabel directorLabel = new JLabel("Director");
+        directorLabel.setForeground(Color.BLACK);
+        directorLabel.setBounds(10,50,200,25);
+
+        JTextField directorText = new JTextField();
+        directorText.setForeground(Color.BLACK);
+        directorText.setBounds(10,75,200,25);
+
+        JLabel descriptionLabel = new JLabel("Description");
+        descriptionLabel.setForeground(Color.BLACK);
+        descriptionLabel.setBounds(250,50,200,25);
+
+
+        JTextField descriptionText = new JTextField();
+        descriptionText.setForeground(Color.BLACK);
+        descriptionText.setBounds(250,75,200,25);
+
+        JLabel genreLabel = new JLabel("Genre");
+        genreLabel.setForeground(Color.BLACK);
+        genreLabel.setBounds(490,50,200,25);
+
+        JTextField genreText = new JTextField();
+        genreText.setForeground(Color.BLACK);
+        genreText.setBounds(490,75,200,25);
+
+        JLabel releaseDateLabel = new JLabel("Release Date");
+        releaseDateLabel.setForeground(Color.BLACK);
+        releaseDateLabel.setBounds(10,100,200,25);
+
+        JTextField releaseDateText = new JTextField();
+        releaseDateText.setForeground(Color.BLACK);
+        releaseDateText.setBounds(10,125,200,25);
+
+        JLabel copiesAvailableLabel = new JLabel("Copies Available");
+        copiesAvailableLabel.setForeground(Color.BLACK);
+        copiesAvailableLabel.setBounds(250,100,200,25);
+
+        JTextField copiesAvailableText = new JTextField();
+        copiesAvailableText.setForeground(Color.BLACK);
+        copiesAvailableText.setBounds(250,125,200,25);
 
         JButton addButton = new JButton("ADD");
         addButton.setBounds(600,40,200,55);
@@ -39,6 +110,9 @@ public class UpdateMoviePage {
 
         JButton updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040,40,200,55);
+
+        JButton backButton = new JButton("BACK");
+        backButton.setBounds(1540,40,200,55);
 
         JPanel searchPanel = new JPanel();
         searchPanel.setBackground(Color.lightGray);
@@ -68,9 +142,11 @@ public class UpdateMoviePage {
         }
 
         table = new JTable(data, columns);
-        table.setPreferredScrollableViewportSize(new Dimension(1700, 650));
+        table.setPreferredScrollableViewportSize(new Dimension(1700, 300));
         table.setFillsViewportHeight(true);
         table.setRowHeight(50);
+        table.setBounds(0,200,1700,300);
+
 
 
         TableModel model = new DefaultTableModel(data, columns);
@@ -126,13 +202,34 @@ public class UpdateMoviePage {
                 }
             }
         });
+        //infoPanel
+        addinfoPanel.add(movieLabel);
+        addinfoPanel.add(movieText);
+        addinfoPanel.add(titleLabel);
+        addinfoPanel.add(titleText);
+        addinfoPanel.add(actorLabel);
+        addinfoPanel.add(actorText);
+        addinfoPanel.add(directorLabel);
+        addinfoPanel.add(directorText);
+        addinfoPanel.add(descriptionLabel);
+        addinfoPanel.add(descriptionText);
+        addinfoPanel.add(genreLabel);
+        addinfoPanel.add(genreText);
+        addinfoPanel.add(releaseDateLabel);
+        addinfoPanel.add(releaseDateText);
+        addinfoPanel.add(copiesAvailableLabel);
+        addinfoPanel.add(copiesAvailableText);
+
+        addinfoPanel.setLayout(null);
 
         buttonPanel.setLayout(null);
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         buttonPanel.add(updateButton);
+        buttonPanel.add(backButton);
         frame.add(searchPanel);
         frame.add(tablePanel);
+        frame.add(addinfoPanel);
         frame.add(buttonPanel);
         frame.setLayout(null);
         frame.setVisible(true);
