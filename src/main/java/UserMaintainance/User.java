@@ -1,8 +1,9 @@
 package UserMaintainance;
 
+import java.util.Random;
+
 public class User {
     private String type;
-
     private String fname;
     private String lname;
     private String email;
@@ -18,7 +19,40 @@ public class User {
 
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "type='" + type + '\'' +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", email='" + email + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", address='" + address + '\'' +
+                ", uname='" + uname + '\'' +
+                ", password='" + password + '\'' +
+                ", id='" + id + '\'' +
+                ", points='" + points + '\'' +
+                ", balance='" + balance + '\'' +
+                '}';
+    }
+
+
     public String getId() {
+        Random random = new Random();
+        int randomMax = 10;
+
+        for (int i = 0; i < 3; i++) {
+            id += random.nextInt(randomMax) + "";
+        }
+
         return id;
     }
 
@@ -42,7 +76,9 @@ public class User {
         this.balance = balance;
     }
 
-    public User(String fname, String lname, String email, String contactNo, String address, String uname, String password, String id, String points, String balance) {
+
+    public User(String type, String fname, String lname, String email, String contactNo, String address, String uname, String password, String id, String points, String balance) {
+        this.type = type;
         this.fname = fname;
         this.lname = lname;
         this.email = email;

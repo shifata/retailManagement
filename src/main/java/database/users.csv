@@ -1,6 +1,11 @@
-FName,LName,email,Contact,Address,Uname,Password,ID,Points,Balance
-nafis,awsaf,nfs9blues@live.com,123,Pacha,nfs9,nunuchoto,1,10,78.99
-shifat,akte,shifata@gmail.com,456,dojokh,shifata,nunuboro,2,15,14.99
-shovon,saha,mxsaha@69.com,789,pacha,mxsaha,nunuchela,3,41,45.99
-shif,akt,shifa@gmail.com,46,dojokh,shifa,nunuboro,4,14,29.99
-a,a,a,a,a,a,a,a,a,a
+Type,FName,LName,email,Contact,Address,Uname,Password,ID,Points,Balance
+customer,nafis,awsaf,nfs9blues@live.com,123,Pacha,nfs9,nunuchoto,1,10,78.99
+customer,shifat,akte,shifata@gmail.com,456,dojokh,shifata,nunuboro,2,15,14.99
+customer,shovon,saha,mxsaha@69.com,789,pacha,mxsaha,nunuchela,3,41,45.99
+customer,shif,akt,shifa@gmail.com,46,dojokh,shifa,nunuboro,4,14,29.99
+admin,a,a,a,a,a,a,a,a,a,a
+operator,b,b,b,b,b,b,b,b,b,b
+c,c,c,c,c,c,c
+d,d,d,d,d,d,d
+customer,e,e,e,e,e,e,e,903,0,0
+customer,r,r,r,r,r,r,r,425,0,0

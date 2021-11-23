@@ -93,6 +93,7 @@ public class Login {
         try {
             reader.readHeaders();
             while (reader.readRecord()) {
+                String type = reader.get("Type");
                 String inputUName = reader.get("Uname");
                 String inputPassword = reader.get("Password");
                 String fName = reader.get("FName");
@@ -107,7 +108,7 @@ public class Login {
                 boolean verified = uname.equals(inputUName) && pass.equals(inputPassword);
 
                 if (verified) {
-                    user = new User(fName, lName, email, contact, address, inputUName,
+                    user = new User(type, fName, lName, email, contact, address, inputUName,
                             inputPassword, id, points, balance);
                     return user;
                 }

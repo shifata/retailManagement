@@ -135,7 +135,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         final String path = "../project/src/main/java/database/users.csv";
         MaintainUser maintainer = new MaintainUser(path);
         JButton okaybutton;
-
+        String type = "customer";
         String inputFName = fnameText.getText();
         String inputLName = lnameText.getText();
         String inputEmail = emailText.getText();
@@ -147,7 +147,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         String inputPoints = "0";
         String inputBalance = "0";
 
-        User newUser = new User(inputFName, inputLName, inputEmail, inputContact, inputAddress,
+        User newUser = new User(type, inputFName, inputLName, inputEmail, inputContact, inputAddress,
                 inputUName, inputPassword, inputId, inputPoints, inputBalance);
 
         if (e1.getSource() == registerbutton) {

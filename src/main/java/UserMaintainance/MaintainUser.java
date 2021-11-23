@@ -15,6 +15,7 @@ public class MaintainUser {
         CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
 
         try {
+            writer.write(user.getType());
             writer.write(user.getFname());
             writer.write(user.getLname());
             writer.write(user.getEmail());
@@ -22,6 +23,9 @@ public class MaintainUser {
             writer.write(user.getAddress());
             writer.write(user.getUname());
             writer.write(user.getPassword());
+            writer.write(user.getId());
+            writer.write("0");      // 0 points for new user
+            writer.write("0");      // 0 balance for new user
             writer.endRecord();
             writer.close();
 //            writer.write("\n");
