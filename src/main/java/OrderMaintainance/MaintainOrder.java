@@ -46,7 +46,7 @@ public class MaintainOrder {
         return data;
     }
 
-    private Object[][] readDatabase() throws Exception {
+    public Object[][] readDatabase() throws Exception {
         ArrayList<Order> list = null;
 
         try {

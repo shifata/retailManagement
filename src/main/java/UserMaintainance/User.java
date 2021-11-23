@@ -1,26 +1,21 @@
 package UserMaintainance;
 
 public class User {
-    private String fname, lname, email, contactNo, address, uname, password, id, points, balance;
+    private String type;
+
+    private String fname;
+    private String lname;
+    private String email;
+    private String contactNo;
+    private String address;
+    private String uname;
+    private String password;
+    private String id;
+    private String points;
+    private String balance;
 
     User() {
 
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", email='" + email + '\'' +
-                ", contactNo='" + contactNo + '\'' +
-                ", address='" + address + '\'' +
-                ", uname='" + uname + '\'' +
-                ", password='" + password + '\'' +
-                ", id='" + id + '\'' +
-                ", points='" + points + '\'' +
-                ", balance='" + balance + '\'' +
-                '}';
     }
 
     public String getId() {

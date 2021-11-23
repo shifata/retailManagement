@@ -13,6 +13,7 @@ public class RegisterPage extends JFrame implements ActionListener {
     private JTextField fnameText, lnameText, emailText, contactText, unameText, passwordText,
             addressText, idText, pointsText, balanceText;
     private JFrame frame;
+    private JComboBox type;
 
     RegisterPage() {
         frame = new JFrame();
@@ -113,6 +114,10 @@ public class RegisterPage extends JFrame implements ActionListener {
         registerbutton.setBounds(140, 320, 180, 35);
         registerPanel.add(registerbutton);
         registerbutton.addActionListener(this);
+
+        String[] types = {"Customer, Operator, Admin"};
+        type = new JComboBox(types);
+//        type.setBounds();
 
         frame.add(captionPanel);
 
