@@ -1,17 +1,23 @@
 package Movies;
 
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class MaintainMovie {
     private final String path;
-    private ArrayList<Movie> collection;
+    private ArrayList<Movie> moviesList;
 
     public MaintainMovie(String path) {
         this.path = path;
-        collection = new ArrayList<>();
+        moviesList = new ArrayList<>();
+    }
+
+    public ArrayList<Movie> getMoviesList() {
+        return moviesList;
     }
 
     public ArrayList<Movie> readDatabaseList() throws Exception {
@@ -30,40 +36,63 @@ public class MaintainMovie {
                 String releaseDate = reader.get("releaseDate");
                 String copiesAvailable = reader.get("copiesAvailable");
                 // Adding the movie to collection
-                collection.add(new Movie(id, tile, actor, director, description, genre, releaseDate, copiesAvailable));
+                moviesList.add(new Movie(id, tile, actor, director, description, genre, releaseDate, copiesAvailable));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         reader.close();
-        return collection;
+        return moviesList;
     }
 
     public Object[][] readDatabase() throws Exception {
         readDatabaseList();
-        Object[][] output = new Object[collection.size()][7];
+        Object[][] output = new Object[moviesList.size()][8];
 
-        for (int i = 0; i < collection.size(); i++) {
-            Movie current = collection.get(i);
-            output[i][0] = current.getTitle();
-            output[i][1] = current.getActor();
-            output[i][2] = current.getDirector();
-            output[i][3] = current.getDescription();
-            output[i][4] = current.getGenre();
-            output[i][5] = current.getReleaseDate();
-            output[i][6] = current.getCopiesAvailable();
-//            System.out.println(Arrays.toString(output[i]));
+        for (int i = 0; i < moviesList.size(); i++) {
+            Movie current = moviesList.get(i);
+            output[i][0] = current.getId();
+            output[i][1] = current.getTitle();
+            output[i][2] = current.getActor();
+            output[i][3] = current.getDirector();
+            output[i][4] = current.getDescription();
+            output[i][5] = current.getGenre();
+            output[i][6] = current.getReleaseDate();
+            output[i][7] = current.getCopiesAvailable();
         }
 
         return output;
     }
 
-    private void writeToDatabase(Movie movie) {
 
-    }
+    public boolean addMovie(Movie movie) throws Exception {
+        boolean exists = false;
+        for (Movie m : moviesList) {
+            if (m.equals(movie)) {
+                exists = true;
+                break;
+            }
+        }
 
-    public boolean addMovie(Movie movie) {
+        if (!exists) {
+            CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
+            try {
+                writer.write(movie.getId());
+                writer.write(movie.getTitle());
+                writer.write(movie.getActor());
+                writer.write(movie.getDirector());
+                writer.write(movie.getDescription());
+                writer.write(movie.getGenre());
+                writer.write(movie.getReleaseDate());
+                writer.write(movie.getCopiesAvailable());
+                writer.endRecord();
+                writer.close();
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return false;
     }
 

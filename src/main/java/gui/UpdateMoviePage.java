@@ -1,7 +1,9 @@
 package gui;
 
 import Movies.MaintainMovie;
+import Movies.Movie;
 import UserMaintainance.Login;
+import UserMaintainance.MaintainUser;
 import UserMaintainance.User;
 
 import javax.swing.*;
@@ -11,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -26,10 +30,13 @@ public class UpdateMoviePage {
     private Login login;
     private JTextField movieIdText, titleText, actorText, directorText, descriptionText, genreText,
             releaseDateText, copiesAvailableText;
+    private JButton addButton, removeButton, updateButton, backButton;
+    private Object[][] data;
 
 
     UpdateMoviePage() {
 //        this.login = login;
+        maintainMovie = new MaintainMovie(path);
         JFrame frame = new JFrame("Update Movies");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
@@ -113,16 +120,17 @@ public class UpdateMoviePage {
         copiesAvailableText.setForeground(Color.BLACK);
         copiesAvailableText.setBounds(250, 125, 200, 25);
 
-        JButton addButton = new JButton("ADD");
+        addButton = new JButton("ADD");
         addButton.setBounds(600, 40, 200, 55);
+        addButton.addActionListener(addListener);
 
-        JButton removeButton = new JButton("REMOVE");
+        removeButton = new JButton("REMOVE");
         removeButton.setBounds(820, 40, 200, 55);
 
-        JButton updateButton = new JButton("UPDATE");
+        updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040, 40, 200, 55);
 
-        JButton backButton = new JButton("BACK");
+        backButton = new JButton("BACK");
         backButton.setBounds(1540, 40, 200, 55);
 
         JPanel searchPanel = new JPanel();
@@ -141,10 +149,8 @@ public class UpdateMoviePage {
         searchLabel.setFont(new Font("Arial", 16, 20));
         searchPanel.add(searchLabel);
 
-
-        maintainMovie = new MaintainMovie(path);
-        Object[][] data = null;
-        String[] columns = {"Title", "Actor", "Director", "Description"
+        data = null;
+        String[] columns = {"ID", "Title", "Actor", "Director", "Description"
                 , "Genre", "Release Date", "Copies Available"};
         try {
             data = maintainMovie.readDatabase();
@@ -245,38 +251,62 @@ public class UpdateMoviePage {
         frame.add(buttonPanel);
         frame.setLayout(null);
         frame.setVisible(true);
-        table.addMouseListener(mouseListener);
+        table.addMouseListener(clickListener);
 
     }
 
-    private MouseListener mouseListener = new MouseListener() {
+    private ActionListener addListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == addButton) {
+                try {
+                    String id = movieIdText.getText();
+                    String title = titleText.getText();
+                    String actor = actorText.getText();
+                    String director = directorText.getText();
+                    String description = descriptionText.getText();
+                    String genre = genreText.getText();
+                    String releaseDate = releaseDateText.getText();
+                    String copies = copiesAvailableText.getText();
+
+                    Movie movie = new Movie(id, title, actor, director, description, genre,
+                            releaseDate, copies);
+                    maintainMovie.addMovie(movie);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    };
+
+
+    private MouseListener clickListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-//            DefaultTableModel model = (DefaultTableModel) table.getModel();
-//            String name = model.getValueAt(table.getSelectedRow(), 1).toString();
-//            System.out.println(table.getSelectedRow());
-//            movieText.setText(name);
             int row = table.getSelectedRow();
 
-            String title = table.getValueAt(row, 0).toString();
+            String id = table.getValueAt(row, 0).toString();
+            movieIdText.setText(id);
+
+            String title = table.getValueAt(row, 1).toString();
             titleText.setText(title);
 
-            String actor = table.getValueAt(row, 1).toString();
+            String actor = table.getValueAt(row, 2).toString();
             actorText.setText(actor);
 
-            String director = table.getValueAt(row, 2).toString();
+            String director = table.getValueAt(row, 3).toString();
             directorText.setText(director);
 
-            String description = table.getValueAt(row, 3).toString();
+            String description = table.getValueAt(row, 4).toString();
             descriptionText.setText(description);
 
-            String genre = table.getValueAt(row, 4).toString();
+            String genre = table.getValueAt(row, 5).toString();
             genreText.setText(genre);
 
-            String releaseDate = table.getValueAt(row, 5).toString();
+            String releaseDate = table.getValueAt(row, 6).toString();
             releaseDateText.setText(releaseDate);
 
-            String copies = table.getValueAt(row, 6).toString();
+            String copies = table.getValueAt(row, 7).toString();
             copiesAvailableText.setText(copies);
         }
 

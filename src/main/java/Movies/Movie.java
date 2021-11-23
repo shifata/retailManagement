@@ -94,5 +94,20 @@ public class Movie {
         this.copiesAvailable = copiesAvailable;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Movie other = (Movie) o;
+
+        return other.getId().equals(id) && other.getTitle().equals(title) &&
+                other.actor.equals(actor) && other.getDirector().equals(director) &&
+                other.description.equals(description) && other.genre.equals(genre) &&
+                other.releaseDate.equals(releaseDate) && other.copiesAvailable.equals(copiesAvailable);
+
+
+    }
+
 
 }
