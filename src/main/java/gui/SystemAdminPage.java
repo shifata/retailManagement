@@ -1,5 +1,6 @@
 package gui;
 
+import UserMaintainance.Login;
 import javafx.css.converter.LadderConverter;
 
 import javax.swing.*;
@@ -10,7 +11,14 @@ import java.awt.event.ActionListener;
 public class SystemAdminPage {
     JButton changeMovie, changeOrders, changeUsers;
     JFrame frame;
-    SystemAdminPage(){
+    private Login login;
+
+    SystemAdminPage() {
+    }
+
+
+    SystemAdminPage(Login login) {
+        this.login = login;
 
         ImageIcon image7 = new ImageIcon("../project/src/main/resources/images/systemAdmin.png");
         ImageIcon image8 = new ImageIcon("../project/src/main/resources/images/changeMovie.PNG");
@@ -24,39 +32,39 @@ public class SystemAdminPage {
 
         JPanel systemAdminImagePanel = new JPanel();
         systemAdminImagePanel.setBackground(Color.black);
-        systemAdminImagePanel.setBounds(0,0,800,140);
+        systemAdminImagePanel.setBounds(0, 0, 800, 140);
 
         JPanel sysButtonPanel = new JPanel();
         sysButtonPanel.setBackground(Color.gray);
-        sysButtonPanel.setBounds(0,140,800,60);
+        sysButtonPanel.setBounds(0, 140, 800, 60);
 
         JButton logoutButton = new JButton("Log Out");
-        logoutButton.setBounds(40,10,80,25);
+        logoutButton.setBounds(40, 10, 80, 25);
 
         JButton myProfileButton = new JButton("Profile");
-        myProfileButton.setBounds(140,10,80,25);
+        myProfileButton.setBounds(140, 10, 80, 25);
 
         changeMovie = new JButton("CHANGE MOVIE");
-        changeMovie.setBounds(0,440,267,45);
+        changeMovie.setBounds(0, 440, 267, 45);
         changeMovie.addActionListener(changeMovieListener);
 
         changeUsers = new JButton("CHANGE USERS");
-        changeUsers.setBounds(267,440,267,45);
+        changeUsers.setBounds(267, 440, 267, 45);
         changeUsers.addActionListener(changeUserListener);
 
         changeOrders = new JButton("CHANGE ORDERS");
-        changeOrders.setBounds(534,440,267,45);
+        changeOrders.setBounds(534, 440, 267, 45);
         changeOrders.addActionListener(changeOrderListener);
 
         JPanel loggedinAsPanel = new JPanel();
         loggedinAsPanel.setBackground(Color.blue);
-        loggedinAsPanel.setBounds(340,10,300,25);
+        loggedinAsPanel.setBounds(340, 10, 300, 25);
 //        loggedinAsPanel.setLayout(null);
 
         JLabel loggedinAsLabel = new JLabel("LOGGED IN AS" + "");
-        loggedinAsLabel.setFont(new Font("Arial",18,18));
+        loggedinAsLabel.setFont(new Font("Arial", 18, 18));
         loggedinAsLabel.setForeground(Color.white);
-        loggedinAsLabel.setBounds(540,10,150,25);
+        loggedinAsLabel.setBounds(540, 10, 150, 25);
         loggedinAsLabel.setLayout(null);
 
         JLabel movieImageLabel = new JLabel();
@@ -67,7 +75,7 @@ public class SystemAdminPage {
         movieImageLabel.setIconTextGap(15);
         movieImageLabel.setBackground(Color.black);
         movieImageLabel.setOpaque(true);
-        movieImageLabel.setBounds(20,100,200,140);
+        movieImageLabel.setBounds(20, 100, 200, 140);
 
         JLabel userImageLabel = new JLabel();
         userImageLabel.setIcon(image10);
@@ -77,7 +85,7 @@ public class SystemAdminPage {
         userImageLabel.setIconTextGap(15);
         userImageLabel.setBackground(Color.black);
         userImageLabel.setOpaque(true);
-        userImageLabel.setBounds(20,100,200,140);
+        userImageLabel.setBounds(20, 100, 200, 140);
 
         JLabel ordersImageLabel = new JLabel();
         ordersImageLabel.setIcon(image9);
@@ -87,22 +95,22 @@ public class SystemAdminPage {
         ordersImageLabel.setIconTextGap(15);
         ordersImageLabel.setBackground(Color.black);
         ordersImageLabel.setOpaque(true);
-        ordersImageLabel.setBounds(20,100,200,140);
+        ordersImageLabel.setBounds(20, 100, 200, 140);
 
 
         JPanel moviesImagePanel = new JPanel();
         moviesImagePanel.setBackground(Color.green);
-        moviesImagePanel.setBounds(0,140,267,300);
+        moviesImagePanel.setBounds(0, 140, 267, 300);
         moviesImagePanel.setLayout(null);
 
         JPanel usersImagePanel = new JPanel();
         usersImagePanel.setBackground(Color.red);
-        usersImagePanel.setBounds(267,140,267,300);
+        usersImagePanel.setBounds(267, 140, 267, 300);
         usersImagePanel.setLayout(null);
 
         JPanel ordersImagePanel = new JPanel();
         ordersImagePanel.setBackground(Color.blue);
-        ordersImagePanel.setBounds(534,140,264,300);
+        ordersImagePanel.setBounds(534, 140, 264, 300);
         ordersImagePanel.setLayout(null);
 
 
@@ -139,15 +147,12 @@ public class SystemAdminPage {
         frame.setVisible(true);
 
 
-
-
-
     }
 
     private ActionListener changeMovieListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e2) {
-            if (e2.getSource() == changeMovie ) {
+            if (e2.getSource() == changeMovie) {
                 UpdateMoviePage um = new UpdateMoviePage();
                 frame.dispose();
             }
@@ -158,7 +163,7 @@ public class SystemAdminPage {
     private ActionListener changeOrderListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e2) {
-            if (e2.getSource() == changeOrders ) {
+            if (e2.getSource() == changeOrders) {
                 UpdateOrdersPage up = new UpdateOrdersPage();
                 frame.dispose();
             }
@@ -169,7 +174,7 @@ public class SystemAdminPage {
     private ActionListener changeUserListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e2) {
-            if (e2.getSource() == changeUsers ) {
+            if (e2.getSource() == changeUsers) {
                 UpdateUsersPage up = new UpdateUsersPage();
                 frame.dispose();
             }

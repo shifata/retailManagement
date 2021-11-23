@@ -21,6 +21,7 @@ public class MaintainMovie {
         try {
             reader.readHeaders();
             while (reader.readRecord()) {
+                String id = reader.get("movieID");
                 String tile = reader.get("title");
                 String actor = reader.get("actor");
                 String director = reader.get("director");
@@ -29,7 +30,7 @@ public class MaintainMovie {
                 String releaseDate = reader.get("releaseDate");
                 String copiesAvailable = reader.get("copiesAvailable");
                 // Adding the movie to collection
-                collection.add(new Movie(tile, actor, director, description, genre, releaseDate, copiesAvailable));
+                collection.add(new Movie(id, tile, actor, director, description, genre, releaseDate, copiesAvailable));
             }
         } catch (Exception e) {
             e.printStackTrace();

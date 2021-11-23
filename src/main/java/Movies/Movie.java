@@ -1,10 +1,11 @@
 package Movies;
 
 public class Movie {
-    private String title, actor, director, description, genre, releaseDate, copiesAvailable;
+    private String id, title, actor, director, description, genre, releaseDate, copiesAvailable;
 
-    public Movie(String title, String
+    public Movie(String id, String title, String
             actor, String director, String description, String genre, String releaseDate, String copiesAvailable) {
+        this.id = id;
         this.title = title;
         this.actor = actor;
         this.director = director;
@@ -25,6 +26,28 @@ public class Movie {
 
     public String getActor() {
         return actor;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", actor='" + actor + '\'' +
+                ", director='" + director + '\'' +
+                ", description='" + description + '\'' +
+                ", genre='" + genre + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", copiesAvailable='" + copiesAvailable + '\'' +
+                '}';
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setActor(String actor) {
@@ -72,16 +95,4 @@ public class Movie {
     }
 
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", actor='" + actor + '\'' +
-                ", director='" + director + '\'' +
-                ", description='" + description + '\'' +
-                ", genre='" + genre + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", copiesAvailable=" + copiesAvailable +
-                '}';
-    }
 }
