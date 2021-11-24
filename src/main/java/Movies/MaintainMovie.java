@@ -67,13 +67,7 @@ public class MaintainMovie {
 
 
     public boolean addMovie(Movie movie) throws Exception {
-        boolean exists = false;
-        for (Movie m : moviesList) {
-            if (m.equals(movie)) {
-                exists = true;
-                break;
-            }
-        }
+        boolean exists = movieExists(movie);
 
         if (!exists) {
             CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
@@ -87,6 +81,7 @@ public class MaintainMovie {
                 writer.write(movie.getReleaseDate());
                 writer.write(movie.getCopiesAvailable());
                 writer.endRecord();
+                writer.flush();
                 writer.close();
                 return true;
             } catch (Exception e) {
@@ -96,11 +91,83 @@ public class MaintainMovie {
         return false;
     }
 
-    public boolean removeMovie(Movie movie) {
+    public boolean removeMovie(Movie movie) throws Exception {
+        boolean exist = movieExists(movie);
+
+        if (exist) {
+
+        }
+
         return false;
     }
 
-    public boolean updateMovie(Movie movie) {
+    private boolean movieExists(Movie movie) {
+        for (Movie m : moviesList) {
+            if (m.equals(movie)) {
+                return true;
+            }
+        }
         return false;
     }
+
+    public boolean updateMovie(Movie movie) throws Exception {
+        boolean exists = movieExists(movie);
+
+        if (!exists) {
+            CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
+            CsvReader reader = new CsvReader(new FileReader(path));
+
+            try {
+                reader.readHeaders();
+                while (reader.readRecord()) {
+                    String id = reader.get("movieID");
+                    String tile = reader.get("title");
+                    String actor = reader.get("actor");
+                    String director = reader.get("director");
+                    String description = reader.get("description");
+                    String genre = reader.get("genre");
+                    String releaseDate = reader.get("releaseDate");
+                    String copiesAvailable = reader.get("copiesAvailable");
+
+                    Movie fromReader = new Movie(id, tile, actor, director, description, genre,
+                            releaseDate, copiesAvailable);
+
+                    boolean verify = fromReader.equals(movie);
+//                    int index = reader.
+                    if (!verify){
+
+                    }
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+//    public boolean updateMovie(Movie movie) throws Exception{
+//        boolean exists = movieExists(movie);
+//
+//        if (!exists) {
+//            CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
+//            try {
+//                writer.write(movie.getId());
+//                writer.write(movie.getTitle());
+//                writer.write(movie.getActor());
+//                writer.write(movie.getDirector());
+//                writer.write(movie.getDescription());
+//                writer.write(movie.getGenre());
+//                writer.write(movie.getReleaseDate());
+//                writer.write(movie.getCopiesAvailable());
+//                writer.endRecord();
+//                writer.close();
+//
+//                return true;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return false;
+//    }
 }

@@ -26,31 +26,31 @@ public class UpdateUsersPage {
         maintainUser = new MaintainUser(path);
         JFrame frame = new JFrame("Update Orders");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1800,1800);
+        frame.setSize(1800, 1800);
 
         JPanel tablePanel = new JPanel();
         tablePanel.setBackground(Color.gray);
-        tablePanel.setBounds(0,100,1800,700);
+        tablePanel.setBounds(0, 100, 1800, 700);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.darkGray);
-        buttonPanel.setBounds(0,800,1800,400);
+        buttonPanel.setBounds(0, 800, 1800, 400);
 
         JButton addButton = new JButton("ADD");
-        addButton.setBounds(600,40,200,55);
+        addButton.setBounds(600, 40, 200, 55);
 
         JButton removeButton = new JButton("REMOVE");
-        removeButton.setBounds(820,40,200,55);
+        removeButton.setBounds(820, 40, 200, 55);
 
         JPanel searchPanel = new JPanel();
         searchPanel.setBackground(Color.lightGray);
         searchPanel.setBounds(0, 0, 1800, 100);
 
         JButton updateButton = new JButton("UPDATE");
-        updateButton.setBounds(1040,40,200,55);
+        updateButton.setBounds(1040, 40, 200, 55);
 
         JButton backButton = new JButton("BACK");
-        backButton.setBounds(1540,40,200,55);
+        backButton.setBounds(1540, 40, 200, 55);
 
         searchField = new JTextField(20);
         searchField.setBounds(400, 25, 800, 25);
@@ -71,7 +71,7 @@ public class UpdateUsersPage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String[] columns = {"Type", "First Name", "Last Name", "E-mail", "Contact", "Address", "Uname", "Password", "ID", "Points","Balance"};
+        String[] columns = {"Type", "First Name", "Last Name", "E-mail", "Contact", "Address", "Uname", "Password", "ID", "Points", "Balance"};
 
 
         JTable table = new JTable(data, columns);
@@ -95,7 +95,6 @@ public class UpdateUsersPage {
         table.getColumnModel().getColumn(10).setPreferredWidth(20);
 
 
-
         TableModel model = new DefaultTableModel(data, columns);
         TableRowSorter sorter = new TableRowSorter(model);
         table.setRowSorter(sorter);
@@ -105,17 +104,22 @@ public class UpdateUsersPage {
 
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void insertUpdate(DocumentEvent e) {search(searchField.getText());}
+            public void insertUpdate(DocumentEvent e) {
+                search(searchField.getText());
+            }
 
             @Override
-            public void removeUpdate(DocumentEvent e) { search(searchField.getText());
+            public void removeUpdate(DocumentEvent e) {
+                search(searchField.getText());
 
             }
 
             @Override
-            public void changedUpdate(DocumentEvent e) {search(searchField.getText());
+            public void changedUpdate(DocumentEvent e) {
+                search(searchField.getText());
 
             }
+
             public void search(String s) {
                 if (s.length() == 0) {
                     sorter.setRowFilter(null);
@@ -136,10 +140,6 @@ public class UpdateUsersPage {
             }
         });
 
-
-
-
-
         buttonPanel.setLayout(null);
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
@@ -152,11 +152,7 @@ public class UpdateUsersPage {
         frame.setVisible(true);
 
 
-
-
     }
-
-
 
 
 }

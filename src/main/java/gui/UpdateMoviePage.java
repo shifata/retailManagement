@@ -3,7 +3,6 @@ package gui;
 import Movies.MaintainMovie;
 import Movies.Movie;
 import UserMaintainance.Login;
-import UserMaintainance.MaintainUser;
 import UserMaintainance.User;
 
 import javax.swing.*;
@@ -32,12 +31,13 @@ public class UpdateMoviePage {
             releaseDateText, copiesAvailableText;
     private JButton addButton, removeButton, updateButton, backButton;
     private Object[][] data;
+    private JFrame frame;
 
 
     UpdateMoviePage() {
 //        this.login = login;
         maintainMovie = new MaintainMovie(path);
-        JFrame frame = new JFrame("Update Movies");
+        frame = new JFrame("Update Movies");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
 
@@ -129,9 +129,11 @@ public class UpdateMoviePage {
 
         updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040, 40, 200, 55);
+        updateButton.addActionListener(updateListener);
 
         backButton = new JButton("BACK");
         backButton.setBounds(1540, 40, 200, 55);
+        backButton.addActionListener(backListener);
 
         JPanel searchPanel = new JPanel();
         searchPanel.setBackground(Color.lightGray);
@@ -255,6 +257,52 @@ public class UpdateMoviePage {
 
     }
 
+    private ActionListener updateListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == updateButton) {
+                try {
+                    String id = movieIdText.getText();
+                    String title = titleText.getText();
+                    String actor = actorText.getText();
+                    String director = directorText.getText();
+                    String description = descriptionText.getText();
+                    String genre = genreText.getText();
+                    String releaseDate = releaseDateText.getText();
+                    String copies = copiesAvailableText.getText();
+
+                    Movie movie = new Movie(id, title, actor, director, description, genre,
+                            releaseDate, copies);
+                    System.out.println(movie);
+                    if (maintainMovie.updateMovie(movie)) {
+                        System.out.println("Movie Added");
+//                        frame.dispose();
+//
+//                        SystemAdminPage adminPage = new SystemAdminPage(login);
+//
+//                        JFrame popup = new JFrame("MOVIE ADDED");
+//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                        popup.setSize(300, 300);
+//                        popup.setBounds(700, 500, 300, 100);
+//                        popup.setVisible(true);
+                    } else {
+                        System.out.println("Movie already exists");
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    };
+
+    private ActionListener backListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+        }
+    };
+
     private ActionListener addListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -271,7 +319,20 @@ public class UpdateMoviePage {
 
                     Movie movie = new Movie(id, title, actor, director, description, genre,
                             releaseDate, copies);
-                    maintainMovie.addMovie(movie);
+                    if (maintainMovie.addMovie(movie)) {
+                        System.out.println("Movie Added");
+//                        frame.dispose();
+//
+//                        SystemAdminPage adminPage = new SystemAdminPage(login);
+//
+//                        JFrame popup = new JFrame("MOVIE ADDED");
+//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                        popup.setSize(300, 300);
+//                        popup.setBounds(700, 500, 300, 100);
+//                        popup.setVisible(true);
+                    } else {
+                        System.out.println("Movie already exists");
+                    }
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
