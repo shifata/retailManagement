@@ -27,6 +27,71 @@ public class UpdateMoviePage {
     MaintainMovie maintainMovie;
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     private Login login;
+
+    public JTextField getMovieIdText() {
+        return movieIdText;
+    }
+
+    public void setMovieIdText(JTextField movieIdText) {
+        this.movieIdText = movieIdText;
+    }
+
+    public JTextField getTitleText() {
+        return titleText;
+    }
+
+    public void setTitleText(JTextField titleText) {
+        this.titleText = titleText;
+    }
+
+    public JTextField getActorText() {
+        return actorText;
+    }
+
+    public void setActorText(JTextField actorText) {
+        this.actorText = actorText;
+    }
+
+    public JTextField getDirectorText() {
+        return directorText;
+    }
+
+    public void setDirectorText(JTextField directorText) {
+        this.directorText = directorText;
+    }
+
+    public JTextField getDescriptionText() {
+        return descriptionText;
+    }
+
+    public void setDescriptionText(JTextField descriptionText) {
+        this.descriptionText = descriptionText;
+    }
+
+    public JTextField getGenreText() {
+        return genreText;
+    }
+
+    public void setGenreText(JTextField genreText) {
+        this.genreText = genreText;
+    }
+
+    public JTextField getReleaseDateText() {
+        return releaseDateText;
+    }
+
+    public void setReleaseDateText(JTextField releaseDateText) {
+        this.releaseDateText = releaseDateText;
+    }
+
+    public JTextField getCopiesAvailableText() {
+        return copiesAvailableText;
+    }
+
+    public void setCopiesAvailableText(JTextField copiesAvailableText) {
+        this.copiesAvailableText = copiesAvailableText;
+    }
+
     private JTextField movieIdText, titleText, actorText, directorText, descriptionText, genreText,
             releaseDateText, copiesAvailableText;
     private JButton addButton, removeButton, updateButton, backButton;
@@ -34,7 +99,7 @@ public class UpdateMoviePage {
     private JFrame frame;
 
 
-    UpdateMoviePage() {
+    public UpdateMoviePage() {
 //        this.login = login;
         maintainMovie = new MaintainMovie(path);
         frame = new JFrame("Update Movies");
@@ -126,6 +191,7 @@ public class UpdateMoviePage {
 
         removeButton = new JButton("REMOVE");
         removeButton.setBounds(820, 40, 200, 55);
+        removeButton.addActionListener(removeListener);
 
         updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040, 40, 200, 55);
@@ -256,6 +322,43 @@ public class UpdateMoviePage {
         table.addMouseListener(clickListener);
 
     }
+
+    private ActionListener removeListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == removeButton) {
+                try {
+                    String id = movieIdText.getText();
+                    String title = titleText.getText();
+                    String actor = actorText.getText();
+                    String director = directorText.getText();
+                    String description = descriptionText.getText();
+                    String genre = genreText.getText();
+                    String releaseDate = releaseDateText.getText();
+                    String copies = copiesAvailableText.getText();
+
+                    Movie movie = new Movie(id, title, actor, director, description, genre,
+                            releaseDate, copies);
+                    if (maintainMovie.removeMovie(movie)) {
+                        System.out.println("Movie Removed");
+//                        frame.dispose();
+//
+//                        SystemAdminPage adminPage = new SystemAdminPage(login);
+//
+//                        JFrame popup = new JFrame("MOVIE ADDED");
+//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                        popup.setSize(300, 300);
+//                        popup.setBounds(700, 500, 300, 100);
+//                        popup.setVisible(true);
+                    } else {
+                        System.out.println("Movie Does Not Exist");
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    };
 
     private ActionListener updateListener = new ActionListener() {
         @Override
