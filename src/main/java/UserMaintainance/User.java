@@ -1,5 +1,6 @@
 package UserMaintainance;
 
+import Movies.Movie;
 import Utils.IdGenerator;
 
 import java.util.Random;
@@ -48,7 +49,7 @@ public class User {
 
 
     public String getId() {
-        return IdGenerator.getId(5);
+        return id;
     }
 
     public void setId(String id) {
@@ -142,4 +143,18 @@ public class User {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User other = (User) o;
+
+        return other.type.equals(type) && other.fname.equals(fname) &&
+                other.lname.equals(lname) && other.email.equals(email) &&
+                other.contactNo.equals(contactNo) && other.address.equals(address) &&
+                other.uname.equals(uname) && other.password.equals(password) &&
+                other.points.equals(points) && other.balance.equals(balance);
+
+    }
 }

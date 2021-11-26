@@ -2,6 +2,7 @@ package Utils;
 
 import Movies.Movie;
 import OrderMaintainance.Order;
+import UserMaintainance.User;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,17 @@ public class Sorter {
         }
     }
 
+    public static void sortUsersById(ArrayList<User> users) {
+        for (int i = 0; i < users.size(); i++) {
+            for (int j = 0; j < users.size(); j++) {
+                if (Integer.parseInt(users.get(i).getId()) <
+                        Integer.parseInt(users.get(j).getId())) {
+                    swap3(users, i, j);
+                }
+            }
+        }
+    }
+
     private static void swap1(ArrayList<Movie> movies, int a, int b) {
         Movie tmp = movies.get(a);
         movies.set(a, movies.get(b));
@@ -38,5 +50,11 @@ public class Sorter {
         Order tmp = orders.get(a);
         orders.set(a, orders.get(b));
         orders.set(b, tmp);
+    }
+
+    private static void swap3(ArrayList<User> users, int a, int b) {
+        User tmp = users.get(a);
+        users.set(a, users.get(b));
+        users.set(b, tmp);
     }
 }

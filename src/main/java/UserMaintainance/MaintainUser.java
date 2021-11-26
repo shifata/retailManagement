@@ -1,5 +1,7 @@
 package UserMaintainance;
 
+import Utils.IdGenerator;
+import Utils.Sorter;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -9,43 +11,19 @@ import java.util.ArrayList;
 
 public class MaintainUser {
     private String path;
-    private ArrayList<User> users;
+    private ArrayList<User> usersList;
 
     public MaintainUser(String path) {
         this.path = path;
-        users = new ArrayList<>();
-    }
-
-    public boolean addUser(User user) throws Exception {
-        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
-
-        try {
-            writer.write(user.getType());
-            writer.write(user.getFname());
-            writer.write(user.getLname());
-            writer.write(user.getEmail());
-            writer.write(user.getContactNo());
-            writer.write(user.getAddress());
-            writer.write(user.getUname());
-            writer.write(user.getPassword());
-            writer.write(user.getId());
-            writer.write("0");      // 0 points for new user
-            writer.write("0");      // 0 balance for new user
-            writer.endRecord();
-            writer.close();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        usersList = new ArrayList<>();
     }
 
     public Object[][] readDatabase() throws Exception {
         readDatabaseList();
-        Object[][] output = new Object[users.size()][11];
+        Object[][] output = new Object[usersList.size()][11];
 
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
+        for (int i = 0; i < usersList.size(); i++) {
+            User user = usersList.get(i);
             output[i][0] = user.getType();
             output[i][1] = user.getFname();
             output[i][2] = user.getLname();
@@ -83,20 +61,145 @@ public class MaintainUser {
 
                 User user = new User(type, fname, lname, email, contact, address, uname, password, id,
                         points, balance);
-                users.add(user);
+                usersList.add(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return users;
+        return usersList;
     }
 
-    public boolean removeUser() {
+    public boolean writeToUser() throws Exception {
+        CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
+        try {
+            writer.write("Type");
+            writer.write("FName");
+            writer.write("LName");
+            writer.write("email");
+            writer.write("Contact");
+            writer.write("Address");
+            writer.write("Uname");
+            writer.write("Password");
+            writer.write("ID");
+            writer.write("Points");
+            writer.write("Balance");
+
+            writer.endRecord();
+            writer.flush();
+
+            Sorter.sortUsersById(usersList);
+
+            for (User u : usersList) {
+                writer.write(u.getType());
+                writer.write(u.getFname());
+                writer.write(u.getLname());
+                writer.write(u.getEmail());
+                writer.write(u.getContactNo());
+                writer.write(u.getAddress());
+                writer.write(u.getUname());
+                writer.write(u.getPassword());
+                writer.write(u.getId());
+                writer.write(u.getPoints());
+                writer.write(u.getBalance());
+
+                writer.endRecord();
+                writer.flush();
+            }
+            writer.close();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
 
-    public boolean updateUser(User user) {
+//    public boolean addUser(User user) throws Exception {
+//        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
+//
+//        try {
+//            writer.write(user.getType());
+//            writer.write(user.getFname());
+//            writer.write(user.getLname());
+//            writer.write(user.getEmail());
+//            writer.write(user.getContactNo());
+//            writer.write(user.getAddress());
+//            writer.write(user.getUname());
+//            writer.write(user.getPassword());
+//            writer.write(user.getId());
+//            writer.write("0");      // 0 points for new user
+//            writer.write("0");      // 0 balance for new user
+//            writer.endRecord();
+//            writer.close();
+//            return true;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
+
+    public boolean addUser(User user) {
+        boolean exists = userExists(user);
+        try {
+            if (!exists) {
+                user.setId(IdGenerator.getId(3));
+                usersList.add(user);
+                writeToUser();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return false;
+    }
+
+    public boolean removeUser(User user) throws Exception {
+        boolean exists = userExists(user);
+
+        if (exists) {
+            int index = getUserIndex(user);
+            usersList.remove(index);
+            writeToUser();
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean updateUser(User user)throws Exception {
+        boolean exists = userExists(user);
+
+        if (exists) {
+            for (int i = 0; i < usersList.size(); i++) {
+                if (usersList.get(i).getId().equals(user.getId())) {
+                    usersList.remove(i);
+                }
+            }
+            usersList.add(user);
+            writeToUser();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean userExists(User u) {
+        for (User user : usersList) {
+            if (user.getId().equals(u.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int getUserIndex(User u) {
+        for (int i = 0; i < usersList.size(); i++) {
+            if (usersList.get(i).equals(u)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

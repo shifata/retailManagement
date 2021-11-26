@@ -15,7 +15,7 @@ OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,
 68242,Online,25-August-2021,28-August-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Spider-Man (2002),shifata,013,Ontario
 72651,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999),,014,Ontario
 80052,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004),shifata,004,Ontario
-81800,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004),shifata,010,Ontario
+81800,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Not Delivered,Harry Potter and the Prisoner of Azkaban (2004),shifata,010,Ontario
 87400,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,American Pie (2002),shifata,013,Ontario
 88177,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Fast and Furious: Tokyo Drift(2006),shifata,012,Ontario
 88780,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004),shifata,004,Ontario

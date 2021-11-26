@@ -15,11 +15,11 @@ public class Test {
         //SystemAdminPage systemAdmin = new SystemAdminPage();
 
 
-        UpdateOrdersPage up = new UpdateOrdersPage();
+//        UpdateOrdersPage up = new UpdateOrdersPage();
 
 //     UpdateMoviePage um = new UpdateMoviePage();
 
-//       UpdateUsersPage up = new UpdateUsersPage();
+       UpdateUsersPage up = new UpdateUsersPage();
 //        MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage();
         //searchTable searchT = new searchTable();
 //        MyProfilePage profile = new MyProfilePage(new Login());

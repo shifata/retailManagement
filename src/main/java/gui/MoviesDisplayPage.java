@@ -111,7 +111,7 @@ public class MoviesDisplayPage {
 
         maintainMovie = new MaintainMovie(path);
         Object[][] data = null;
-        String[] columns = {"Title", "Actor", "Director", "Description"
+        String[] columns = {"Movie ID", "Title", "Actor", "Director", "Description"
                 , "Genre", "Release Date", "Copies Available"};
         try {
             data = maintainMovie.readDatabase();
