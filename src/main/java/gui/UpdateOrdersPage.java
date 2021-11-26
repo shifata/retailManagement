@@ -22,7 +22,6 @@ public class UpdateOrdersPage {
     JTable table;
     JTextField searchField;
     final String path = "../project/src/main/java/database/orders.csv";
-    MaintainMovie maintainMovie;
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     MaintainOrder maintainOrder;
     private JButton addButton, removeButton, updateButton, backButton;

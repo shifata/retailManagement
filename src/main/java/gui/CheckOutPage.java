@@ -17,7 +17,7 @@ public class CheckOutPage {
 
 
         this.login = login;
-        ArrayList<String> cart = MoviesDisplayPage.getCart();
+        ArrayList<Object> cart = MoviesDisplayPage.getCart();
 
         frame = new JFrame("Cart");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

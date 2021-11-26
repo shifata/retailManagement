@@ -20,7 +20,7 @@ public class Test {
 //     UpdateMoviePage um = new UpdateMoviePage();
 
 //       UpdateUsersPage up = new UpdateUsersPage();
-//        MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage();
+        //MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage();
         //searchTable searchT = new searchTable();
 //        MyProfilePage profile = new MyProfilePage(new Login());
 

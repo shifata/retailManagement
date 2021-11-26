@@ -15,7 +15,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MoviesDisplayPage {
-    private static ArrayList<String> cart;
+    private static ArrayList<Object> cart;
     private JButton myProfile, logout, proceedCheckout;
     private MaintainMovie maintainMovie;
     private JFrame frame;
@@ -140,16 +140,17 @@ public class MoviesDisplayPage {
 
         addMovieToCart.addMouseListener(cartListener);
 
-        table.getColumnModel().getColumn(0).setPreferredWidth(500);
-        table.getColumnModel().getColumn(1).setPreferredWidth(100);
-        table.getColumnModel().getColumn(2).setPreferredWidth(100);
-        table.getColumnModel().getColumn(3).setPreferredWidth(300);
-        table.getColumnModel().getColumn(4).setPreferredWidth(100);
-        table.getColumnModel().getColumn(5).setPreferredWidth(50);
-        table.getColumnModel().getColumn(6).setPreferredWidth(20);
+        table.getColumnModel().getColumn(0).setPreferredWidth(3);
+        table.getColumnModel().getColumn(1).setPreferredWidth(300);
+        table.getColumnModel().getColumn(2).setPreferredWidth(190);
+        table.getColumnModel().getColumn(3).setPreferredWidth(20);
+        table.getColumnModel().getColumn(4).setPreferredWidth(400);
+        table.getColumnModel().getColumn(5).setPreferredWidth(150);
+        table.getColumnModel().getColumn(6).setPreferredWidth(5);
+        table.getColumnModel().getColumn(7).setPreferredWidth(5);
         table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         table.setRowSelectionAllowed(true);
-        table.setColumnSelectionAllowed(true);
+//        table.setColumnSelectionAllowed(true);
         tablePanel.add(new JScrollPane(table));
 
 
@@ -202,7 +203,7 @@ public class MoviesDisplayPage {
 
     }
 
-    public static ArrayList<String> getCart() {
+    public static ArrayList<Object> getCart() {
         return cart;
     }
 
@@ -211,9 +212,9 @@ public class MoviesDisplayPage {
         public void mouseClicked(MouseEvent e) {
 
             int row = table.getSelectedRow();
-            int column = table.getSelectedColumn();
+            int column = 1;
 
-            cart.add(table.getModel().getValueAt(row, column).toString());
+            cart.add(table.getValueAt(row, column).toString());
             System.out.println("row: " + row + " column: " + column);
             System.out.println(cart.toString());
         }

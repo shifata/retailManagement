@@ -1,21 +1,30 @@
 package gui;
 
+import Movies.Movie;
+import Payment.MaintainPayment;
 import UserMaintainance.Login;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PaymentPage {
 
     JButton CancelButton;
     JFrame frame;
     private Login login;
+    private JButton confirmPaymentButton;
+    private JComboBox paymentCombo;
+    private ArrayList<Object> cart;
+    final String[] paymentType = {"Visa", "MasterCard", "PayPal", "Loyalty Points"};
+    private MaintainPayment maintainPayment;
+    final String path = "../project/src/main/java/database/orders.csv";
 
     PaymentPage(Login login) {
-        this.login = login;
-
+        cart = MoviesDisplayPage.getCart();
+        maintainPayment = new MaintainPayment(path, login);
 
         ImageIcon image6 = new ImageIcon("../project/src/main/resources/images/card.png");
 
@@ -83,8 +92,9 @@ public class PaymentPage {
         JTextField ccvText = new JTextField();
         ccvText.setBounds(230, 280, 60, 30);
 
-        JButton confirmPaymentButton = new JButton("Confirm Payment");
+        confirmPaymentButton = new JButton("Confirm Payment");
         confirmPaymentButton.setBounds(50, 400, 180, 35);
+        confirmPaymentButton.addActionListener(paymentListener);
 
         CancelButton = new JButton("Cancel");
         CancelButton.setBounds(250, 400, 180, 35);
@@ -93,8 +103,8 @@ public class PaymentPage {
         JButton logoutButton = new JButton("Log Out");
         logoutButton.setBounds(0, 0, 60, 30);
 
-        String[] paymentType = {"Visa", "MasterCard", "PayPal", "Loyalty Points"};
-        JComboBox paymentCombo = new JComboBox(paymentType);
+
+        paymentCombo = new JComboBox(paymentType);
         paymentCombo.setBounds(400, 200, 200, 30);
 
         cardImagePanel.add(paymentLabel);
@@ -117,9 +127,18 @@ public class PaymentPage {
         frame.add(paymentInfoPanel);
         frame.setLayout(null);
         frame.setVisible(true);
-
-
     }
+
+    private ActionListener paymentListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (paymentCombo.getSelectedItem().equals("Visa")) {
+//                maintainPayment.processPayment(cart, "Visa");
+            }
+
+        }
+    };
+
 
     private ActionListener cancelListener = new ActionListener() {
         @Override
