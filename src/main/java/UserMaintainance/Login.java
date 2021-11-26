@@ -30,8 +30,8 @@ public class Login {
         this.login = login;
     }
 
-    public String getUserType() {
-        return user.getType();
+    public String getUserType(String uname, String pass) throws Exception {
+        return getCurrentUser(uname,pass).getType();
     }
 
     public void setUserType(String type) {

@@ -108,9 +108,10 @@ public class LoginPage extends JFrame implements ActionListener {
         String uname = userText.getText();
         String password = passwordText.getText();
         login = new Login(filePath);
+        boolean verified = false;
 
         try {
-            boolean verified = login.verify(uname, password);
+            verified = login.verify(uname, password);
             if (verified) {
                 System.out.println(login.getCurrentUser(uname, password));
                 System.out.println("LOGIN SUCCESSFUL");
@@ -126,18 +127,26 @@ public class LoginPage extends JFrame implements ActionListener {
             RegisterPage register = new RegisterPage();
         }
 
-        if (e.getSource() == loginbutton) {
+        if (verified && e.getSource() == loginbutton) {
 
-            if ((login.getUserType().equals("customer") ||
-                    login.getUserType().equals("operator"))) {
+            try {
+                if ((login.getUserType(uname, password).equals("customer") ||
+                        login.getUserType(uname, password).equals("operator"))) {
 
-                frame.dispose();
-                MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+                    frame.dispose();
+                    MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
 
-            if (login.getUserType().equals("admin")) {
-                frame.dispose();
-                SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+            try {
+                if (login.getUserType(uname,password).equals("admin")) {
+                    frame.dispose();
+                    SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
 
         }

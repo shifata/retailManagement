@@ -1,9 +1,5 @@
 package UserMaintainance;
 
-import Movies.Movie;
-import Utils.IdGenerator;
-
-import java.util.Random;
 
 public class User {
     private String type;
