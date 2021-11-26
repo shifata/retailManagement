@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class UpdateMoviePage {
 
-    private static ArrayList<User> users;
     JTable table;
     JTextField searchField;
     final String path = "../project/src/main/java/database/movies.csv";
@@ -402,7 +401,7 @@ public class UpdateMoviePage {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+            SystemAdminPage systemAdminPage = new SystemAdminPage();
         }
     };
 

@@ -30,7 +30,122 @@ public class UpdateUsersPage {
 
         JPanel tablePanel = new JPanel();
         tablePanel.setBackground(Color.gray);
-        tablePanel.setBounds(0, 100, 1800, 700);
+        tablePanel.setBounds(0, 100, 1800, 450);
+
+        JPanel addUserInfoPanel = new JPanel();
+        addUserInfoPanel.setBackground(Color.green);
+        addUserInfoPanel.setBounds(0,550,1800,250);
+
+        JLabel typeLabel = new JLabel("Type");
+        typeLabel.setForeground(Color.BLACK);
+        typeLabel.setBounds(10, 0, 200, 25);
+        addUserInfoPanel.add(typeLabel);
+
+        JTextField typeText = new JTextField();
+        typeText.setBounds(10, 25, 200, 25);
+        addUserInfoPanel.add(typeText);
+        addUserInfoPanel.add(typeText);
+
+        JLabel fnameLabel = new JLabel("First Name");
+        fnameLabel.setForeground(Color.BLACK);
+        fnameLabel.setBounds(250, 0, 200, 25);
+        addUserInfoPanel.add(fnameLabel);
+
+        JTextField fnameText = new JTextField();
+        fnameText.setForeground(Color.BLACK);
+        fnameText.setBounds(250, 25, 200, 25);
+        addUserInfoPanel.add(fnameText);
+
+        JLabel lnameLabel = new JLabel("Last Name");
+        lnameLabel.setForeground(Color.BLACK);
+        lnameLabel.setBounds(490, 0, 200, 25);
+        addUserInfoPanel.add(lnameLabel);
+
+        JTextField lnameText = new JTextField();
+        lnameText.setForeground(Color.BLACK);
+        lnameText.setBounds(490, 25, 200, 25);
+        addUserInfoPanel.add(lnameText);
+
+        JLabel emailLabel = new JLabel("E-mail");
+        emailLabel.setForeground(Color.BLACK);
+        emailLabel.setBounds(10, 50, 200, 25);
+        addUserInfoPanel.add(emailLabel);
+
+        JTextField emailText = new JTextField();
+        emailText.setForeground(Color.BLACK);
+        emailText.setBounds(10, 75, 200, 25);
+        addUserInfoPanel.add(emailText);
+
+        JLabel contactLabel = new JLabel("Contact No.");
+        contactLabel.setForeground(Color.BLACK);
+        contactLabel.setBounds(250, 50, 200, 25);
+        addUserInfoPanel.add(contactLabel);
+
+        JTextField contactText = new JTextField();
+        contactText.setForeground(Color.BLACK);
+        contactText.setBounds(250, 75, 200, 25);
+        addUserInfoPanel.add(contactText);
+
+        JLabel addressLabel = new JLabel("Genre");
+        addressLabel.setForeground(Color.BLACK);
+        addressLabel.setBounds(490, 50, 200, 25);
+        addUserInfoPanel.add(addressLabel);
+
+        JTextField addressText = new JTextField();
+        addressText.setForeground(Color.BLACK);
+        addressText.setBounds(490, 75, 200, 25);
+        addUserInfoPanel.add(addressText);
+
+        JLabel unameLabel = new JLabel("Username");
+        unameLabel.setForeground(Color.BLACK);
+        unameLabel.setBounds(10, 100, 200, 25);
+        addUserInfoPanel.add(unameLabel);
+
+        JTextField unameText = new JTextField();
+        unameText.setForeground(Color.BLACK);
+        unameText.setBounds(10, 125, 200, 25);
+        addUserInfoPanel.add(unameText);
+
+        JLabel passwordLabel = new JLabel("Password");
+        passwordLabel.setForeground(Color.BLACK);
+        passwordLabel.setBounds(250, 100, 200, 25);
+        addUserInfoPanel.add(passwordLabel);
+
+        JTextField passwordText = new JTextField();
+        passwordText.setForeground(Color.BLACK);
+        passwordText.setBounds(250, 125, 200, 25);
+        addUserInfoPanel.add(passwordText);
+
+        JLabel idLabel = new JLabel("ID");
+        idLabel.setForeground(Color.BLACK);
+        idLabel.setBounds(490, 100, 200, 25);
+        addUserInfoPanel.add(idLabel);
+
+        JTextField idText = new JTextField();
+        idText.setForeground(Color.BLACK);
+        idText.setBounds(490, 125, 200, 25);
+        addUserInfoPanel.add(idText);
+
+        JLabel pointsLabel = new JLabel("Points");
+        pointsLabel.setForeground(Color.BLACK);
+        pointsLabel.setBounds(10,150,200,25);
+        addUserInfoPanel.add(pointsLabel);
+
+        JTextField pointsText = new JTextField();
+        pointsText.setForeground(Color.BLACK);
+        pointsText.setBounds(10,175,200,25);
+        addUserInfoPanel.add(pointsText);
+
+        JLabel balanceLabel = new JLabel("Balance");
+        balanceLabel.setForeground(Color.BLACK);
+        balanceLabel.setBounds(250,150,200,25);
+        addUserInfoPanel.add(balanceLabel);
+
+        JTextField balanceText = new JTextField();
+        balanceText.setForeground(Color.BLACK);
+        balanceText.setBounds(250,175,200,25);
+        addUserInfoPanel.add(balanceText);
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.darkGray);
@@ -75,7 +190,7 @@ public class UpdateUsersPage {
 
 
         JTable table = new JTable(data, columns);
-        table.setPreferredScrollableViewportSize(new Dimension(1700, 600));
+        table.setPreferredScrollableViewportSize(new Dimension(1700, 400));
         table.setFillsViewportHeight(true);
         table.setRowHeight(50);
         table.setBounds(20, 600, 1700, 200);
@@ -140,6 +255,7 @@ public class UpdateUsersPage {
             }
         });
 
+        addUserInfoPanel.setLayout(null);
         buttonPanel.setLayout(null);
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
@@ -147,6 +263,7 @@ public class UpdateUsersPage {
         buttonPanel.add(backButton);
         frame.add(searchPanel);
         frame.add(tablePanel);
+        frame.add(addUserInfoPanel);
         frame.add(buttonPanel);
         frame.setLayout(null);
         frame.setVisible(true);
