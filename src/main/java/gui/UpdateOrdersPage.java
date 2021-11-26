@@ -3,6 +3,7 @@ package gui;
 import Movies.MaintainMovie;
 import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
+import UserMaintainance.Login;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -29,7 +30,10 @@ public class UpdateOrdersPage {
             shippingAddressText, orderStatusText, movieLabelText, unameText, movieIdText,
             provinceText;
 
-    UpdateOrdersPage() {
+    private Login login;
+
+    UpdateOrdersPage(Login login) {
+        this.login = login;
         frame = new JFrame("Update Orders");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
@@ -343,7 +347,7 @@ public class UpdateOrdersPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            SystemAdminPage systemAdminPage = new SystemAdminPage();
+            SystemAdminPage systemAdminPage = new SystemAdminPage(login);
         }
     };
 

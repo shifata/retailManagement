@@ -18,7 +18,7 @@ public class LoginPage extends JFrame implements ActionListener {
     private JPasswordField passwordText;
     private Login login;
 
-    LoginPage(Login login){
+    LoginPage(Login login) {
         this.login = login;
     }
 
@@ -127,9 +127,21 @@ public class LoginPage extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == loginbutton) {
-            frame.dispose();
-            MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+
+            if ((login.getUserType().equals("customer") ||
+                    login.getUserType().equals("operator"))) {
+
+                frame.dispose();
+                MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+            }
+
+            if (login.getUserType().equals("admin")) {
+                frame.dispose();
+                SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+            }
+
         }
+
     }
 
     public Login getLogin() {

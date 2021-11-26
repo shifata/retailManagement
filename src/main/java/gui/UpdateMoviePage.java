@@ -34,8 +34,8 @@ public class UpdateMoviePage {
     private JFrame frame;
 
 
-    public UpdateMoviePage() {
-//        this.login = login;
+    public UpdateMoviePage(Login login) {
+        this.login = login;
         maintainMovie = new MaintainMovie(path);
         frame = new JFrame("Update Movies");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -331,7 +331,7 @@ public class UpdateMoviePage {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            SystemAdminPage systemAdminPage = new SystemAdminPage();
+            SystemAdminPage systemAdminPage = new SystemAdminPage(login);
         }
     };
 

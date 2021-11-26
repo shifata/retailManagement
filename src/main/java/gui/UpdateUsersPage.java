@@ -31,8 +31,8 @@ public class UpdateUsersPage {
     private JTextField typeText, fnameText, lnameText, emailText, contactText,
             addressText, unameText, passwordText, idText, pointsText, balanceText;
 
-    UpdateUsersPage() {
-//        this.login = login;
+    UpdateUsersPage(Login login) {
+        this.login = login;
         maintainUser = new MaintainUser(path);
         frame = new JFrame("Update Users");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -387,7 +387,7 @@ public class UpdateUsersPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            SystemAdminPage systemAdminPage = new SystemAdminPage();
+            SystemAdminPage systemAdminPage = new SystemAdminPage(login);
         }
     };
 

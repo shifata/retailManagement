@@ -30,6 +30,14 @@ public class Login {
         this.login = login;
     }
 
+    public String getUserType() {
+        return user.getType();
+    }
+
+    public void setUserType(String type) {
+        user.setType(type);
+    }
+
     public boolean verify(String uname, String password) throws Exception {
         FileReader fileReader = new FileReader(path);
         CsvReader reader = new CsvReader(fileReader);

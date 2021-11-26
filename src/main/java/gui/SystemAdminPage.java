@@ -14,9 +14,8 @@ public class SystemAdminPage {
     private Login login;
 
 
-
-    SystemAdminPage() {
-//        this.login = login;
+    SystemAdminPage(Login login) {
+        this.login = login;
 
         ImageIcon image7 = new ImageIcon("../project/src/main/resources/images/systemAdmin.png");
         ImageIcon image8 = new ImageIcon("../project/src/main/resources/images/changeMovie.PNG");
@@ -151,7 +150,7 @@ public class SystemAdminPage {
         @Override
         public void actionPerformed(ActionEvent e2) {
             if (e2.getSource() == changeMovie) {
-                UpdateMoviePage um = new UpdateMoviePage();
+                UpdateMoviePage um = new UpdateMoviePage(login);
                 frame.dispose();
             }
         }
@@ -162,7 +161,7 @@ public class SystemAdminPage {
         @Override
         public void actionPerformed(ActionEvent e2) {
             if (e2.getSource() == changeOrders) {
-                UpdateOrdersPage up = new UpdateOrdersPage();
+                UpdateOrdersPage up = new UpdateOrdersPage(login);
                 frame.dispose();
             }
         }
@@ -173,7 +172,7 @@ public class SystemAdminPage {
         @Override
         public void actionPerformed(ActionEvent e2) {
             if (e2.getSource() == changeUsers) {
-                UpdateUsersPage up = new UpdateUsersPage();
+                UpdateUsersPage up = new UpdateUsersPage(login);
                 frame.dispose();
             }
         }

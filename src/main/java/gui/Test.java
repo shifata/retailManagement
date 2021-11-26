@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class Test {
     public static void main(String[] args) {
-//        LoginPage lp = new LoginPage();
+        LoginPage lp = new LoginPage();
 
         //SystemAdminPage systemAdmin = new SystemAdminPage();
 
@@ -19,7 +19,7 @@ public class Test {
 
 //     UpdateMoviePage um = new UpdateMoviePage();
 
-       UpdateUsersPage up = new UpdateUsersPage();
+//       UpdateUsersPage up = new UpdateUsersPage();
 //        MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage();
         //searchTable searchT = new searchTable();
 //        MyProfilePage profile = new MyProfilePage(new Login());
