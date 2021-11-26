@@ -76,6 +76,22 @@ public class MaintainMovie {
         return output;
     }
 
+    private void sortMoviesById(ArrayList<Movie> movies) {
+        for (int i = 0; i < movies.size(); i++) {
+            for (int j = 0; j < movies.size(); j++) {
+                if (Integer.parseInt(movies.get(i).getId()) < Integer.parseInt(movies.get(j).getId())) {
+                    swap(movies, i, j);
+                }
+            }
+        }
+    }
+
+    private void swap(ArrayList<Movie> movies, int a, int b) {
+        Movie tmp = movies.get(a);
+        movies.set(a, movies.get(b));
+        movies.set(b, tmp);
+    }
+
     public boolean writeToMovie(ArrayList<Movie> movies) throws Exception {
         CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
         try {
@@ -87,7 +103,9 @@ public class MaintainMovie {
             writer.write("genre");
             writer.write("releaseDate");
             writer.write("copiesAvailable");
-
+            writer.endRecord();
+            writer.flush();
+            sortMoviesById(moviesList);
             for (Movie m : moviesList) {
                 writer.write(m.getId());
                 writer.write(m.getTitle());
@@ -100,32 +118,40 @@ public class MaintainMovie {
                 writer.endRecord();
                 writer.flush();
             }
-            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        writer.close();
+        return false;
+    }
+
+    public boolean addMovie(Movie movie) {
+        boolean exists = movieExists(movie);
+        try {
+            if (!exists) {
+                moviesList.add(movie);
+                writeToMovie(moviesList);
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public boolean addMovie(Movie movie) {
-        boolean movieAdded = addToList(movie);
-        try {
-            if (movieAdded) {
-                writeToMovie(moviesList);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return movieAdded;
-    }
-
-    public boolean updateMovie(Movie movie) {
+    public boolean updateMovie(Movie movie) throws Exception {
         boolean exists = movieExists(movie);
 
         if (!exists) {
-
-        } else {
-
+//            moviesList.remove(movie);
+            for (int i = 0; i < moviesList.size(); i++) {
+                if (moviesList.get(i).getId().equals(movie.getId())) {
+                    moviesList.remove(i);
+                }
+            }
+            moviesList.add(movie);
+            writeToMovie(moviesList);
+            return true;
         }
         return false;
     }
@@ -161,67 +187,4 @@ public class MaintainMovie {
         }
         return -1;
     }
-
-//    public boolean updateMovie(Movie movie) throws Exception {
-//        boolean exists = movieExists(movie);
-//
-//        if (!exists) {
-//            CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
-//            CsvReader reader = new CsvReader(new FileReader(path));
-//
-//            try {
-//                reader.readHeaders();
-//                while (reader.readRecord()) {
-//                    String id = reader.get("movieID");
-//                    String tile = reader.get("title");
-//                    String actor = reader.get("actor");
-//                    String director = reader.get("director");
-//                    String description = reader.get("description");
-//                    String genre = reader.get("genre");
-//                    String releaseDate = reader.get("releaseDate");
-//                    String copiesAvailable = reader.get("copiesAvailable");
-//
-//                    Movie fromReader = new Movie(id, tile, actor, director, description, genre,
-//                            releaseDate, copiesAvailable);
-//
-//                    boolean verify = fromReader.equals(movie);
-////                    int index = reader.
-//                    if (!verify) {
-//
-//                    }
-//
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return false;
-//    }
-
-    //    public boolean addMovie(Movie movie) throws Exception {
-//        boolean exists = movieExists(movie);
-//
-//        if (!exists) {
-//            moviesList.add(movie);
-//            CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
-//            try {
-//                writer.write(movie.getId());
-//                writer.write(movie.getTitle());
-//                writer.write(movie.getActor());
-//                writer.write(movie.getDirector());
-//                writer.write(movie.getDescription());
-//                writer.write(movie.getGenre());
-//                writer.write(movie.getReleaseDate());
-//                writer.write(movie.getCopiesAvailable());
-//                writer.endRecord();
-//                writer.flush();
-//                writer.close();
-//                return true;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return false;
-//    }
-
 }

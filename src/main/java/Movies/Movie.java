@@ -101,14 +101,12 @@ public class Movie {
 
         Movie other = (Movie) o;
 
-        return other.id.equals(this.id);
-//        && other.title.equals(this.title) &&
-//                other.actor.equals(this.actor) && other.director.equals(this.director) &&
-//                this.description.equals(other.description) && other.genre.equals(this.genre) &&
-//                other.releaseDate.equals(this.releaseDate) && other.copiesAvailable.equals(this.copiesAvailable);
+        return other.title.equals(this.title) &&
+                other.actor.equals(this.actor) && other.director.equals(this.director) &&
+                this.description.equals(other.description) && other.genre.equals(this.genre) &&
+                other.releaseDate.equals(this.releaseDate) && other.copiesAvailable.equals(this.copiesAvailable);
 
 
     }
-
 
 }
