@@ -24,7 +24,7 @@ public class UpdateUsersPage {
     UpdateUsersPage() {
 //        this.login = login;
         maintainUser = new MaintainUser(path);
-        JFrame frame = new JFrame("Update Orders");
+        JFrame frame = new JFrame("Update Users");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
 

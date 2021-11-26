@@ -1,5 +1,7 @@
 package Movies;
 
+import Utils.IdGenerator;
+import Utils.Sorter;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -14,20 +16,6 @@ public class MaintainMovie {
     public MaintainMovie(String path) {
         this.path = path;
         moviesList = new ArrayList<>();
-    }
-
-    public ArrayList<Movie> getMoviesList() {
-        return moviesList;
-    }
-
-    private boolean addToList(Movie m) {
-        for (Movie movie : moviesList) {
-            if (!m.equals(movie)) {
-                moviesList.add(m);
-                return true;
-            }
-        }
-        return false;
     }
 
     public ArrayList<Movie> readDatabaseList() throws Exception {
@@ -76,23 +64,7 @@ public class MaintainMovie {
         return output;
     }
 
-    private void sortMoviesById(ArrayList<Movie> movies) {
-        for (int i = 0; i < movies.size(); i++) {
-            for (int j = 0; j < movies.size(); j++) {
-                if (Integer.parseInt(movies.get(i).getId()) < Integer.parseInt(movies.get(j).getId())) {
-                    swap(movies, i, j);
-                }
-            }
-        }
-    }
-
-    private void swap(ArrayList<Movie> movies, int a, int b) {
-        Movie tmp = movies.get(a);
-        movies.set(a, movies.get(b));
-        movies.set(b, tmp);
-    }
-
-    public boolean writeToMovie(ArrayList<Movie> movies) throws Exception {
+    public boolean writeToMovie() throws Exception {
         CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
         try {
             writer.write("movieID");
@@ -105,7 +77,8 @@ public class MaintainMovie {
             writer.write("copiesAvailable");
             writer.endRecord();
             writer.flush();
-            sortMoviesById(moviesList);
+            Sorter.sortMoviesById(moviesList);
+
             for (Movie m : moviesList) {
                 writer.write(m.getId());
                 writer.write(m.getTitle());
@@ -118,10 +91,13 @@ public class MaintainMovie {
                 writer.endRecord();
                 writer.flush();
             }
+            writer.close();
+            return true;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        writer.close();
+
         return false;
     }
 
@@ -129,8 +105,9 @@ public class MaintainMovie {
         boolean exists = movieExists(movie);
         try {
             if (!exists) {
+                movie.setId(IdGenerator.getId(4));
                 moviesList.add(movie);
-                writeToMovie(moviesList);
+                writeToMovie();
                 return true;
             }
         } catch (Exception e) {
@@ -139,40 +116,39 @@ public class MaintainMovie {
         return false;
     }
 
-    public boolean updateMovie(Movie movie) throws Exception {
-        boolean exists = movieExists(movie);
-
-        if (!exists) {
-//            moviesList.remove(movie);
-            for (int i = 0; i < moviesList.size(); i++) {
-                if (moviesList.get(i).getId().equals(movie.getId())) {
-                    moviesList.remove(i);
-                }
-            }
-            moviesList.add(movie);
-            writeToMovie(moviesList);
-            return true;
-        }
-        return false;
-    }
-
-
     public boolean removeMovie(Movie movie) throws Exception {
         boolean exists = movieExists(movie);
 
         if (exists) {
             int index = getMovieIndex(movie);
             moviesList.remove(index);
-            writeToMovie(moviesList);
+            writeToMovie();
             return true;
         }
 
         return false;
     }
 
+    public boolean updateMovie(Movie movie) throws Exception {
+        boolean exists = movieExists(movie);
+
+        if (!exists) {
+            for (int i = 0; i < moviesList.size(); i++) {
+                if (moviesList.get(i).getId().equals(movie.getId())) {
+                    moviesList.remove(i);
+                }
+            }
+            moviesList.add(movie);
+            writeToMovie();
+            return true;
+        }
+        return false;
+    }
+
+
     private boolean movieExists(Movie movie) {
         for (Movie m : moviesList) {
-            if (m.equals(movie)) {
+            if (m.getId().equals(movie.getId())) {
                 return true;
             }
         }

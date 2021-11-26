@@ -27,70 +27,6 @@ public class UpdateMoviePage {
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     private Login login;
 
-    public JTextField getMovieIdText() {
-        return movieIdText;
-    }
-
-    public void setMovieIdText(JTextField movieIdText) {
-        this.movieIdText = movieIdText;
-    }
-
-    public JTextField getTitleText() {
-        return titleText;
-    }
-
-    public void setTitleText(JTextField titleText) {
-        this.titleText = titleText;
-    }
-
-    public JTextField getActorText() {
-        return actorText;
-    }
-
-    public void setActorText(JTextField actorText) {
-        this.actorText = actorText;
-    }
-
-    public JTextField getDirectorText() {
-        return directorText;
-    }
-
-    public void setDirectorText(JTextField directorText) {
-        this.directorText = directorText;
-    }
-
-    public JTextField getDescriptionText() {
-        return descriptionText;
-    }
-
-    public void setDescriptionText(JTextField descriptionText) {
-        this.descriptionText = descriptionText;
-    }
-
-    public JTextField getGenreText() {
-        return genreText;
-    }
-
-    public void setGenreText(JTextField genreText) {
-        this.genreText = genreText;
-    }
-
-    public JTextField getReleaseDateText() {
-        return releaseDateText;
-    }
-
-    public void setReleaseDateText(JTextField releaseDateText) {
-        this.releaseDateText = releaseDateText;
-    }
-
-    public JTextField getCopiesAvailableText() {
-        return copiesAvailableText;
-    }
-
-    public void setCopiesAvailableText(JTextField copiesAvailableText) {
-        this.copiesAvailableText = copiesAvailableText;
-    }
-
     private JTextField movieIdText, titleText, actorText, directorText, descriptionText, genreText,
             releaseDateText, copiesAvailableText;
     private JButton addButton, removeButton, updateButton, backButton;
@@ -322,22 +258,26 @@ public class UpdateMoviePage {
 
     }
 
+    private Movie getMovieFromInput() {
+        String id = movieIdText.getText();
+        String title = titleText.getText();
+        String actor = actorText.getText();
+        String director = directorText.getText();
+        String description = descriptionText.getText();
+        String genre = genreText.getText();
+        String releaseDate = releaseDateText.getText();
+        String copies = copiesAvailableText.getText();
+
+        return new Movie(id, title, actor, director, description, genre,
+                releaseDate, copies);
+    }
+
     private ActionListener removeListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == removeButton) {
                 try {
-                    String id = movieIdText.getText();
-                    String title = titleText.getText();
-                    String actor = actorText.getText();
-                    String director = directorText.getText();
-                    String description = descriptionText.getText();
-                    String genre = genreText.getText();
-                    String releaseDate = releaseDateText.getText();
-                    String copies = copiesAvailableText.getText();
-
-                    Movie movie = new Movie(id, title, actor, director, description, genre,
-                            releaseDate, copies);
+                    Movie movie = getMovieFromInput();
                     if (maintainMovie.removeMovie(movie)) {
                         System.out.println("Movie Removed");
 //                        frame.dispose();
@@ -364,17 +304,7 @@ public class UpdateMoviePage {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == updateButton) {
                 try {
-                    String id = movieIdText.getText();
-                    String title = titleText.getText();
-                    String actor = actorText.getText();
-                    String director = directorText.getText();
-                    String description = descriptionText.getText();
-                    String genre = genreText.getText();
-                    String releaseDate = releaseDateText.getText();
-                    String copies = copiesAvailableText.getText();
-
-                    Movie movie = new Movie(id, title, actor, director, description, genre,
-                            releaseDate, copies);
+                    Movie movie = getMovieFromInput();
                     System.out.println(movie);
                     if (maintainMovie.updateMovie(movie)) {
                         System.out.println("Movie Added");
@@ -410,17 +340,7 @@ public class UpdateMoviePage {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == addButton) {
                 try {
-                    String id = movieIdText.getText();
-                    String title = titleText.getText();
-                    String actor = actorText.getText();
-                    String director = directorText.getText();
-                    String description = descriptionText.getText();
-                    String genre = genreText.getText();
-                    String releaseDate = releaseDateText.getText();
-                    String copies = copiesAvailableText.getText();
-
-                    Movie movie = new Movie(id, title, actor, director, description, genre,
-                            releaseDate, copies);
+                    Movie movie = getMovieFromInput();
                     if (maintainMovie.addMovie(movie)) {
                         System.out.println("Movie Added");
 //                        frame.dispose();

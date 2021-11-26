@@ -1,5 +1,7 @@
 package Movies;
 
+import Utils.IdGenerator;
+
 public class Movie {
     private String id, title, actor, director, description, genre, releaseDate, copiesAvailable;
 

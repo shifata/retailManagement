@@ -13,12 +13,10 @@ public class SystemAdminPage {
     JFrame frame;
     private Login login;
 
+
+
     SystemAdminPage() {
-    }
-
-
-    SystemAdminPage(Login login) {
-        this.login = login;
+//        this.login = login;
 
         ImageIcon image7 = new ImageIcon("../project/src/main/resources/images/systemAdmin.png");
         ImageIcon image8 = new ImageIcon("../project/src/main/resources/images/changeMovie.PNG");

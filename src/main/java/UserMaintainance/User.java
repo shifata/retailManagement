@@ -1,5 +1,7 @@
 package UserMaintainance;
 
+import Utils.IdGenerator;
+
 import java.util.Random;
 
 public class User {
@@ -46,14 +48,7 @@ public class User {
 
 
     public String getId() {
-        Random random = new Random();
-        int randomMax = 10;
-
-        for (int i = 0; i < 3; i++) {
-            id += random.nextInt(randomMax) + "";
-        }
-
-        return id;
+        return IdGenerator.getId(5);
     }
 
     public void setId(String id) {

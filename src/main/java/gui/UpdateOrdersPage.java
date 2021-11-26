@@ -2,6 +2,7 @@ package gui;
 
 import Movies.MaintainMovie;
 import OrderMaintainance.MaintainOrder;
+import OrderMaintainance.Order;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -24,7 +25,9 @@ public class UpdateOrdersPage {
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     MaintainOrder maintainOrder;
     private JButton addButton, removeButton, updateButton, backButton;
-//    private JTextField ;
+    private JTextField orderIdText, orderTypeText, orderPlacedText, orderDeliveryDateText,
+            shippingAddressText, orderStatusText, movieLabelText, unameText, movieIdText,
+            provinceText;
 
     UpdateOrdersPage() {
         frame = new JFrame("Update Orders");
@@ -41,14 +44,14 @@ public class UpdateOrdersPage {
 
         JPanel updateOrderInfoPanel = new JPanel();
         updateOrderInfoPanel.setBackground(Color.PINK);
-        updateOrderInfoPanel.setBounds(0,565,1800,236);
+        updateOrderInfoPanel.setBounds(0, 565, 1800, 236);
 
         JLabel orderID = new JLabel("Order ID");
         orderID.setForeground(Color.BLACK);
         orderID.setBounds(10, 0, 200, 25);
         updateOrderInfoPanel.add(orderID);
 
-        JTextField orderIdText = new JTextField();
+        orderIdText = new JTextField();
         orderIdText.setBounds(10, 25, 200, 25);
         updateOrderInfoPanel.add(orderIdText);
 
@@ -57,7 +60,7 @@ public class UpdateOrdersPage {
         orderTypeLabel.setBounds(250, 0, 200, 25);
         updateOrderInfoPanel.add(orderTypeLabel);
 
-        JTextField orderTypeText = new JTextField();
+        orderTypeText = new JTextField();
         orderTypeText.setForeground(Color.BLACK);
         orderTypeText.setBounds(250, 25, 200, 25);
         updateOrderInfoPanel.add(orderTypeText);
@@ -67,7 +70,7 @@ public class UpdateOrdersPage {
         orderPlacedLabel.setBounds(490, 0, 200, 25);
         updateOrderInfoPanel.add(orderPlacedLabel);
 
-        JTextField orderPlacedText = new JTextField();
+        orderPlacedText = new JTextField();
         orderPlacedText.setForeground(Color.BLACK);
         orderPlacedText.setBounds(490, 25, 200, 25);
         updateOrderInfoPanel.add(orderPlacedText);
@@ -77,7 +80,7 @@ public class UpdateOrdersPage {
         orderDeliveryDateLabel.setBounds(10, 50, 200, 25);
         updateOrderInfoPanel.add(orderDeliveryDateLabel);
 
-        JTextField orderDeliveryDateText = new JTextField();
+        orderDeliveryDateText = new JTextField();
         orderDeliveryDateText.setForeground(Color.BLACK);
         orderDeliveryDateText.setBounds(10, 75, 200, 25);
         updateOrderInfoPanel.add(orderDeliveryDateText);
@@ -87,7 +90,7 @@ public class UpdateOrdersPage {
         shippingAddressLabel.setBounds(250, 50, 200, 25);
         updateOrderInfoPanel.add(shippingAddressLabel);
 
-        JTextField shippingAddressText = new JTextField();
+        shippingAddressText = new JTextField();
         shippingAddressText.setForeground(Color.BLACK);
         shippingAddressText.setBounds(250, 75, 200, 25);
         updateOrderInfoPanel.add(shippingAddressText);
@@ -97,7 +100,7 @@ public class UpdateOrdersPage {
         orderStatusLabel.setBounds(490, 50, 200, 25);
         updateOrderInfoPanel.add(orderStatusLabel);
 
-        JTextField orderStatusText = new JTextField();
+        orderStatusText = new JTextField();
         orderStatusText.setForeground(Color.BLACK);
         orderStatusText.setBounds(490, 75, 200, 25);
         updateOrderInfoPanel.add(orderStatusText);
@@ -107,7 +110,7 @@ public class UpdateOrdersPage {
         movieLabel.setBounds(10, 100, 200, 25);
         updateOrderInfoPanel.add(movieLabel);
 
-        JTextField movieLabelText = new JTextField();
+        movieLabelText = new JTextField();
         movieLabelText.setForeground(Color.BLACK);
         movieLabelText.setBounds(10, 125, 200, 25);
         updateOrderInfoPanel.add(movieLabelText);
@@ -117,11 +120,32 @@ public class UpdateOrdersPage {
         unameLabel.setBounds(250, 100, 200, 25);
         updateOrderInfoPanel.add(unameLabel);
 
-        JTextField unameText = new JTextField();
+        unameText = new JTextField();
         unameText.setForeground(Color.BLACK);
         unameText.setBounds(250, 125, 200, 25);
         updateOrderInfoPanel.add(unameText);
 
+        JLabel movieIDLabel = new JLabel("Movie ID");
+        movieIDLabel.setForeground(Color.BLACK);
+        movieIDLabel.setBounds(490, 100, 200, 25);
+        updateOrderInfoPanel.add(movieIDLabel);
+
+        movieIdText = new JTextField();
+        movieIdText.setForeground(Color.BLACK);
+        movieIdText.setBounds(490, 125, 200, 25);
+        updateOrderInfoPanel.add(movieIdText);
+
+
+        JLabel provinceLabel = new JLabel("Province");
+        provinceLabel.setForeground(Color.BLACK);
+        provinceLabel.setBounds(720, 100, 200, 25);
+        updateOrderInfoPanel.add(provinceLabel);
+
+
+        provinceText = new JTextField();
+        provinceText.setForeground(Color.BLACK);
+        provinceText.setBounds(720, 125, 200, 25);
+        updateOrderInfoPanel.add(provinceText);
 
 
         addButton = new JButton("ADD");
@@ -164,10 +188,11 @@ public class UpdateOrdersPage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String[] columns = {"Order ID", "Order Type", "Order Placed", "Order Delivery Date", "Shipping Address", "Order Status", "Movie", "Username"};
+        String[] columns = {"Order ID", "Order Type", "Order Placed", "Order Delivery Date",
+                "Shipping Address", "Order Status", "Movie", "Username", "MovieID", "Province"};
 
 
-        JTable table = new JTable(data, columns);
+        table = new JTable(data, columns);
         table.setPreferredScrollableViewportSize(new Dimension(1700, 400));
         table.setFillsViewportHeight(true);
         table.setRowHeight(50);
@@ -189,7 +214,6 @@ public class UpdateOrdersPage {
         TableRowSorter sorter = new TableRowSorter(model);
         table.setRowSorter(sorter);
         tablePanel.add(new JScrollPane(table));
-//        table.addMouseListener(clickListener);                ///this
 
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -241,24 +265,78 @@ public class UpdateOrdersPage {
         frame.add(buttonPanel);
         frame.setLayout(null);
         frame.setVisible(true);
+        table.addMouseListener(clickListener);
     }
 
     private ActionListener addListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == addButton) {
+                try {
+                    Order order = getOrderFromInput();
 
+                    if (maintainOrder.addOrder(order)) {
+                        System.out.println("Order Added");
+                    } else {
+                        System.out.println("Order Already Exists");
+                    }
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     };
+
+    private Order getOrderFromInput() {
+        String orderId = orderIdText.getText();
+        String type = orderTypeText.getText();
+        String placedDate = orderPlacedText.getText();
+        String deiveryDate = orderDeliveryDateText.getText();
+        String address = shippingAddressText.getText();
+        String status = orderStatusText.getText();
+        String movies = movieLabelText.getText();
+        String uname = unameText.getText();
+        String movieID = movieIdText.getText();
+        String province = provinceText.getText();
+
+        return new Order(orderId, type, placedDate, deiveryDate, address,
+                status, movies, uname, movieID, province);
+    }
+
     private ActionListener removeListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == removeButton) {
+                try {
+                    Order order = getOrderFromInput();
+                    if (maintainOrder.removeOrder(order)) {
+                        System.out.println("Order Removed");
+                    } else {
+                        System.out.println("Order Does Not Exist");
+                    }
 
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     };
     private ActionListener updateListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if (e.getSource() == updateButton) {
+                try {
+                    Order order = getOrderFromInput();
+                    if (maintainOrder.updateOrder(order)) {
+                        System.out.println("Order Updated");
+                    } else {
+                        System.out.println("Order Already Exists");
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     };
     private ActionListener backListener = new ActionListener() {
@@ -268,55 +346,63 @@ public class UpdateOrdersPage {
             SystemAdminPage systemAdminPage = new SystemAdminPage();
         }
     };
-//    private MouseListener clickListener = new MouseListener() {           ///this
-//        @Override
-//        public void mouseClicked(MouseEvent e) {
-//            int row = table.getSelectedRow();
-//
-//            String id = table.getValueAt(row, 0).toString();
-//            movieIdText.setText(id);
-//
-//            String title = table.getValueAt(row, 1).toString();
-//            titleText.setText(title);
-//
-//            String actor = table.getValueAt(row, 2).toString();
-//            actorText.setText(actor);
-//
-//            String director = table.getValueAt(row, 3).toString();
-//            directorText.setText(director);
-//
-//            String description = table.getValueAt(row, 4).toString();
-//            descriptionText.setText(description);
-//
-//            String genre = table.getValueAt(row, 5).toString();
-//            genreText.setText(genre);
-//
-//            String releaseDate = table.getValueAt(row, 6).toString();
-//            releaseDateText.setText(releaseDate);
-//
-//            String copies = table.getValueAt(row, 7).toString();
-//            copiesAvailableText.setText(copies);
-//        }
-//
-//        @Override
-//        public void mousePressed(MouseEvent e) {
-//
-//        }
-//
-//        @Override
-//        public void mouseReleased(MouseEvent e) {
-//
-//        }
-//
-//        @Override
-//        public void mouseEntered(MouseEvent e) {
-//
-//        }
-//
-//        @Override
-//        public void mouseExited(MouseEvent e) {
-//
-//        }
-//    };
+
+
+    private MouseListener clickListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int row = table.getSelectedRow();
+
+            String orderId = table.getValueAt(row, 0).toString();
+            orderIdText.setText(orderId);
+
+            String orderType = table.getValueAt(row, 1).toString();
+            orderTypeText.setText(orderType);
+
+            String orderPlaced = table.getValueAt(row, 2).toString();
+            orderPlacedText.setText(orderPlaced);
+
+            String orderDeliveryDate = table.getValueAt(row, 3).toString();
+            orderDeliveryDateText.setText(orderDeliveryDate);
+
+            String shippingAddress = table.getValueAt(row, 4).toString();
+            shippingAddressText.setText(shippingAddress);
+
+            String orderStatus = table.getValueAt(row, 5).toString();
+            orderStatusText.setText(orderStatus);
+
+            String movieName = table.getValueAt(row, 6).toString();
+            movieLabelText.setText(movieName);
+
+            String uname = table.getValueAt(row, 7).toString();
+            unameText.setText(uname);
+
+            String movieId = table.getValueAt(row, 8).toString();
+            movieIdText.setText(movieId);
+
+            String province = table.getValueAt(row, 9).toString();
+            provinceText.setText(province);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
 
 }
