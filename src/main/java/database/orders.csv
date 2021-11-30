@@ -1,24 +1,53 @@
 OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,MovieTitle,Uname,movieID,Province
 02674,Online,23-Nov-2021,,1-Fountainhead Road: North York: M3J 1K6,Placed,Harry Potter and the Order Of The Phoenix(2007);,awsaf11,5;,Ontario
 17620,Online,23-Nov-2021,,1-Fountainhead Road: North York: M3J 1K6,Placed,Harry Potter & The Deathly Hallows Pt 2 (2011);,awsaf11,8;,Ontario
-20680,Store,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,shifata,002,Ontario
+20680,Store,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,shifata,002;,Ontario
 24862,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999);,mxsaha,014,Ontario
-25267,Store,22-Nov-2021,null,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002,Ontario
-25423,aa,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002,Ontario
-27366,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004,Ontario
-37077,Online,25-Nov-2021,2-Dec-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Chamber of Secrets (2002);,shifata,003,Ontario
-38733,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Goblet of Fire(2005);,shifata,005,Ontario
-41815,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,2 Fast 2 Furious(2002);,shifata,011,Ontario
-43471,Phone,20-January-2019,25-January-2019,99 Broadview AveToronto:ON M4M 2E4,Delivered,Spider-Man3 (2007),null,015,Ontario
-45035,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,The Fast and the Furious (2001);,shifata,010,Ontario
-53558,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Half-Blood Prince(2009);,shifata,007,Ontario
-56637,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter & The Deathly Hallows Pt 1 (2010);,shifata,008,Ontario
-67763,Store,22-Nov-2021,null,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,nfs9787,002,Ontario
-68242,Online,25-August-2021,28-August-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Spider-Man (2002);,shifata,013,Ontario
-72651,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999);,,014,Ontario
-80052,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004,Ontario
-81800,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Not Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,010,Ontario
-87400,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,American Pie (2002);,shifata,013,Ontario
-88177,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Fast and Furious: Tokyo Drift(2006);,shifata,012,Ontario
-88780,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004,Ontario
+25267,Store,22-Nov-2021,null,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002;,Ontario
+25423,aa,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002;,Ontario
+27366,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario
+37077,Online,25-Nov-2021,2-Dec-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Chamber of Secrets (2002);,shifata,003;,Ontario
+38733,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Goblet of Fire(2005);,shifata,005;,Ontario
+41815,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,2 Fast 2 Furious(2002);,shifata,011;,Ontario
+43471,Phone,20-January-2019,25-January-2019,99 Broadview AveToronto:ON M4M 2E4,Delivered,Spider-Man3 (2007),null,015;,Ontario
+45035,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,The Fast and the Furious (2001);,shifata,010;,Ontario
+53558,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Half-Blood Prince(2009);,shifata,007;,Ontario
+56637,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter & The Deathly Hallows Pt 1 (2010);,shifata,008;,Ontario
+67763,Store,22-Nov-2021,null,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,nfs9787,002;,Ontario
+68242,Online,25-August-2021,28-August-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Spider-Man (2002);,shifata,013;,Ontario
+72651,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999);,,014;,Ontario
+80052,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario
+81800,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Not Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,010;,Ontario
+87400,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,American Pie (2002);,shifata,013;,Ontario
+88177,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Fast and Furious: Tokyo Drift(2006);,shifata,012;,Ontario
+88780,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario
 28008,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Half-Blood Prince(2009);,awsaf11,6;,Ontario
+23267,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter & The Deathly Hallows Pt 1 (2010);,awsaf11,7;,Ontario
+21740,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);Harry Potter & The Deathly Hallows Pt 2 (2011);Harry Potter and the Half-Blood Prince(2009);,awsaf11,1;8;6;,Ontario
+31304,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Terminator;,awsaf11,14;,Ontario
+
+88606,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+65717,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+58363,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+85484,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+85484,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+81350,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+61186,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+81466,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+54801,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+24347,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+24347,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+66024,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Ontario
+85627,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+56754,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+48680,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+50182,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+03533,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+03211,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+73480,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+73480,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+40471,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+35836,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+87074,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+25762,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
+33001,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario

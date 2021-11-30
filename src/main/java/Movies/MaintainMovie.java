@@ -1,5 +1,6 @@
 package Movies;
 
+import OrderMaintainance.Order;
 import Utils.IdGenerator;
 import Utils.Sorter;
 import com.csvreader.CsvReader;
@@ -8,6 +9,7 @@ import com.csvreader.CsvWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MaintainMovie {
     private final String path;
@@ -65,7 +67,7 @@ public class MaintainMovie {
     }
 
     public boolean writeToMovie() throws Exception {
-        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
+        CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
         try {
             writer.write("movieID");
             writer.write("title");
@@ -101,6 +103,23 @@ public class MaintainMovie {
         return false;
     }
 
+    public void changeCopiesAfterRemove(Order order) throws Exception {
+        String[] ids = order.getMovieId().split(";");
+
+        for (Movie m : readDatabaseList()) {
+            for (String id : ids) {
+                if (m.getId().equals(id)) {
+                    Movie tmp = new Movie(m.getId(), m.getTitle(), m.getActor(), m.getDirector(),
+                            m.getDescription(), m.getGenre(), m.getReleaseDate(), m.getCopiesAvailable());
+                    String copies = (Integer.parseInt(m.getCopiesAvailable()) - 1) + "";
+                    tmp.setCopiesAvailable(copies);
+                    updateMovie(tmp);
+                    System.out.println("UPDATED");
+                }
+            }
+        }
+    }
+
     public boolean addMovie(Movie movie) {
         boolean exists = movieExists(movie);
         try {
@@ -132,7 +151,7 @@ public class MaintainMovie {
     public boolean updateMovie(Movie movie) throws Exception {
         boolean exists = movieExists(movie);
 
-        if (!exists) {
+        if (exists) {
             for (int i = 0; i < moviesList.size(); i++) {
                 if (moviesList.get(i).getId().equals(movie.getId())) {
                     moviesList.remove(i);

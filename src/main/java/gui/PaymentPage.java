@@ -21,11 +21,12 @@ public class PaymentPage {
     private Order order;
     final String[] paymentType = {"Visa", "MasterCard", "PayPal", "Loyalty Points"};
     private MaintainPayment maintainPayment;
-    final String path = "../project/src/main/java/database/orders.csv";
+    final String orderPath = "../project/src/main/java/database/orders.csv";
+    final String moviePath = "../project/src/main/java/database/movies.csv";
 
     PaymentPage(Login login) {
         order = MoviesDisplayPage.getOrderFromCart();
-        maintainPayment = new MaintainPayment(path, login);
+        maintainPayment = new MaintainPayment(moviePath, orderPath, login);
 
         ImageIcon image6 = new ImageIcon("../project/src/main/resources/images/card.png");
 

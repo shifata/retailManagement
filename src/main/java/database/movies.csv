@@ -1,6 +1,6 @@
 movieID,title,actor,director,description,genre,releaseDate,copiesAvailable
-1,Harry Potter and the Philosopher's Stone(2001),Daniel Radcliffe-Rupert Grint-EmmaWatson, J.K Rowling, An orphaned boy enrolls in a school of wizardry where he learns the truth about himself, Adventure-Family-Fantasy, 4-Nov-2001,3
-2,Harry Potter and the Chamber of Secrets(2002),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling, An ancient prophecy seems to be coming true when a mysterious presence begins stalking the corridors of a school of magic, Adventure-Family-Fantasy-Mystery,3-Nov-200,5
+1,Harry Potter and the Philosopher's Stone(2001),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,An orphaned boy enrolls in a school of wizardry where he learns the truth about himself,Adventure-Family-Fantasy,4-Nov-2001,3
+2,Harry Potter and the Chamber of Secrets(2002),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,An ancient prophecy seems to be coming true when a mysterious presence begins stalking the corridors of a school of magic,Adventure-Family-Fantasy-Mystery,3-Nov-200,5
 3,Harry Potter and the Prisoner of Azkaban (2004),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study,Adventure-Family-Fantasy-Mystery,23-May-2004,17
 4,Harry Potter and the Goblet of Fire(2005),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter finds himself competing in a hazardous tournament between rival schools of magic,Adventure-Family-Fantasy-Mystery,6-Nov-2005,2
 5,Harry Potter and the Order Of The Phoenix(2007),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,With their warning about Lord Voldemort's return scoffed at Harry and Dumbledore are targeted,Action-Adventure-Family-Fantasy-Mystery,28-Jun-2007,1
@@ -13,5 +13,4 @@ movieID,title,actor,director,description,genre,releaseDate,copiesAvailable
 12,Spider-Man (2002),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,1
 13,American Pie (1999),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,2
 14,Terminator,Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,3
-15,SpiderMan No Way Home,Tom Holland,Hero Alam,Teenage boy shoots sticky white shit,Spider,2021-09-05,5
-
+15,SpiderMan No Way Home,Tom Holland,Hero Alam,Teenage boy shoots sticky white shit,Spider,2021-09-05,4

@@ -1,19 +1,23 @@
 package Payment;
 
+import Movies.MaintainMovie;
 import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
 
 
 public class MaintainPayment {
-    private String path;
+    private String moviePath, orderPath;
     private Login login;
     private MaintainOrder maintainOrder;
+    private MaintainMovie maintainMovie;
 
-    public MaintainPayment(String path, Login login) {
-        this.path = path;
+    public MaintainPayment(String moviePath, String orderPath, Login login) {
+        this.moviePath = moviePath;
+        this.orderPath = orderPath;
         this.login = login;
-        maintainOrder = new MaintainOrder(path);
+        maintainMovie = new MaintainMovie(moviePath);
+        maintainOrder = new MaintainOrder(orderPath);
     }
 
     public boolean processPayment(Order order, String paymentMethod) {
@@ -24,13 +28,17 @@ public class MaintainPayment {
 
         if (paymentMethod.equals(paymentMethod)) {
             maintainOrder.addOrderCart(order);
-            System.out.println();
+            try {
+                maintainMovie.changeCopiesAfterRemove(order);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println("Done");
+
         }
 
         return false;
     }
-
 
 
 }
