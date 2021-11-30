@@ -1,5 +1,7 @@
 package gui;
 
+import Movies.Movie;
+import OrderMaintainance.Order;
 import UserMaintainance.Login;
 
 import javax.swing.*;
@@ -12,12 +14,11 @@ public class CheckOutPage {
     JButton proceedToPaymentButton;
     JFrame frame;
     private Login login;
+    private ArrayList<Movie> cart;
 
     CheckOutPage(Login login) {
-
-
         this.login = login;
-        ArrayList<Object> cart = MoviesDisplayPage.getCart();
+        cart = MoviesDisplayPage.getCart();
 
         frame = new JFrame("Cart");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +48,7 @@ public class CheckOutPage {
         JLabel priceLabel = new JLabel("Total: $" + (cart.size() * 10));
 //        priceLabel.setBackground(Color.green);
         priceLabel.setBounds(1500, 5, 400, 100);
-        priceLabel.setFont(new Font("Arial",24,24));
+        priceLabel.setFont(new Font("Arial", 24, 24));
         priceLabel.setForeground(Color.black);
 //        priceLabelPanel.add(priceLabel);
 
@@ -89,7 +90,7 @@ public class CheckOutPage {
         Object[][] data = new Object[cart.size()][2];
 
         for (int i = 0; i < cart.size(); i++) {
-            data[i][0] = cart.get(i);
+            data[i][0] = cart.get(i).getTitle();
             data[i][1] = "$10.00";
         }
 
@@ -122,10 +123,9 @@ public class CheckOutPage {
     private ActionListener paymentListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e2) {
-            if (e2.getSource() == proceedToPaymentButton ) {
-                PaymentPage payment = new PaymentPage(login);
-                frame.dispose();
-            }
+            PaymentPage payment = new PaymentPage(login);
+            frame.dispose();
+
         }
 
     };

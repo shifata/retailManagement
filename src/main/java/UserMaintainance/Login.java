@@ -31,7 +31,11 @@ public class Login {
     }
 
     public String getUserType(String uname, String pass) throws Exception {
-        return getCurrentUser(uname,pass).getType();
+        return getCurrentUser(uname, pass).getType();
+    }
+
+    public String getAddress() {
+        return user.getAddress();
     }
 
     public void setUserType(String type) {

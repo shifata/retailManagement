@@ -2,7 +2,9 @@ package gui;
 
 import Movies.MaintainMovie;
 import Movies.Movie;
+import OrderMaintainance.Order;
 import UserMaintainance.Login;
+import Utils.IdGenerator;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -15,7 +17,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MoviesDisplayPage {
-    private static ArrayList<Object> cart;
+    private static ArrayList<Movie> cart;
     private JButton myProfile, logout, proceedCheckout;
     private MaintainMovie maintainMovie;
     private JFrame frame;
@@ -23,7 +25,7 @@ public class MoviesDisplayPage {
     private JPanel tablePanel;
     final String path = "../project/src/main/java/database/movies.csv";
     private JTextField searchField;
-    private Login login;
+    private static Login login;
     private JButton addMovieToCart;
 
     MoviesDisplayPage(Login login) {
@@ -203,8 +205,30 @@ public class MoviesDisplayPage {
 
     }
 
-    public static ArrayList<Object> getCart() {
+    public static ArrayList<Movie> getCart() {
         return cart;
+    }
+
+    public static Order getOrderFromCart() {
+        String id = IdGenerator.getId(5);
+        String type = "Online";
+        String placedDate = "23-Nov-2021";
+        String deliveryDate = null;
+        String shippingAddress = login.getAddress();
+        String status = "Placed";
+        String title = "";
+        String movieId = "";
+
+        for (Movie m : cart) {
+            title += m.getTitle() + ";";
+            movieId += m.getId() + ";";
+        }
+
+        String uname = login.getUName();
+        String province = "Ontario";
+
+        return new Order(id, type, placedDate, deliveryDate, shippingAddress,
+                status, title, uname, movieId, province);
     }
 
     private MouseListener cartListener = new MouseListener() {
@@ -212,11 +236,16 @@ public class MoviesDisplayPage {
         public void mouseClicked(MouseEvent e) {
 
             int row = table.getSelectedRow();
-            int column = 1;
+            String id = table.getValueAt(row, 0).toString();
+            String name = table.getValueAt(row, 1).toString();
+            String actor = table.getValueAt(row, 2).toString();
+            String director = table.getValueAt(row, 3).toString();
+            String description = table.getValueAt(row, 4).toString();
+            String genre = table.getValueAt(row, 5).toString();
+            String releaseDate = table.getValueAt(row, 6).toString();
+            String copies = table.getValueAt(row, 7).toString();
+            cart.add(new Movie(id, name, actor, director, description, genre, releaseDate, copies));
 
-            cart.add(table.getValueAt(row, column).toString());
-            System.out.println("row: " + row + " column: " + column);
-            System.out.println(cart.toString());
         }
 
         @Override
@@ -270,6 +299,4 @@ public class MoviesDisplayPage {
             }
         }
     };
-
-
 }

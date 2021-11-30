@@ -65,7 +65,7 @@ public class MaintainMovie {
     }
 
     public boolean writeToMovie() throws Exception {
-        CsvWriter writer = new CsvWriter(new FileWriter(path, false), ',');
+        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
         try {
             writer.write("movieID");
             writer.write("title");

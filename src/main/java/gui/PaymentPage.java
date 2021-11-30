@@ -1,6 +1,7 @@
 package gui;
 
 import Movies.Movie;
+import OrderMaintainance.Order;
 import Payment.MaintainPayment;
 import UserMaintainance.Login;
 
@@ -17,13 +18,13 @@ public class PaymentPage {
     private Login login;
     private JButton confirmPaymentButton;
     private JComboBox paymentCombo;
-    private ArrayList<Object> cart;
+    private Order order;
     final String[] paymentType = {"Visa", "MasterCard", "PayPal", "Loyalty Points"};
     private MaintainPayment maintainPayment;
     final String path = "../project/src/main/java/database/orders.csv";
 
     PaymentPage(Login login) {
-        cart = MoviesDisplayPage.getCart();
+        order = MoviesDisplayPage.getOrderFromCart();
         maintainPayment = new MaintainPayment(path, login);
 
         ImageIcon image6 = new ImageIcon("../project/src/main/resources/images/card.png");
@@ -133,7 +134,7 @@ public class PaymentPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (paymentCombo.getSelectedItem().equals("Visa")) {
-//                maintainPayment.processPayment(cart, "Visa");
+                maintainPayment.processPayment(order, "Visa");
             }
 
         }

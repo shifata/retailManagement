@@ -148,15 +148,55 @@ public class MaintainOrder {
         return false;
     }
 
-    public boolean addOrder(Order order) {
-        boolean exists = orderExists(order);
+    public boolean writeToOrderCart() throws Exception {
+        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
         try {
-            if (!exists) {
-                order.setOrderId(IdGenerator.getId(5));
-                ordersList.add(order);
-                writeToOrder();
-                return true;
+            Sorter.sortOrdersById(ordersList);
+
+            for (Order o : ordersList) {
+                writer.write(o.getOrderId());
+                writer.write(o.getOrderType());
+                writer.write(o.getOrderDate());
+                writer.write(o.getDeliveryDate());
+                writer.write(o.getAddress());
+                writer.write(o.getStatus());
+                writer.write(o.getMovies());
+                writer.write(o.getUname());
+                writer.write(o.getMovieId());
+                writer.write(o.getProvince());
+                writer.endRecord();
+                writer.flush();
             }
+            writer.close();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean addOrder(Order order) {
+        try {
+            order.setOrderId(IdGenerator.getId(5));
+            ordersList.add(order);
+            writeToOrder();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean addOrderCart(Order order) {
+        try {
+            order.setOrderId(IdGenerator.getId(5));
+            ordersList.add(order);
+            writeToOrderCart();
+            return true;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
