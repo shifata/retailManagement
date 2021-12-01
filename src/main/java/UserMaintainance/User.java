@@ -13,8 +13,9 @@ public class User {
     private String id;
     private String points;
     private String balance;
+    private String province;
 
-    User() {
+    public User() {
 
     }
 
@@ -40,9 +41,13 @@ public class User {
                 ", id='" + id + '\'' +
                 ", points='" + points + '\'' +
                 ", balance='" + balance + '\'' +
+                ", province='" + province + '\'' +
                 '}';
     }
 
+    public String getProvince() {
+        return province;
+    }
 
     public String getId() {
         return id;
@@ -69,7 +74,8 @@ public class User {
     }
 
 
-    public User(String type, String fname, String lname, String email, String contactNo, String address, String uname, String password, String id, String points, String balance) {
+    public User(String type, String fname, String lname, String email, String contactNo, String address, String uname,
+                String password, String id, String points, String balance, String province) {
         this.type = type;
         this.fname = fname;
         this.lname = lname;
@@ -81,6 +87,7 @@ public class User {
         this.id = id;
         this.points = points;
         this.balance = balance;
+        this.province = province;
     }
 
     public String getFname() {

@@ -6,6 +6,7 @@ import UserMaintainance.Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -36,7 +37,6 @@ public class Test {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-
 
     }
 }

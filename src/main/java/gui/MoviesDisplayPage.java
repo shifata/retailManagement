@@ -15,6 +15,7 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MoviesDisplayPage {
     private static ArrayList<Movie> cart;
@@ -225,7 +226,10 @@ public class MoviesDisplayPage {
         }
 
         String uname = login.getUName();
-        String province = "Ontario";
+        String[] provinces = {"Ontario", "Quebec", "Alberta"};
+        Random random = new Random();
+        int rand = random.nextInt(3);
+        String province = provinces[rand];
 
         return new Order(id, type, placedDate, deliveryDate, shippingAddress,
                 status, title, uname, movieId, province);

@@ -116,12 +116,13 @@ public class Login {
                 String id = reader.get("ID");
                 String points = reader.get("Points");
                 String balance = reader.get("Balance");
+                String province = reader.get("Province");
 
                 boolean verified = uname.equals(inputUName) && pass.equals(inputPassword);
 
                 if (verified) {
                     user = new User(type, fName, lName, email, contact, address, inputUName,
-                            inputPassword, id, points, balance);
+                            inputPassword, id, points, balance, province);
                     return user;
                 }
             }

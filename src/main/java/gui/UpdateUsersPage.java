@@ -299,7 +299,7 @@ public class UpdateUsersPage {
         String balance = balanceText.getText();
 
         return new User(type, fname, lname, email, contact, address,
-                uname, password, id, points, balance);
+                uname, password, id, points, balance, "Ontario");
     }
 
     private ActionListener addListener = new ActionListener() {

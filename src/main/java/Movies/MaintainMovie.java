@@ -78,6 +78,7 @@ public class MaintainMovie {
             writer.write("copiesAvailable");
             writer.endRecord();
             writer.flush();
+
             Sorter.sortMoviesById(moviesList);
 
             for (Movie m : moviesList) {
@@ -102,20 +103,24 @@ public class MaintainMovie {
         return false;
     }
 
-    public void changeCopiesAfterRemove(Order order) throws Exception {
+    public void changeCopiesAfterRemove(Order order) {
         String[] ids = order.getMovieId().split(";");
 
-        for (Movie m : moviesList) {
-            for (String id : ids) {
-                if (m.getId().equals(id)) {
-                    Movie tmp = new Movie(m.getId(), m.getTitle(), m.getActor(), m.getDirector(),
-                            m.getDescription(), m.getGenre(), m.getReleaseDate(), m.getCopiesAvailable());
-                    String copies = (Integer.parseInt(m.getCopiesAvailable()) - 1) + "";
-                    tmp.setCopiesAvailable(copies);
-                    updateMovie(tmp);
-                    System.out.println("UPDATED");
+        try {
+            for (Movie m : moviesList) {
+                for (String id : ids) {
+                    if (m.getId().equals(id)) {
+                        Movie tmp = new Movie(m.getId(), m.getTitle(), m.getActor(), m.getDirector(),
+                                m.getDescription(), m.getGenre(), m.getReleaseDate(), m.getCopiesAvailable());
+                        String copies = (Integer.parseInt(m.getCopiesAvailable()) - 1) + "";
+                        tmp.setCopiesAvailable(copies);
+                        updateMovie(tmp);
+                        System.out.println("UPDATED");
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

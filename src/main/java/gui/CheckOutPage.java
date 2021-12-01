@@ -1,7 +1,6 @@
 package gui;
 
 import Movies.Movie;
-import OrderMaintainance.Order;
 import UserMaintainance.Login;
 
 import javax.swing.*;
@@ -116,7 +115,6 @@ public class CheckOutPage {
         frame.add(buttonPanel);
         frame.setLayout(null);
         frame.setVisible(true);
-
 
     }
 

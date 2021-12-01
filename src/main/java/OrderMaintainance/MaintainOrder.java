@@ -210,8 +210,31 @@ public class MaintainOrder {
             User user = maintainUser.getUserFromName(uname);
             int updatedPoint = Integer.parseInt(user.getPoints()) + (order.getCostInPoints() / 10);
             user.setPoints(updatedPoint + "");
+            System.out.println(user);
             maintainUser.updateUser(user);
             return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+    public boolean addProvinceCharge(Order order) {
+        String uname = order.getUname();
+        boolean extraCharge = !order.getProvince().equals("Ontario");
+
+        try {
+            if (extraCharge) {
+                User user = maintainUser.getUserFromName(uname);
+                double updatedCost = Double.parseDouble(user.getBalance()) + 9.99;
+                user.setBalance(updatedCost + "");
+                System.out.println(user);
+                maintainUser.updateUser(user);
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -232,6 +255,18 @@ public class MaintainOrder {
         }
         return false;
     }
+
+    // TODO: 2021-11-30 : Pay with card works by default wahtever the input fields
+    public boolean payWithCard(Order order) {
+//        return addOrderCart(order);
+        try {
+            return updateOrder(order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
     public boolean addOrderCart(Order order) {
         try {
@@ -269,7 +304,7 @@ public class MaintainOrder {
                 }
             }
             ordersList.add(o);
-            writeToOrder();
+            writeToOrderCart();
             return true;
         }
         return false;

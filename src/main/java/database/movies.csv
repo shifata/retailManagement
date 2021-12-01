@@ -1,16 +1,16 @@
 movieID,title,actor,director,description,genre,releaseDate,copiesAvailable
-1,Harry Potter and the Philosopher's Stone(2001),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,An orphaned boy enrolls in a school of wizardry where he learns the truth about himself,Adventure-Family-Fantasy,4-Nov-2001,3
+1,Harry Potter and the Philosopher's Stone(2001),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,An orphaned boy enrolls in a school of wizardry where he learns the truth about himself,Adventure-Family-Fantasy,4-Nov-2001,0
 2,Harry Potter and the Chamber of Secrets(2002),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,An ancient prophecy seems to be coming true when a mysterious presence begins stalking the corridors of a school of magic,Adventure-Family-Fantasy-Mystery,3-Nov-200,5
-3,Harry Potter and the Prisoner of Azkaban (2004),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study,Adventure-Family-Fantasy-Mystery,23-May-2004,17
-4,Harry Potter and the Goblet of Fire(2005),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter finds himself competing in a hazardous tournament between rival schools of magic,Adventure-Family-Fantasy-Mystery,6-Nov-2005,2
+3,Harry Potter and the Prisoner of Azkaban (2004),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study,Adventure-Family-Fantasy-Mystery,23-May-2004,16
+4,Harry Potter and the Goblet of Fire(2005),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Potter finds himself competing in a hazardous tournament between rival schools of magic,Adventure-Family-Fantasy-Mystery,6-Nov-2005,1
 5,Harry Potter and the Order Of The Phoenix(2007),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,With their warning about Lord Voldemort's return scoffed at Harry and Dumbledore are targeted,Action-Adventure-Family-Fantasy-Mystery,28-Jun-2007,1
-6,Harry Potter and the Half-Blood Prince(2009),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,As Harry Potter begins his sixth year at Hogwarts he discovers an old book marked as the property of the Half-Blood Prince,Action-Adventure-Family-Fantasy-Mystery,6-July-2009,7
+6,Harry Potter and the Half-Blood Prince(2009),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,As Harry Potter begins his sixth year at Hogwarts he discovers an old book marked as the property of the Half-Blood Prince,Action-Adventure-Family-Fantasy-Mystery,6-July-2009,6
 7,Harry Potter & The Deathly Hallows Pt 1 (2010),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Ron and Hermione race against time and evil to destroy the Horcruxes,Action-Adventure-Family-Fantasy-Mystery,11-Nov-2010,20
 8,Harry Potter & The Deathly Hallows Pt 2 (2011),Daniel Radcliffe-Rupert Grint-EmmaWatson,J.K Rowling,Harry Ron and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.,Action-Adventure-Family-Fantasy-Mystery,17-July-2011,32
 9,The Fast and the Furious (2001),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,7
 10,2 Fast 2 Furious(2002),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,7
 11,Fast and Furious: Tokyo Drift(2006),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,7
 12,Spider-Man (2002),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,0
-13,American Pie (1999),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,2
-14,Terminator,Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,2
-15,SpiderMan No Way Home,Tom Holland,Hero Alam,Teenage boy shoots sticky white shit,Spider,2021-09-05,3
+13,American Pie (1999),Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,0
+14,Terminator,Choshma LalChul Shundori,Dumbledore,Jadu,Fantasy,1997-08-16,0
+15,SpiderMan No Way Home,Tom Holland,Hero Alam,Teenage boy shoots sticky white shit,Spider,2021-09-05,-1

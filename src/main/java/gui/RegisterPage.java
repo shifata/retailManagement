@@ -148,7 +148,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         String inputBalance = "0";
 
         User newUser = new User(type, inputFName, inputLName, inputEmail, inputContact, inputAddress,
-                inputUName, inputPassword, inputId, inputPoints, inputBalance);
+                inputUName, inputPassword, inputId, inputPoints, inputBalance, "Ontario");
 
         if (e1.getSource() == registerbutton) {
             try {

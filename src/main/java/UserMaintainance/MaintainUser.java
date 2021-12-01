@@ -58,9 +58,10 @@ public class MaintainUser {
                 String id = reader.get("ID");
                 String points = reader.get("Points");
                 String balance = reader.get("Balance");
+                String province = reader.get("Province");
 
                 User user = new User(type, fname, lname, email, contact, address, uname, password, id,
-                        points, balance);
+                        points, balance, province);
                 usersList.add(user);
             }
         } catch (Exception e) {
@@ -84,6 +85,7 @@ public class MaintainUser {
             writer.write("ID");
             writer.write("Points");
             writer.write("Balance");
+            writer.write("Province");
 
             writer.endRecord();
             writer.flush();
@@ -102,6 +104,7 @@ public class MaintainUser {
                 writer.write(u.getId());
                 writer.write(u.getPoints());
                 writer.write(u.getBalance());
+                writer.write(u.getProvince());
 
                 writer.endRecord();
                 writer.flush();

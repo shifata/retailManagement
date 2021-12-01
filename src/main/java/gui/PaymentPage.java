@@ -23,10 +23,11 @@ public class PaymentPage {
     private MaintainPayment maintainPayment;
     final String orderPath = "../project/src/main/java/database/orders.csv";
     final String moviePath = "../project/src/main/java/database/movies.csv";
+    final String userPath = "../project/src/main/java/database/users.csv";
 
     PaymentPage(Login login) {
         order = MoviesDisplayPage.getOrderFromCart();
-        maintainPayment = new MaintainPayment(moviePath, orderPath, login);
+        maintainPayment = new MaintainPayment(moviePath, orderPath, userPath, login);
 
         ImageIcon image6 = new ImageIcon("../project/src/main/resources/images/card.png");
 
@@ -134,7 +135,11 @@ public class PaymentPage {
     private ActionListener paymentListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
+            try {
+                maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     };
 
