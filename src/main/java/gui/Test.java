@@ -1,19 +1,12 @@
 package gui;
 
-import Movies.MaintainMovie;
-import OrderMaintainance.Order;
-import UserMaintainance.Login;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.Random;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 public class Test {
     public static void main(String[] args) {
         LoginPage lp = new LoginPage();
 
+//        OperatorPage op = new OperatorPage(new Login());
+
+        //CheckOrderStatusPage status = new CheckOrderStatusPage();
         //SystemAdminPage systemAdmin = new SystemAdminPage();
 
 

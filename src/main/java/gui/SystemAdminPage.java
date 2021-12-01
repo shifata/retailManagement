@@ -60,7 +60,7 @@ public class SystemAdminPage {
         loggedinAsPanel.setBounds(340, 10, 300, 25);
 //        loggedinAsPanel.setLayout(null);
 
-        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS" + "");
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:  " + login.getUName());
         loggedinAsLabel.setFont(new Font("Arial", 18, 18));
         loggedinAsLabel.setForeground(Color.white);
         loggedinAsLabel.setBounds(540, 10, 150, 25);

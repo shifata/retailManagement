@@ -232,7 +232,7 @@ public class MaintainOrder {
                 double updatedCost = Double.parseDouble(user.getBalance()) + 9.99;
                 user.setBalance(updatedCost + "");
                 System.out.println(user);
-                maintainUser.updateUser(user);
+//                maintainUser.updateUser(user);
                 return true;
             }
         } catch (Exception e) {
@@ -243,15 +243,17 @@ public class MaintainOrder {
     }
 
     public boolean addOrder(Order order) {
-        try {
-            order.setOrderId(IdGenerator.getId(5));
-            ordersList.add(order);
-//            incrementPoint(order);
-            writeToOrder();
-            return true;
+        boolean exists = orderExists(order);
+        if (!exists) {
+            try {
+                order.setOrderId(IdGenerator.getId(5));
+                ordersList.add(order);
+                writeToOrder();
+                return true;
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -304,7 +306,7 @@ public class MaintainOrder {
                 }
             }
             ordersList.add(o);
-            writeToOrderCart();
+            writeToOrder();
             return true;
         }
         return false;

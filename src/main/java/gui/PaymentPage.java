@@ -1,6 +1,5 @@
 package gui;
 
-import Movies.Movie;
 import OrderMaintainance.Order;
 import Payment.MaintainPayment;
 import UserMaintainance.Login;
@@ -9,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class PaymentPage {
 
@@ -26,6 +24,7 @@ public class PaymentPage {
     final String userPath = "../project/src/main/java/database/users.csv";
 
     PaymentPage(Login login) {
+        this.login = login;
         order = MoviesDisplayPage.getOrderFromCart();
         maintainPayment = new MaintainPayment(moviePath, orderPath, userPath, login);
 
@@ -136,6 +135,7 @@ public class PaymentPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
+
                 maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -152,7 +152,5 @@ public class PaymentPage {
                 frame.dispose();
             }
         }
-
-
     };
 }

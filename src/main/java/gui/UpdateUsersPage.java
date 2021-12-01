@@ -1,11 +1,9 @@
 package gui;
 
-import Movies.MaintainMovie;
-import Movies.Movie;
-import OrderMaintainance.MaintainOrder;
 import UserMaintainance.Login;
 import UserMaintainance.MaintainUser;
 import UserMaintainance.User;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -29,7 +27,8 @@ public class UpdateUsersPage {
     MaintainUser maintainUser;
     private JButton addButton, removeButton, updateButton, backButton;
     private JTextField typeText, fnameText, lnameText, emailText, contactText,
-            addressText, unameText, passwordText, idText, pointsText, balanceText;
+            addressText, unameText, passwordText, pointsText, balanceText;
+    private JLabel idText;
 
     UpdateUsersPage(Login login) {
         this.login = login;
@@ -131,7 +130,7 @@ public class UpdateUsersPage {
         idLabel.setBounds(490, 100, 200, 25);
         addUserInfoPanel.add(idLabel);
 
-        idText = new JTextField();
+        idText = new JLabel();
         idText.setForeground(Color.BLACK);
         idText.setBounds(490, 125, 200, 25);
         addUserInfoPanel.add(idText);
@@ -255,15 +254,7 @@ public class UpdateUsersPage {
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
                     if (sorter.getViewRowCount() == 0) {
-                        JFrame popup = new JFrame("ERROR MESSAGE");
-                        JLabel noMoviesFound = new JLabel("NO USERS FOUND");
-                        noMoviesFound.setIcon(image3);
-                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                        popup.setSize(300, 300);
-                        popup.setBounds(700, 500, 300, 100);
-                        popup.add(noMoviesFound);
-                        popup.setVisible(true);
-
+                        Messages.doesNotExistMsg("USER");
                     }
                 }
             }
@@ -309,18 +300,9 @@ public class UpdateUsersPage {
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.addUser(user)) {
-                        System.out.println("User Added");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.addedMsg("User");
                     } else {
-                        System.out.println("User already exists");
+                        Messages.alreadyExistsMsg("User");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -336,18 +318,9 @@ public class UpdateUsersPage {
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.removeUser(user)) {
-                        System.out.println("User Removed");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.removedMsg("User");
                     } else {
-                        System.out.println("User already exists");
+                        Messages.doesNotExistMsg("User");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -363,18 +336,9 @@ public class UpdateUsersPage {
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.updateUser(user)) {
-                        System.out.println("User Updated");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.updatedMsg("User");
                     } else {
-                        System.out.println("User already exists");
+                        Messages.alreadyExistsMsg("User");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();

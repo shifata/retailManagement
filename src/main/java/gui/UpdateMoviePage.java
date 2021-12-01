@@ -3,7 +3,7 @@ package gui;
 import Movies.MaintainMovie;
 import Movies.Movie;
 import UserMaintainance.Login;
-import UserMaintainance.User;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 public class UpdateMoviePage {
 
@@ -27,11 +26,12 @@ public class UpdateMoviePage {
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     private Login login;
 
-    private JTextField movieIdText, titleText, actorText, directorText, descriptionText, genreText,
+    private JTextField titleText, actorText, directorText, descriptionText, genreText,
             releaseDateText, copiesAvailableText;
     private JButton addButton, removeButton, updateButton, backButton;
     private Object[][] data;
     private JFrame frame;
+    private JLabel movieIdLabel;
 
 
     public UpdateMoviePage(Login login) {
@@ -56,12 +56,12 @@ public class UpdateMoviePage {
         addinfoPanel.setBounds(0, 500, 1800, 300);
 
 
-        JLabel movieLabel = new JLabel("Movie");
+        JLabel movieLabel = new JLabel("Movie ID");
         movieLabel.setForeground(Color.BLACK);
         movieLabel.setBounds(10, 0, 200, 25);
 
-        movieIdText = new JTextField();
-        movieIdText.setBounds(10, 25, 200, 25);
+        movieIdLabel = new JLabel();
+        movieIdLabel.setBounds(10, 25, 200, 25);
 
         JLabel titleLabel = new JLabel("Title");
         titleLabel.setForeground(Color.BLACK);
@@ -225,7 +225,7 @@ public class UpdateMoviePage {
         });
         //infoPanel
         addinfoPanel.add(movieLabel);
-        addinfoPanel.add(movieIdText);
+        addinfoPanel.add(movieIdLabel);
         addinfoPanel.add(titleLabel);
         addinfoPanel.add(titleText);
         addinfoPanel.add(actorLabel);
@@ -259,7 +259,7 @@ public class UpdateMoviePage {
     }
 
     private Movie getMovieFromInput() {
-        String id = movieIdText.getText();
+        String id = movieIdLabel.getText();
         String title = titleText.getText();
         String actor = actorText.getText();
         String director = directorText.getText();
@@ -279,18 +279,9 @@ public class UpdateMoviePage {
                 try {
                     Movie movie = getMovieFromInput();
                     if (maintainMovie.removeMovie(movie)) {
-                        System.out.println("Movie Removed");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.removedMsg("Movie");
                     } else {
-                        System.out.println("Movie Does Not Exist");
+                        Messages.doesNotExistMsg("Message");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -307,18 +298,9 @@ public class UpdateMoviePage {
                     Movie movie = getMovieFromInput();
                     System.out.println(movie);
                     if (maintainMovie.updateMovie(movie)) {
-                        System.out.println("Movie Added");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.updatedMsg("Movie");
                     } else {
-                        System.out.println("Movie already exists");
+                        Messages.alreadyExistsMsg("Movie");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -342,18 +324,9 @@ public class UpdateMoviePage {
                 try {
                     Movie movie = getMovieFromInput();
                     if (maintainMovie.addMovie(movie)) {
-                        System.out.println("Movie Added");
-//                        frame.dispose();
-//
-//                        SystemAdminPage adminPage = new SystemAdminPage(login);
-//
-//                        JFrame popup = new JFrame("MOVIE ADDED");
-//                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//                        popup.setSize(300, 300);
-//                        popup.setBounds(700, 500, 300, 100);
-//                        popup.setVisible(true);
+                        Messages.addedMsg("Movie");
                     } else {
-                        System.out.println("Movie already exists");
+                        Messages.alreadyExistsMsg("Movie");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -369,7 +342,7 @@ public class UpdateMoviePage {
             int row = table.getSelectedRow();
 
             String id = table.getValueAt(row, 0).toString();
-            movieIdText.setText(id);
+            movieIdLabel.setText(id);
 
             String title = table.getValueAt(row, 1).toString();
             titleText.setText(title);

@@ -4,6 +4,7 @@ import Movies.MaintainMovie;
 import Movies.Movie;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
+import Utils.Messages;
 import Utils.IdGenerator;
 
 import javax.swing.*;
@@ -89,14 +90,6 @@ public class MoviesDisplayPage {
         searchLabel.setFont(new Font("Arial", 16, 20));
         searchPanel.add(searchLabel);
 
-
-//        searchByName = new JButton("Search by Name");
-//        searchByName.setBounds(520, 200, 200, 25);
-//        searchPanel.add(searchByName);
-//
-//        searchByGenre = new JButton("Search by Genre");
-//        searchByGenre.setBounds(740, 200, 200, 25);
-//        searchPanel.add(searchByGenre);
         JPanel bottomPanel = new JPanel();
         bottomPanel.setSize(100, 100);
         bottomPanel.setBackground(Color.green);
@@ -131,11 +124,6 @@ public class MoviesDisplayPage {
         myProfile.addActionListener(profileListener);
         logout.addActionListener(logoutListener);
 
-//        table2 = new JTable(data, columns);
-//        table2.setPreferredScrollableViewportSize(new Dimension(100, 100));
-//        table2.setFillsViewportHeight(true);
-//        table2.setRowHeight(50);
-
         //search implementation
         TableModel model = new DefaultTableModel(data, columns);
         TableRowSorter sorter = new TableRowSorter(model);
@@ -153,7 +141,6 @@ public class MoviesDisplayPage {
         table.getColumnModel().getColumn(7).setPreferredWidth(5);
         table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         table.setRowSelectionAllowed(true);
-//        table.setColumnSelectionAllowed(true);
         tablePanel.add(new JScrollPane(table));
 
 
@@ -180,20 +167,11 @@ public class MoviesDisplayPage {
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
                     if (sorter.getViewRowCount() == 0) {
-                        JFrame popup = new JFrame("ERROR MESSAGE");
-                        JLabel noMoviesFound = new JLabel("NO MOVIES FOUND");
-                        noMoviesFound.setIcon(image3);
-                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                        popup.setSize(300, 300);
-                        popup.setBounds(700, 500, 300, 100);
-                        popup.add(noMoviesFound);
-                        popup.setVisible(true);
-
+                        Messages.doesNotExistMsg("MOVIE");
                     }
                 }
             }
         });
-//        bottomPanel.add(table2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
         frame.setVisible(true);

@@ -129,11 +129,6 @@ public class MaintainUser {
     }
 
     public boolean addUser(User user) {
-        try {
-            readDatabaseList();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         boolean exists = userExists(user);
         try {
             if (!exists) {

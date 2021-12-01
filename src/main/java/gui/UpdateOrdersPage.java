@@ -1,9 +1,9 @@
 package gui;
 
-import Movies.MaintainMovie;
 import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -25,16 +25,17 @@ public class UpdateOrdersPage {
     ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
     MaintainOrder maintainOrder;
     private JButton addButton, removeButton, updateButton, backButton;
-    private JTextField orderIdText, orderTypeText, orderPlacedText, orderDeliveryDateText,
-            shippingAddressText, orderStatusText, movieLabelText, unameText, movieIdText,
+    private JTextField orderTypeText, orderPlacedText, orderDeliveryDateText,
+            shippingAddressText, orderStatusText, movieLabelText, unameText,
             provinceText;
+    private JLabel orderIdText, movieIdText;
 
     private Login login;
 
     UpdateOrdersPage(Login login) {
         this.login = login;
         frame = new JFrame("Update Orders");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setSize(1800, 1800);
 
         JPanel tablePanel = new JPanel();
@@ -54,7 +55,7 @@ public class UpdateOrdersPage {
         orderID.setBounds(10, 0, 200, 25);
         updateOrderInfoPanel.add(orderID);
 
-        orderIdText = new JTextField();
+        orderIdText = new JLabel();
         orderIdText.setBounds(10, 25, 200, 25);
         updateOrderInfoPanel.add(orderIdText);
 
@@ -133,7 +134,7 @@ public class UpdateOrdersPage {
         movieIDLabel.setBounds(490, 100, 200, 25);
         updateOrderInfoPanel.add(movieIDLabel);
 
-        movieIdText = new JTextField();
+        movieIdText = new JLabel();
         movieIdText.setForeground(Color.BLACK);
         movieIdText.setBounds(490, 125, 200, 25);
         updateOrderInfoPanel.add(movieIdText);
@@ -242,15 +243,7 @@ public class UpdateOrdersPage {
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
                     if (sorter.getViewRowCount() == 0) {
-                        JFrame popup = new JFrame("ERROR MESSAGE");
-                        JLabel noMoviesFound = new JLabel("NO ORDERS FOUND");
-                        noMoviesFound.setIcon(image3);
-                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                        popup.setSize(300, 300);
-                        popup.setBounds(700, 500, 300, 100);
-                        popup.add(noMoviesFound);
-                        popup.setVisible(true);
-
+                        Messages.doesNotExistMsg("Order");
                     }
                 }
             }
@@ -279,9 +272,9 @@ public class UpdateOrdersPage {
                     Order order = getOrderFromInput();
 
                     if (maintainOrder.addOrder(order)) {
-                        System.out.println("Order Added");
+                        Messages.addedMsg("Order");
                     } else {
-                        System.out.println("Order Already Exists");
+                        Messages.alreadyExistsMsg("Order");
                     }
 
                 } catch (Exception e1) {
@@ -314,9 +307,9 @@ public class UpdateOrdersPage {
                 try {
                     Order order = getOrderFromInput();
                     if (maintainOrder.removeOrder(order)) {
-                        System.out.println("Order Removed");
+                        Messages.removedMsg("Order");
                     } else {
-                        System.out.println("Order Does Not Exist");
+                        Messages.doesNotExistMsg("Order");
                     }
 
                 } catch (Exception e1) {
@@ -332,9 +325,9 @@ public class UpdateOrdersPage {
                 try {
                     Order order = getOrderFromInput();
                     if (maintainOrder.updateOrder(order)) {
-                        System.out.println("Order Updated");
+                        Messages.updatedMsg("Order");
                     } else {
-                        System.out.println("Order Already Exists");
+                        Messages.alreadyExistsMsg("Order");
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();

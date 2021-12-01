@@ -24,23 +24,21 @@ public class MaintainPayment {
 
     public boolean processPayment(Order order, String paymentMethod) throws Exception {
 
+        maintainMovie.readDatabase();
 
-//        if (paymentMethod.equals("Loyalty Points")) {
-//            maintainOrder.addOrderCart(order);
-//            maintainOrder.payWithPoints(order);
-//            maintainOrder.addProvinceCharge(order);
-//            maintainOrder.incrementPoint(order);
-//            maintainMovie.changeCopiesAfterRemove(order);
-//            return true;
-//        }
-
-        if (paymentMethod.equals("Visa")) {
-            maintainUser.readDatabase();
-            maintainMovie.readDatabaseList();
-
+        if (paymentMethod.equals("Loyalty Points")) {
             maintainOrder.addOrderCart(order);
+            maintainOrder.payWithPoints(order);
             maintainOrder.addProvinceCharge(order);
             maintainOrder.incrementPoint(order);
+            maintainMovie.changeCopiesAfterRemove(order);
+            return true;
+        }
+
+        if (paymentMethod.equals("Visa")) {
+            maintainOrder.addOrderCart(order);
+            maintainOrder.incrementPoint(order);
+            maintainOrder.addProvinceCharge(order);
             maintainMovie.changeCopiesAfterRemove(order);
             return true;
         }

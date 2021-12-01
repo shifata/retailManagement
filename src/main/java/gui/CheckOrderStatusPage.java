@@ -2,6 +2,7 @@ package gui;
 
 import OrderMaintainance.MaintainOrder;
 import UserMaintainance.Login;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -123,15 +124,7 @@ public class CheckOrderStatusPage {
                 } else {
                     sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s));
                     if (sorter.getViewRowCount() == 0) {
-                        JFrame popup = new JFrame("ERROR MESSAGE");
-                        JLabel noMoviesFound = new JLabel("NO ORDERS FOUND");
-                        noMoviesFound.setIcon(image3);
-                        popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                        popup.setSize(300, 300);
-                        popup.setBounds(700, 500, 300, 100);
-                        popup.add(noMoviesFound);
-                        popup.setVisible(true);
-
+                        Messages.doesNotExistMsg("ORDER");
                     }
                 }
             }
