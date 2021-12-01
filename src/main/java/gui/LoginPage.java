@@ -130,8 +130,7 @@ public class LoginPage extends JFrame implements ActionListener {
         if (verified && e.getSource() == loginbutton) {
 
             try {
-                if ((login.getUserType(uname, password).equals("customer") ||
-                        login.getUserType(uname, password).equals("operator"))) {
+                if ((login.getUserType(uname, password).equals("customer"))) {
 
                     frame.dispose();
                     MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
@@ -141,7 +140,17 @@ public class LoginPage extends JFrame implements ActionListener {
             }
 
             try {
-                if (login.getUserType(uname,password).equals("admin")) {
+                if ((login.getUserType(uname, password).equals("operator"))) {
+                    frame.dispose();
+                    OperatorPage operatorPage = new OperatorPage(login);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+
+            try {
+                if (login.getUserType(uname, password).equals("admin")) {
                     frame.dispose();
                     SystemAdminPage systemAdminPage = new SystemAdminPage(login);
                 }

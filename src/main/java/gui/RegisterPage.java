@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegisterPage extends JFrame implements ActionListener {
-    private JButton registerbutton;
+    private JButton registerbutton, cancelRegbutton;
     private JTextField fnameText, lnameText, emailText, contactText, unameText, passwordText,
             addressText, idText, pointsText, balanceText;
     private JFrame frame;
@@ -115,6 +115,11 @@ public class RegisterPage extends JFrame implements ActionListener {
         registerPanel.add(registerbutton);
         registerbutton.addActionListener(this);
 
+        cancelRegbutton = new JButton("Cancel Registration");
+        cancelRegbutton.setBounds(140, 420, 180, 35);
+        registerPanel.add(cancelRegbutton);
+        cancelRegbutton.addActionListener(logOutListener);
+
         String[] types = {"Customer, Operator, Admin"};
         type = new JComboBox(types);
 //        type.setBounds();
@@ -210,6 +215,14 @@ public class RegisterPage extends JFrame implements ActionListener {
 //            System.out.println(e1);
 //        }
     }
+
+    private ActionListener logOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            LoginPage lp = new LoginPage();
+        }
+    };
 }
 
 

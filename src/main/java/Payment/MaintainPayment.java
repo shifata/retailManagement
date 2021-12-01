@@ -36,7 +36,7 @@ public class MaintainPayment {
 
         if (paymentMethod.equals("Visa")) {
             maintainUser.readDatabase();
-//            maintainMovie.readDatabaseList();
+            maintainMovie.readDatabaseList();
 
             maintainOrder.addOrderCart(order);
             maintainOrder.addProvinceCharge(order);

@@ -69,12 +69,14 @@ public class CheckOutPage {
 
         JButton logOutButton = new JButton("Log Out");
         logOutButton.setBounds(800, 40, 100, 25);
+        logOutButton.addActionListener(logOutListener);
 
         JButton removeButton = new JButton("Remove");
         removeButton.setBounds(1100, 40, 100, 25);
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(800, 40, 100, 25);
+        backButton.addActionListener(backListener);
 
         proceedToPaymentButton = new JButton("Proceed To Payment");
         proceedToPaymentButton.setBounds(900, 40, 200, 25);
@@ -126,5 +128,21 @@ public class CheckOutPage {
 
         }
 
+    };
+
+    private ActionListener backListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage(login);
+        }
+    };
+
+    private ActionListener logOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            LoginPage lp = new LoginPage();
+        }
     };
 }

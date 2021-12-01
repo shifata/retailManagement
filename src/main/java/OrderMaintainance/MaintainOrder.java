@@ -246,7 +246,7 @@ public class MaintainOrder {
         try {
             order.setOrderId(IdGenerator.getId(5));
             ordersList.add(order);
-            incrementPoint(order);
+//            incrementPoint(order);
             writeToOrder();
             return true;
 

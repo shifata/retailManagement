@@ -37,9 +37,11 @@ public class SystemAdminPage {
 
         JButton logoutButton = new JButton("Log Out");
         logoutButton.setBounds(40, 10, 80, 25);
+        logoutButton.addActionListener(logOutListener);
 
         JButton myProfileButton = new JButton("Profile");
         myProfileButton.setBounds(140, 10, 80, 25);
+        myProfileButton.addActionListener(profileListener);
 
         changeMovie = new JButton("CHANGE MOVIE");
         changeMovie.setBounds(0, 440, 267, 45);
@@ -177,5 +179,21 @@ public class SystemAdminPage {
             }
         }
 
+    };
+
+    private ActionListener logOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            LoginPage lp = new LoginPage();
+        }
+    };
+
+    private ActionListener profileListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            MyProfilePage profile = new MyProfilePage(login);
+        }
     };
 }

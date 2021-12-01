@@ -69,22 +69,6 @@ public class Login {
 
         return false;
     }
-//
-//    public User getCurrentUser() throws Exception {
-//        FileReader fileReader = new FileReader(path);
-//        CsvReader reader = new CsvReader(fileReader);
-//        try {
-//            reader.readHeaders();
-//            while (reader.readRecord()) {
-//                String uname = reader.get("Uname");
-//                String password = reader.get("Password");
-//                return getCurrentUser(uname, password);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
 
     public String getPath() {
         return path;

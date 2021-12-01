@@ -6,6 +6,8 @@ import UserMaintainance.Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class OrderHistory {
@@ -13,13 +15,14 @@ public class OrderHistory {
     private Login login;
     private MaintainOrder maintainOrder;
     private final String path = "../project/src/main/java/database/orders.csv";
+    JFrame frame;
 
 
     OrderHistory(Login login) {
         this.login = login;
         ImageIcon image5 = new ImageIcon("../project/src/main/resources/images/orderHistory.png");
 
-        JFrame frame = new JFrame("Order History");
+        frame = new JFrame("Order History");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
 
@@ -46,9 +49,11 @@ public class OrderHistory {
 
         JButton logOutButton = new JButton("Log Out");
         logOutButton.setBounds(800, 100, 100, 25);
+        logOutButton.addActionListener(logOutListener);
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(1100, 140, 100, 25);
+        backButton.addActionListener(backListener);
 
         JButton cancelPlacedOrderButton = new JButton("CANCEL ORDER");
         backButton.setBounds(1100, 140, 100, 25);
@@ -99,4 +104,20 @@ public class OrderHistory {
         frame.setVisible(true);
 
     }
+
+    private ActionListener backListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage(login);
+        }
+    };
+
+    private ActionListener logOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            LoginPage lp = new LoginPage();
+        }
+    };
 }

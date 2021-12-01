@@ -57,9 +57,11 @@ public class MyProfilePage {
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(0, 340, 100, 25);
+        backButton.addActionListener(backListener);
 
         JButton logoutButton = new JButton("Log Out");
         logoutButton.setBounds(0, 340, 100, 25);
+        logoutButton.addActionListener(logOutListener);
 
         JButton changeButton = new JButton("CHANGE");
         changeButton.setBounds(550, 340, 160, 25);
@@ -243,8 +245,15 @@ public class MyProfilePage {
     private ActionListener orderListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            frame.dispose();
-            OrderHistory orderHistory = new OrderHistory(login);
+            try {
+                if (login.getUserType(login.getUName(), login.getPass()).equals("customer")) {
+                    frame.dispose();
+                    OrderHistory orderHistory = new OrderHistory(login);
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
         }
     };
 
@@ -253,6 +262,42 @@ public class MyProfilePage {
         public void actionPerformed(ActionEvent e2) {
             User user = null;
 
+        }
+    };
+
+    private ActionListener backListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String type = "";
+
+            try {
+                type = login.getUserType(login.getUName(), login.getPass());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+            if (type.equals("customer")) {
+                frame.dispose();
+                MoviesDisplayPage moviesDisplayPage = new MoviesDisplayPage(login);
+            }
+
+            if (type.equals("operator")) {
+                frame.dispose();
+                OperatorPage operatorPage = new OperatorPage(login);
+            }
+
+            if (type.equals("admin")) {
+                frame.dispose();
+                SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+            }
+        }
+    };
+
+    private ActionListener logOutListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            LoginPage lp = new LoginPage();
         }
     };
 }
