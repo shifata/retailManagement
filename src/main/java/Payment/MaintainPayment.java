@@ -23,11 +23,14 @@ public class MaintainPayment {
     public boolean processPayment(Order order, String paymentMethod) {
 
         if (paymentMethod.equals("Loyalty Points")) {
-
+            maintainOrder.payWithPoints(order);
+            maintainOrder.incrementPoint(order);
+            maintainOrder.addOrderCart(order);
         }
 
-        if (paymentMethod.equals(paymentMethod)) {
+        if (paymentMethod.equals("Visa")) {
             maintainOrder.addOrderCart(order);
+            maintainOrder.incrementPoint(order);
             try {
                 maintainMovie.changeCopiesAfterRemove(order);
             } catch (Exception e) {

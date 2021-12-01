@@ -1,5 +1,7 @@
 package OrderMaintainance;
 
+import UserMaintainance.MaintainUser;
+import UserMaintainance.User;
 import Utils.IdGenerator;
 import Utils.Sorter;
 import com.csvreader.CsvReader;
@@ -12,10 +14,12 @@ import java.util.ArrayList;
 public class MaintainOrder {
     private String path;
     private ArrayList<Order> ordersList;
+    private MaintainUser maintainUser;
 
     public MaintainOrder(String path) {
         this.path = path;
         this.ordersList = new ArrayList<>();
+        maintainUser = new MaintainUser("../project/src/main/java/database/users.csv");
     }
 
     public Object[][] getUserOrders(String uname) throws Exception {
@@ -177,10 +181,49 @@ public class MaintainOrder {
         return false;
     }
 
+    public boolean payWithPoints(Order order) {
+        String uname = order.getUname();
+
+        try {
+            User user = maintainUser.getUserFromName(uname);
+            int cost = order.getCostInPoints();
+            int userPoints = Integer.parseInt(user.getPoints());
+
+            if (userPoints >= cost) {
+                int updatedPoint = userPoints - cost;
+                user.setPoints(updatedPoint + "");
+                maintainUser.updateUser(user);
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean incrementPoint(Order order) {
+        String uname = order.getUname();
+
+        try {
+            User user = maintainUser.getUserFromName(uname);
+            int updatedPoint = Integer.parseInt(user.getPoints()) + (order.getCostInPoints() / 10);
+            user.setPoints(updatedPoint + "");
+            maintainUser.updateUser(user);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public boolean addOrder(Order order) {
         try {
             order.setOrderId(IdGenerator.getId(5));
             ordersList.add(order);
+            incrementPoint(order);
             writeToOrder();
             return true;
 

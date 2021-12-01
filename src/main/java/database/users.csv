@@ -1,12 +1,11 @@
 Type,FName,LName,email,Contact,Address,Uname,Password,ID,Points,Balance
 customer,Shovon,Saha,mxsaha@69.com,6699899297,99 Broadview AveToronto-ON M4M 2E4,mxsaha5,shvn69S,02720,40,100.00
-customer,Shifat,Akter,shifata@gmail.com,6699899298,154 Voltarie CresMississauga-ON L5A 2A4,shifata,test,10864,15,14.99
+customer,Shifat,Akter,shifata@gmail.com,6699899298,154 Voltarie CresMississauga-ON L5A 2A4,shifata,test,10864,6,14.99
 customer,Sarwat,Shaheen,sarwat12@hotmail.com,4168976534,340 Assiniboine Road-York University-North York-ON M3J 1L2,sarwat12,arsenalSucks23,16072,200,39.99
-customer,Taswar,Karim,t.karim97@gmail.com,4158976534,340 Assiniboine Road-York University-North York-ON M3J 1L2,taswar7,.#arsenalTillIDie.,26685,500,49.99
-customer,Sami,Jamil,sami.jamil16@gmail.com,4168566534,566 Murray Ross PkwyNorth York ON M3J 2Z3,samijamil420,shifa,fKb22GmG,26685,250,19.99
-customer,Ali,Tashfiq,shifa@gmail.com,4168376534,Atkinson-96 The Pond Rd-North York-ON M3J 2S5,tashfiq4,YNWA22,26685,50,9.99
+customer,Sami,Jamil,sami.jamil16@gmail.com,4168566534,566 Murray Ross PkwyNorth York ON M3J 2Z3,samijamil420,fKb22GmG,26685,250,3000
+customer,Ali,Tashfiq,shifa@gmail.com,4168376534,Atkinson-96 The Pond Rd-North York-ON M3J 2S5,tashfiq4,YNWA22,26685,40,9.99
 customer,Nafis,Awsaf,nfs9blues@live.com,6479899299,1-Fountainhead Road- North York-ON M3J 1K6,awsaf11,chelsea,45043,10,78.99
 admin,admin,admin,vadmin@videoCo.ca,9999999999,admin,admin,admin,90020,null,null
-admin, Song, Wang, wang@videoCo.ca, 3245679809,204 Bergeron Centre North York ON M3J 2S5,s.wang,sadmin,90030,null,null
-operator,Amy, Lin,amylin@videoCo.ca,2346789012, 333 Yonge St Toronto ON M5B 1R7,amy.lin, oadmin, 910040,null,null
-operator,Remo,Tantalo,remoramon@videoCo.ca,2346789012,513 Yonge St Toronto ON M5B 1R7, remo.tantalo,oadmin,920050,null,null
+admin,Song,Wang,wang@videoCo.ca,3245679809,204 Bergeron Centre North York ON M3J 2S5,s.wang,sadmin,90030,null,null
+operator,Amy,Lin,amylin@videoCo.ca,2346789012,333 Yonge St Toronto ON M5B 1R7,amy.lin,oadmin,910040,null,null
+operator,Remo,Tantalo,remoramon@videoCo.ca,2346789012,513 Yonge St Toronto ON M5B 1R7,remo.tantalo,oadmin,920050,null,null

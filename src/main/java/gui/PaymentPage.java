@@ -134,10 +134,7 @@ public class PaymentPage {
     private ActionListener paymentListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (paymentCombo.getSelectedItem().equals("Visa")) {
-                maintainPayment.processPayment(order, "Visa");
-            }
-
+            maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
         }
     };
 

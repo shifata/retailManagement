@@ -116,29 +116,14 @@ public class MaintainUser {
         return false;
     }
 
-//    public boolean addUser(User user) throws Exception {
-//        CsvWriter writer = new CsvWriter(new FileWriter(path, true), ',');
-//
-//        try {
-//            writer.write(user.getType());
-//            writer.write(user.getFname());
-//            writer.write(user.getLname());
-//            writer.write(user.getEmail());
-//            writer.write(user.getContactNo());
-//            writer.write(user.getAddress());
-//            writer.write(user.getUname());
-//            writer.write(user.getPassword());
-//            writer.write(user.getId());
-//            writer.write("0");      // 0 points for new user
-//            writer.write("0");      // 0 balance for new user
-//            writer.endRecord();
-//            writer.close();
-//            return true;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
+    public User getUserFromName(String uname) throws Exception {
+        for (User u : readDatabaseList()) {
+            if (u.getUname().equals(uname)) {
+                return u;
+            }
+        }
+        return null;
+    }
 
     public boolean addUser(User user) {
         boolean exists = userExists(user);
@@ -169,7 +154,7 @@ public class MaintainUser {
         return false;
     }
 
-    public boolean updateUser(User user)throws Exception {
+    public boolean updateUser(User user) throws Exception {
         boolean exists = userExists(user);
 
         if (exists) {

@@ -1,6 +1,5 @@
 package OrderMaintainance;
 
-import Utils.IdGenerator;
 
 public class Order {
     private String orderId, orderType, orderDate, deliveryDate, address,
@@ -19,6 +18,10 @@ public class Order {
         this.uname = uname;
         this.movieId = movieId;
         this.province = province;
+    }
+
+    public int getCostInPoints() {
+        return (movies.split(";").length) * 10;
     }
 
     public String getOrderId() {

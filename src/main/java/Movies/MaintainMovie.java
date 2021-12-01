@@ -9,7 +9,6 @@ import com.csvreader.CsvWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MaintainMovie {
     private final String path;
@@ -106,7 +105,7 @@ public class MaintainMovie {
     public void changeCopiesAfterRemove(Order order) throws Exception {
         String[] ids = order.getMovieId().split(";");
 
-        for (Movie m : readDatabaseList()) {
+        for (Movie m : moviesList) {
             for (String id : ids) {
                 if (m.getId().equals(id)) {
                     Movie tmp = new Movie(m.getId(), m.getTitle(), m.getActor(), m.getDirector(),
