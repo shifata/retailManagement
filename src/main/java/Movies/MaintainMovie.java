@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MaintainMovie {
     private final String path;
-    private ArrayList<Movie> moviesList;
+    private static ArrayList<Movie> moviesList;
 
     public MaintainMovie(String path) {
         this.path = path;
@@ -38,11 +38,11 @@ public class MaintainMovie {
                 moviesList.add(new Movie(id, tile, actor, director, description,
                         genre, releaseDate, copiesAvailable));
             }
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        reader.close();
         return moviesList;
     }
 

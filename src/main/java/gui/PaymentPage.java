@@ -98,6 +98,14 @@ public class PaymentPage {
         confirmPaymentButton.setBounds(50, 400, 180, 35);
         confirmPaymentButton.addActionListener(paymentListener);
 
+        JLabel message1 = new JLabel("Payment successful!");
+        message1.setForeground(Color.white);
+        message1.setBounds(30, 100, 280, 125);
+        confirmPaymentButton.add(message1);
+        confirmPaymentButton.setLayout(null);
+        message1.setFont(new Font("Arial", Font.BOLD, 16));
+
+
         CancelButton = new JButton("Cancel");
         CancelButton.setBounds(250, 400, 180, 35);
         CancelButton.addActionListener(cancelListener);

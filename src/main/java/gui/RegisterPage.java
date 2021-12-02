@@ -204,16 +204,6 @@ public class RegisterPage extends JFrame implements ActionListener {
 
 
         okaybutton.addActionListener(okayListener);
-
-//        if (e1.getSource() == okaybutton) {
-//            System.out.println("HIT");
-//            System.out.println("THAT");
-//            confirmRegMsg.dispose();
-//            LoginPage lp = new LoginPage();
-//        } else {
-//            System.out.println("MISS");
-//            System.out.println(e1);
-//        }
     }
 
     private ActionListener logOutListener = new ActionListener() {

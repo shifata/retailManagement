@@ -225,14 +225,15 @@ public class MaintainOrder {
     public boolean addProvinceCharge(Order order) {
         String uname = order.getUname();
         boolean extraCharge = !order.getProvince().equals("Ontario");
+        MaintainUser tmp = new MaintainUser("../project/src/main/java/database/users.csv");
 
         try {
             if (extraCharge) {
-                User user = maintainUser.getUserFromName(uname);
+                User user = tmp.getUserFromName(uname);
                 double updatedCost = Double.parseDouble(user.getBalance()) + 9.99;
                 user.setBalance(updatedCost + "");
                 System.out.println(user);
-//                maintainUser.updateUser(user);
+                tmp.updateUser(user);
                 return true;
             }
         } catch (Exception e) {
