@@ -1,7 +1,7 @@
 package gui;
 
 import UserMaintainance.Login;
-import UserMaintainance.User;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginPage extends JFrame implements ActionListener {
+public class LoginPage {
     private JButton regbutton, loginbutton;
     private JFrame frame;
     private JTextField userText;
@@ -84,14 +84,13 @@ public class LoginPage extends JFrame implements ActionListener {
 
         loginbutton = new JButton("Login");
         loginbutton.setBounds(90, 100, 100, 25);
-
-        loginbutton.addActionListener(this);
         loginpanel.add(loginbutton);
+        loginbutton.addActionListener(loginListener);
 
         regbutton = new JButton("Register");
         regbutton.setBounds(200, 100, 100, 25);
         loginpanel.add(regbutton);
-        regbutton.addActionListener(this);
+        regbutton.addActionListener(registerListener);
 
         JLabel success = new JLabel("");
         success.setBounds(10, 110, 300, 25);
@@ -101,66 +100,124 @@ public class LoginPage extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        final String filePath = "../project/src/main/java/database/users.csv";
+    ActionListener loginListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            final String filePath = "../project/src/main/java/database/users.csv";
 
-        String uname = userText.getText();
-        String password = passwordText.getText();
-        login = new Login(filePath);
-        boolean verified = false;
+            String utype = "";
+            String uname = userText.getText();
+            String password = passwordText.getText();
+            login = new Login(filePath);
+            boolean verified = false;
 
-        try {
-            verified = login.verify(uname, password);
-            if (verified) {
-                System.out.println(login.getCurrentUser(uname, password));
-                System.out.println("LOGIN SUCCESSFUL");
-            } else {
-                System.out.println("WRONG CREDENTIALS");
+            if (userText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+                Messages.customMsg("Username or Password field is empty! Please provide username and password");
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
-        if (e.getSource() == regbutton) {
+            try {
+
+                verified = login.verify(uname, password);
+
+
+                if (verified) {
+                    System.out.println(login.getCurrentUser(uname, password));
+                    utype = login.getUserType(uname, password);
+
+                    if (utype.equals("customer")) {
+                        frame.dispose();
+                        MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+                    }
+                    if (utype.equals("operator")) {
+                        frame.dispose();
+                        OperatorPage operatorPage = new OperatorPage(login);
+                    }
+                    if (utype.equals("admin")) {
+                        frame.dispose();
+                        SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+                    }
+
+                } else {
+                    Messages.customMsg("Wrong credentials. Try again");
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    };
+
+    ActionListener registerListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             frame.dispose();
             RegisterPage register = new RegisterPage();
         }
 
-        if (verified && e.getSource() == loginbutton) {
+    };
 
-            try {
-                if ((login.getUserType(uname, password).equals("customer"))) {
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        final String filePath = "../project/src/main/java/database/users.csv";
+//
+//        String uname = userText.getText();
+//        String password = passwordText.getText();
+//        login = new Login(filePath);
+//        boolean verified = false;
+//
+//        if (userText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+//            Messages.customMsg("Username or Password field is empty! Please provide username and password");
+//        }
+//        try {
+//            verified = login.verify(uname, password);
+//            if (verified) {
+//                System.out.println(login.getCurrentUser(uname, password));
+//            } else {
+//                Messages.customMsg("Wrong credentials. Try again");
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//
+////        if (e.getSource() == regbutton) {
+////            frame.dispose();
+////            RegisterPage register = new RegisterPage();
+////        }
+//
+//        if (verified && e.getSource() == loginbutton) {
+//
+//            try {
+//                if ((login.getUserType(uname, password).equals("customer"))) {
+//
+//                    frame.dispose();
+//                    MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//
+//            try {
+//                if ((login.getUserType(uname, password).equals("operator"))) {
+//                    frame.dispose();
+//                    OperatorPage operatorPage = new OperatorPage(login);
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//
+//
+//            try {
+//                if (login.getUserType(uname, password).equals("admin")) {
+//                    frame.dispose();
+//                    SystemAdminPage systemAdminPage = new SystemAdminPage(login);
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//        }
+//
+//    }
 
-                    frame.dispose();
-                    MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-
-            try {
-                if ((login.getUserType(uname, password).equals("operator"))) {
-                    frame.dispose();
-                    OperatorPage operatorPage = new OperatorPage(login);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-
-
-            try {
-                if (login.getUserType(uname, password).equals("admin")) {
-                    frame.dispose();
-                    SystemAdminPage systemAdminPage = new SystemAdminPage(login);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-
-        }
-
-    }
 
     public Login getLogin() {
         return login;

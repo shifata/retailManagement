@@ -3,6 +3,7 @@ package gui;
 import OrderMaintainance.Order;
 import Payment.MaintainPayment;
 import UserMaintainance.Login;
+import Utils.Messages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +13,9 @@ import java.awt.event.ActionListener;
 public class PaymentPage {
 
     JButton CancelButton;
-    JFrame frame;
+    JFrame frame, confirmPayMsg;
     private Login login;
-    private JButton confirmPaymentButton;
+    private JButton confirmPaymentButton, okaybutton;
     private JComboBox paymentCombo;
     private Order order;
     final String[] paymentType = {"Visa", "MasterCard", "PayPal", "Loyalty Points"};
@@ -98,11 +99,16 @@ public class PaymentPage {
         confirmPaymentButton.setBounds(50, 400, 180, 35);
         confirmPaymentButton.addActionListener(paymentListener);
 
-        JLabel message1 = new JLabel("Payment successful!");
+
+        JPanel confirmPayRegistration = new JPanel();
+        confirmPayRegistration.setBackground(Color.black);
+        confirmPayRegistration.setBounds(0, 0, 300, 300);
+
+        JLabel message1 = new JLabel("Payment successfull!");
         message1.setForeground(Color.white);
         message1.setBounds(30, 100, 280, 125);
-        confirmPaymentButton.add(message1);
-        confirmPaymentButton.setLayout(null);
+        confirmPayRegistration.add(message1);
+        confirmPayRegistration.setLayout(null);
         message1.setFont(new Font("Arial", Font.BOLD, 16));
 
 
@@ -144,7 +150,12 @@ public class PaymentPage {
         public void actionPerformed(ActionEvent e) {
             try {
 
-                maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
+                if (maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString())) {
+                    Messages.paymentSuccessMsg();
+
+                    frame.dispose();
+                }
+
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -161,4 +172,5 @@ public class PaymentPage {
             }
         }
     };
+
 }

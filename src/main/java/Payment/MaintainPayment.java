@@ -5,6 +5,7 @@ import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
 import UserMaintainance.MaintainUser;
+import gui.MoviesDisplayPage;
 
 
 public class MaintainPayment {
@@ -39,6 +40,7 @@ public class MaintainPayment {
             maintainOrder.addOrderCart(order);
             maintainOrder.incrementPoint(order);
             maintainOrder.addProvinceCharge(order);
+            MoviesDisplayPage.emptyCart();
             maintainMovie.changeCopiesAfterRemove(order);
             return true;
         }

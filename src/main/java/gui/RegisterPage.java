@@ -2,6 +2,7 @@ package gui;
 
 import UserMaintainance.MaintainUser;
 import UserMaintainance.User;
+import Utils.Messages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegisterPage extends JFrame implements ActionListener {
-    private JButton registerbutton, cancelRegbutton;
+    private JButton registerbutton, cancelRegbutton, okaybutton;
     private JTextField fnameText, lnameText, emailText, contactText, unameText, passwordText,
             addressText, idText, pointsText, balanceText;
     private JFrame frame;
@@ -139,7 +140,6 @@ public class RegisterPage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e1) {
         final String path = "../project/src/main/java/database/users.csv";
         MaintainUser maintainer = new MaintainUser(path);
-        JButton okaybutton;
         String type = "customer";
         String inputFName = fnameText.getText();
         String inputLName = lnameText.getText();
@@ -152,58 +152,27 @@ public class RegisterPage extends JFrame implements ActionListener {
         String inputPoints = "0";
         String inputBalance = "0";
 
+
         User newUser = new User(type, inputFName, inputLName, inputEmail, inputContact, inputAddress,
                 inputUName, inputPassword, inputId, inputPoints, inputBalance, "Ontario");
 
         if (e1.getSource() == registerbutton) {
-            try {
-                if (maintainer.addUser(newUser)) {
-                    System.out.println("ADDED SUCCESSFULLY");
-                    //adding frame for successful registration
+
+            if (fnameText.getText().isEmpty() || lnameText.getText().isEmpty() || emailText.getText().isEmpty()
+                    || contactText.getText().isEmpty() || contactText.getText().isEmpty() || addressText.getText().isEmpty()
+                    || unameText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+                Messages.customMsg("USER CANNOT BE ADDED! ALL FIELDS MUST BE TYPED IN");
+            } else {
+                try {
+                    maintainer.addUserRegister(newUser);
+                    Messages.customMsgGreen("USER REGISTERED SUCCESSFULLY");
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+
             }
+
         }
-
-        JFrame confirmRegMsg = new JFrame();
-        confirmRegMsg.setLayout(null); //panel view
-        confirmRegMsg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        confirmRegMsg.setSize(300, 300);
-        confirmRegMsg.setTitle("Registration Message");
-        confirmRegMsg.setVisible(true); //visibility of any newly frame creation
-
-        JPanel confirmMsgRegistration = new JPanel();
-        confirmMsgRegistration.setBackground(Color.black);
-        confirmMsgRegistration.setBounds(0, 0, 300, 300);
-
-        okaybutton = new JButton("OK");
-        okaybutton.setBounds(100, 200, 100, 25);
-        confirmRegMsg.add(okaybutton);
-        confirmRegMsg.add(confirmMsgRegistration);
-
-        JLabel message1 = new JLabel("User registered successfully!");
-        message1.setForeground(Color.white);
-        message1.setBounds(30, 100, 280, 125);
-        confirmMsgRegistration.add(message1);
-        confirmMsgRegistration.setLayout(null);
-        message1.setFont(new Font("Arial", Font.BOLD, 16));
-
-        ActionListener okayListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e2) {
-                if (e2.getSource() == okaybutton) {
-                    System.out.println("HIT");
-                    System.out.println("THIS");
-                    confirmRegMsg.dispose();
-                    frame.dispose();
-                    LoginPage lp = new LoginPage();
-                }
-            }
-        };
-
-
-        okaybutton.addActionListener(okayListener);
     }
 
     private ActionListener logOutListener = new ActionListener() {

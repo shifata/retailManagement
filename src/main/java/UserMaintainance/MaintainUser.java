@@ -128,12 +128,20 @@ public class MaintainUser {
         return null;
     }
 
-    public boolean addUser(User user) {
+    public void clear() {
+        usersList.clear();
+    }
+
+    public boolean addUserRegister(User user) {
         try {
             readDatabaseList();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return addUser(user);
+    }
+
+    public boolean addUser(User user) {
         boolean exists = userExists(user);
         try {
             if (!exists) {
@@ -173,6 +181,7 @@ public class MaintainUser {
             }
             usersList.add(user);
             writeToUser();
+            clear();
             return true;
         }
         return false;

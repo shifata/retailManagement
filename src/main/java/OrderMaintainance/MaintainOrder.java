@@ -245,17 +245,17 @@ public class MaintainOrder {
 
     public boolean addOrder(Order order) {
         boolean exists = orderExists(order);
-        if (!exists) {
-            try {
+        try {
+            if (!exists) {
                 order.setOrderId(IdGenerator.getId(5));
                 ordersList.add(order);
                 writeToOrder();
                 return true;
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return false;
     }
 

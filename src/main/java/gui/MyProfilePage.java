@@ -1,7 +1,9 @@
 package gui;
 
 import UserMaintainance.Login;
+import UserMaintainance.MaintainUser;
 import UserMaintainance.User;
+import Utils.Messages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +14,13 @@ public class MyProfilePage {
 
     private Login login;
     private JFrame frame;
-    private JTextField fnameText, lnameText, emailText, contactText, addressText, unameText, passwordText;
+    private JTextField fnameText, lnameText, emailText, contactText,
+            addressText, unameText, passwordText, provinceText;
+    private MaintainUser maintainUser;
 
     MyProfilePage(Login login) {
-//        login = new Login("../project/src/main/java/database/users.csv");
         this.login = login;
+        maintainUser = new MaintainUser(login.getPath());
         frame = new JFrame("My Profile");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +68,7 @@ public class MyProfilePage {
         logoutButton.addActionListener(logOutListener);
 
         JButton changeButton = new JButton("CHANGE");
-        changeButton.setBounds(550, 340, 160, 25);
+        changeButton.setBounds(550, 540, 160, 25);
         profileFieldsPanel.add(changeButton);
         changeButton.addActionListener(changeListener);
 
@@ -225,7 +229,22 @@ public class MyProfilePage {
             e.printStackTrace();
         }
 
-        //captionPanel.setLayout(null);
+        JLabel provinceLabel = new JLabel("Province");
+        provinceLabel.setForeground(Color.white);
+        provinceLabel.setBounds(450, 290, 80, 25);
+        profileFieldsPanel.add(provinceLabel);
+
+        provinceText = new JTextField(20);
+        provinceText.setBounds(550, 290, 165, 25);
+        profileFieldsPanel.add(provinceText);
+
+        try {
+            User user = login.getCurrentUser(login.getUName(), login.getPass());
+            provinceText.setText(user.getProvince());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         pointsPanel.add(loyaltyPointsLabel);
         profileFieldsPanel.setLayout(null);
@@ -260,8 +279,41 @@ public class MyProfilePage {
     private ActionListener changeListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e2) {
-            User user = null;
 
+            if (fnameText.getText().isEmpty() || lnameText.getText().isEmpty() || emailText.getText().isEmpty()
+                    || contactText.getText().isEmpty() || addressText.getText().isEmpty() || unameText.getText().isEmpty()
+                    || passwordText.getText().isEmpty()) {
+                Messages.customMsg("ALL FIELDS MUST BE TYPED IN");
+            } else {
+
+                try {
+                    User user = login.getCurrentUser(login.getUName(), login.getPass());
+
+                    String type = user.getType();
+                    String fname = fnameText.getText();
+                    String lname = lnameText.getText();
+                    String email = emailText.getText();
+                    String contact = contactText.getText();
+                    String address = addressText.getText();
+                    String uname = unameText.getText();
+                    String pass = passwordText.getText();
+                    String id = user.getId();
+                    String points = user.getPoints();
+                    String balance = user.getBalance();
+                    String province = provinceText.getText();
+
+                    user = new User(type, fname, lname, email, contact, address, uname,
+                            pass, id, points, balance, province);
+                    maintainUser.readDatabase();
+
+                    if (maintainUser.updateUser(user)) {
+                        Messages.customMsgGreen("User updated");
+
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     };
 
@@ -301,3 +353,4 @@ public class MyProfilePage {
         }
     };
 }
+

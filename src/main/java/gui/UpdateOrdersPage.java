@@ -267,12 +267,16 @@ public class UpdateOrdersPage {
     private ActionListener addListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == addButton) {
+
+            if (orderTypeText.getText().isEmpty() || orderPlacedText.getText().isEmpty() || orderDeliveryDateText.getText().isEmpty()
+                    || shippingAddressText.getText().isEmpty() || orderStatusText.getText().isEmpty() || movieLabelText.getText().isEmpty()
+                    || unameText.getText().isEmpty()) {
+                Messages.customMsg("ORDER CANNOT BE ADDED! ALL FIELDS MUST BE TYPED IN");
+            } else {
                 try {
                     Order order = getOrderFromInput();
-
                     if (maintainOrder.addOrder(order)) {
-                        Messages.addedMsg("Order");
+                        Messages.customMsgGreen("Order Added Successfully");
                     } else {
                         Messages.alreadyExistsMsg("Order");
                     }
@@ -307,7 +311,7 @@ public class UpdateOrdersPage {
                 try {
                     Order order = getOrderFromInput();
                     if (maintainOrder.removeOrder(order)) {
-                        Messages.removedMsg("Order");
+                        Messages.customMsgGreen("Order Removed Successfully");
                     } else {
                         Messages.doesNotExistMsg("Order");
                     }
@@ -325,7 +329,7 @@ public class UpdateOrdersPage {
                 try {
                     Order order = getOrderFromInput();
                     if (maintainOrder.updateOrder(order)) {
-                        Messages.updatedMsg("Order");
+                        Messages.customMsgGreen("Order Updated Successfully");
                     } else {
                         Messages.alreadyExistsMsg("Order");
                     }

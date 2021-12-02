@@ -184,6 +184,11 @@ public class MoviesDisplayPage {
 
     }
 
+    public static ArrayList<Movie> emptyCart() {
+        cart.clear();
+        return cart;
+    }
+
     public static ArrayList<Movie> getCart() {
         return cart;
     }
@@ -226,7 +231,12 @@ public class MoviesDisplayPage {
             String genre = table.getValueAt(row, 5).toString();
             String releaseDate = table.getValueAt(row, 6).toString();
             String copies = table.getValueAt(row, 7).toString();
-            cart.add(new Movie(id, name, actor, director, description, genre, releaseDate, copies));
+
+            if (Integer.parseInt(copies) > 0) {
+                cart.add(new Movie(id, name, actor, director, description, genre, releaseDate, copies));
+            } else {
+                Messages.customMsg("Movie out of stock");
+            }
 
         }
 
@@ -258,7 +268,7 @@ public class MoviesDisplayPage {
                 CheckOutPage checkOutPage = new CheckOutPage(login);
             } else {
                 //todo: add error message
-                System.out.println("cart is empty. add movie to cart to proceed to checkout");
+                Messages.customMsg("Cart Is Empty. Add movie to cart before proceeding to checkout");
             }
         }
     };

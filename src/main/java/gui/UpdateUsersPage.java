@@ -191,7 +191,6 @@ public class UpdateUsersPage {
         searchLabel.setFont(new Font("Arial", 16, 20));
         searchPanel.add(searchLabel);
 
-        maintainUser = new MaintainUser(path);
         Object[][] data = null;
 
         try {
@@ -294,13 +293,24 @@ public class UpdateUsersPage {
     }
 
     private ActionListener addListener = new ActionListener() {
+
+        //        typeText, fnameText, lnameText, emailText, contactText,
+//        addressText, unameText, passwordText, pointsText, balanceText;
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == addButton) {
+
+            if (typeText.getText().isEmpty() || fnameText.getText().isEmpty() || lnameText.getText().isEmpty()
+                    || emailText.getText().isEmpty() || contactText.getText().isEmpty() || addressText.getText().isEmpty()
+                    || unameText.getText().isEmpty() || passwordText.getText().isEmpty() || pointsText.getText().isEmpty() ||
+                    balanceText.getText().isEmpty()) {
+                Messages.customMsg("USER CANNOT BE ADDED! ALL FIELDS MUST BE TYPED IN");
+
+            } else {
+
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.addUser(user)) {
-                        Messages.addedMsg("User");
+                        Messages.customMsgGreen("User Added Successfully");
                     } else {
                         Messages.alreadyExistsMsg("User");
                     }
@@ -318,7 +328,7 @@ public class UpdateUsersPage {
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.removeUser(user)) {
-                        Messages.removedMsg("User");
+                        Messages.customMsgGreen("User Removed Successfully");
                     } else {
                         Messages.doesNotExistMsg("User");
                     }
@@ -332,11 +342,13 @@ public class UpdateUsersPage {
     private ActionListener updateListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+
+
             if (e.getSource() == updateButton) {
                 try {
                     User user = getUserFromInput();
                     if (maintainUser.updateUser(user)) {
-                        Messages.updatedMsg("User");
+                        Messages.customMsgGreen("User Updated Successfully");
                     } else {
                         Messages.alreadyExistsMsg("User");
                     }

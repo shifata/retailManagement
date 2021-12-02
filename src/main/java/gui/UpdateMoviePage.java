@@ -3,6 +3,7 @@ package gui;
 import Movies.MaintainMovie;
 import Movies.Movie;
 import UserMaintainance.Login;
+import Utils.IdGenerator;
 import Utils.Messages;
 
 import javax.swing.*;
@@ -275,36 +276,33 @@ public class UpdateMoviePage {
     private ActionListener removeListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == removeButton) {
-                try {
-                    Movie movie = getMovieFromInput();
-                    if (maintainMovie.removeMovie(movie)) {
-                        Messages.removedMsg("Movie");
-                    } else {
-                        Messages.doesNotExistMsg("Message");
-                    }
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+            try {
+                Movie movie = getMovieFromInput();
+                if (maintainMovie.removeMovie(movie)) {
+                    Messages.customMsgGreen("Movie Removed Successfully");
+                } else {
+                    Messages.doesNotExistMsg("Message");
                 }
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
+
         }
     };
 
     private ActionListener updateListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == updateButton) {
-                try {
-                    Movie movie = getMovieFromInput();
-                    System.out.println(movie);
-                    if (maintainMovie.updateMovie(movie)) {
-                        Messages.updatedMsg("Movie");
-                    } else {
-                        Messages.alreadyExistsMsg("Movie");
-                    }
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+            try {
+                Movie movie = getMovieFromInput();
+                System.out.println(movie);
+                if (maintainMovie.updateMovie(movie)) {
+                    Messages.customMsgGreen("Movie Updated Successfully");
+                } else {
+                    Messages.alreadyExistsMsg("Movie");
                 }
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
         }
     };
@@ -320,11 +318,16 @@ public class UpdateMoviePage {
     private ActionListener addListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == addButton) {
+            if (titleText.getText().isEmpty() || actorText.getText().isEmpty() || directorText.getText().isEmpty()
+                    || descriptionText.getText().isEmpty() || genreText.getText().isEmpty() || releaseDateText.getText().isEmpty()
+                    || copiesAvailableText.getText().isEmpty()) {
+                Messages.customMsg("MOVIE CANNOT BE ADDED! ALL FIELDS MUST BE TYPED IN");
+
+            } else {
                 try {
                     Movie movie = getMovieFromInput();
                     if (maintainMovie.addMovie(movie)) {
-                        Messages.addedMsg("Movie");
+                        Messages.customMsgGreen("Movie Updated Successfully");
                     } else {
                         Messages.alreadyExistsMsg("Movie");
                     }
