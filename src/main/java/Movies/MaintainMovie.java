@@ -107,6 +107,7 @@ public class MaintainMovie {
         moviesList.clear();
     }
 
+    // TRUE adds a copy. FALSE removes a copy
     public void changeCopiesAfterRemove(Order order, boolean add) {
         clear();
         try {

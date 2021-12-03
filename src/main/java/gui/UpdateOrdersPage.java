@@ -39,15 +39,18 @@ public class UpdateOrdersPage {
         frame.setSize(1800, 1800);
 
         JPanel tablePanel = new JPanel();
-        tablePanel.setBackground(Color.gray);
+//        tablePanel.setBackground(Color.gray);
+        tablePanel.setBackground(Color.decode("#8f7ac1"));
         tablePanel.setBounds(0, 100, 1800, 465);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.darkGray);
+        //buttonPanel.setBackground(Color.darkGray);
+        buttonPanel.setBackground(Color.decode("#abc17a"));
         buttonPanel.setBounds(0, 800, 1800, 400);
 
         JPanel updateOrderInfoPanel = new JPanel();
-        updateOrderInfoPanel.setBackground(Color.PINK);
+//        updateOrderInfoPanel.setBackground(Color.PINK);
+        updateOrderInfoPanel.setBackground(Color.decode("#c17a88"));
         updateOrderInfoPanel.setBounds(0, 565, 1800, 236);
 
         JLabel orderID = new JLabel("Order ID");
@@ -167,7 +170,8 @@ public class UpdateOrdersPage {
         loggedinAsLabel.setBounds(0,0,400,100);
 
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.lightGray);
+//        searchPanel.setBackground(Color.lightGray);
+        searchPanel.setBackground(Color.decode("#7ac1b3"));
         searchPanel.setBounds(0, 0, 1800, 100);
         searchPanel.add(loggedinAsLabel);
 

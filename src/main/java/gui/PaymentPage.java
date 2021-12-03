@@ -40,7 +40,8 @@ public class PaymentPage {
         cardImagePanel.setBounds(0, 0, 800, 160);
 
         JPanel paymentInfoPanel = new JPanel();
-        paymentInfoPanel.setBackground(Color.gray);
+//        paymentInfoPanel.setBackground(Color.gray);
+        paymentInfoPanel.setBackground(Color.decode("#847ac1"));
         paymentInfoPanel.setBounds(0, 160, 800, 600);
 
         JLabel paymentImageLabel = new JLabel();

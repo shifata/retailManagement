@@ -28,7 +28,8 @@ public class RegisterPage extends JFrame implements ActionListener {
         captionPanel.setBounds(150, 0, 500, 200);
 
         JPanel registerPanel = new JPanel();
-        registerPanel.setBackground(Color.black);
+//        registerPanel.setBackground(Color.black);
+        registerPanel.setBackground(Color.decode("#063970"));
         registerPanel.setBounds(150, 200, 500, 770);
 
 

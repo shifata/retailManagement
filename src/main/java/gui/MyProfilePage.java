@@ -36,7 +36,8 @@ public class MyProfilePage {
 
 
         JPanel captionPanel = new JPanel();
-        captionPanel.setBackground(Color.black);
+        //captionPanel.setBackground(Color.black);
+        captionPanel.setBackground(Color.decode("#985887"));
         captionPanel.setBounds(0, 0, 1200, 270);
         captionPanel.add(loggedinAsLabel);
 
@@ -180,7 +181,8 @@ public class MyProfilePage {
         }
 
         JLabel balanceDue = new JLabel("Balance Due");
-        balanceDue.setForeground(Color.black);
+        //balanceDue.setForeground(Color.black);
+        balanceDue.setBackground(Color.decode("#588798"));
         balanceDue.setBounds(60, 10, 100, 25);
         balancePanel.add(balanceDue);
         balanceDue.setLayout(null);

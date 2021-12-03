@@ -41,7 +41,10 @@ public class CheckOutPage {
         loggedinAsLabel.setBounds(0, 0, 400, 200);
 
         JPanel cartCaptionPanel = new JPanel();
-        cartCaptionPanel.setBackground(Color.BLACK);
+        //cartCaptionPanel.setBackground(Color.BLACK);
+//        cartCaptionPanel.setBackground(Color.decode("#589863"));
+        cartCaptionPanel.setBackground(Color.decode("#7ac186"));
+
         cartCaptionPanel.setBounds(0, 0, 1800, 280);
         cartCaptionPanel.add(loggedinAsLabel);
 
@@ -55,6 +58,7 @@ public class CheckOutPage {
         cartImageLabel.setOpaque(true);
 
         JLabel priceLabel = new JLabel("Total: $" + (cart.size() * 10));
+        priceLabel.setForeground(Color.white);
 //        priceLabel.setBackground(Color.green);
         priceLabel.setBounds(1500, 5, 400, 100);
         priceLabel.setFont(new Font("Arial", 24, 24));
@@ -64,15 +68,18 @@ public class CheckOutPage {
 
         JLabel checkOutLabel = new JLabel("CHECK OUT");
         checkOutLabel.setBackground(Color.WHITE);
+        checkOutLabel.setForeground(Color.white);
         checkOutLabel.setFont(new Font("Arial", 20, 28));
         checkOutLabel.setBounds(800, 300, 400, 200);
 
         JPanel table2Panel = new JPanel();
         table2Panel.setBackground(Color.gray);
+        table2Panel.setBackground(Color.decode("#3e6a45"));
         table2Panel.setBounds(0, 280, 1800, 540);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.lightGray);
+        //buttonPanel.setBackground(Color.lightGray);
+        buttonPanel.setBackground(Color.decode("#2c4c32"));
         buttonPanel.setBounds(0, 800, 1800, 220);
         buttonPanel.add(priceLabel);
         buttonPanel.setLayout(null);

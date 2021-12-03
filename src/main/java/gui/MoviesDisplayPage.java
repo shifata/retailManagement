@@ -52,7 +52,8 @@ public class MoviesDisplayPage {
 
         //rentalImage Panel contains the image, caption, and command buttons myProfile and Logout
         JPanel rentalImage = new JPanel();
-        rentalImage.setBackground(Color.black);
+        //rentalImage.setBackground(Color.black);
+        rentalImage.setBackground(Color.decode("#2596be"));
         rentalImage.setBounds(0, 0, 1800, 280);
 
         JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:" + "  " + login.getUName());
@@ -90,7 +91,9 @@ public class MoviesDisplayPage {
 
         //searchPanel Panel contains the search engine (command buttons: search by name and search by category)
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.darkGray);
+//        searchPanel.setBackground(Color.darkGray);
+        searchPanel.setBackground(Color.decode("#588798"));
+
         searchPanel.setBounds(0, 280, 1800, 100);
 
 
@@ -107,7 +110,7 @@ public class MoviesDisplayPage {
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setSize(100, 100);
-        bottomPanel.setBackground(Color.lightGray);
+        bottomPanel.setBackground(Color.darkGray);
         bottomPanel.setBounds(0, 830, 1800, 200);
         bottomPanel.setLayout(null);
 
@@ -298,7 +301,6 @@ public class MoviesDisplayPage {
             if (cart.size() != 0) {
                 CheckOutPage checkOutPage = new CheckOutPage(login);
             } else {
-                //todo: add error message
                 Messages.customMsg("Cart Is Empty. Add movie to cart before proceeding to checkout");
             }
         }
@@ -307,6 +309,7 @@ public class MoviesDisplayPage {
     private ActionListener profileListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e1) {
+
             // todo
             frame.dispose();
             MyProfilePage myProfilePage = new MyProfilePage(login);

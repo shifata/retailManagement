@@ -156,68 +156,6 @@ public class LoginPage {
 
     };
 
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        final String filePath = "../project/src/main/java/database/users.csv";
-//
-//        String uname = userText.getText();
-//        String password = passwordText.getText();
-//        login = new Login(filePath);
-//        boolean verified = false;
-//
-//        if (userText.getText().isEmpty() || passwordText.getText().isEmpty()) {
-//            Messages.customMsg("Username or Password field is empty! Please provide username and password");
-//        }
-//        try {
-//            verified = login.verify(uname, password);
-//            if (verified) {
-//                System.out.println(login.getCurrentUser(uname, password));
-//            } else {
-//                Messages.customMsg("Wrong credentials. Try again");
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//
-////        if (e.getSource() == regbutton) {
-////            frame.dispose();
-////            RegisterPage register = new RegisterPage();
-////        }
-//
-//        if (verified && e.getSource() == loginbutton) {
-//
-//            try {
-//                if ((login.getUserType(uname, password).equals("customer"))) {
-//
-//                    frame.dispose();
-//                    MoviesDisplayPage displayPage = new MoviesDisplayPage(login);
-//                }
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//            }
-//
-//            try {
-//                if ((login.getUserType(uname, password).equals("operator"))) {
-//                    frame.dispose();
-//                    OperatorPage operatorPage = new OperatorPage(login);
-//                }
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//            }
-//
-//
-//            try {
-//                if (login.getUserType(uname, password).equals("admin")) {
-//                    frame.dispose();
-//                    SystemAdminPage systemAdminPage = new SystemAdminPage(login);
-//                }
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//
-//    }
-
 
     public Login getLogin() {
         return login;

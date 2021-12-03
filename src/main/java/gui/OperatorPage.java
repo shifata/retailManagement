@@ -1,7 +1,12 @@
 package gui;
 
 import Movies.MaintainMovie;
+import Movies.Movie;
+import OrderMaintainance.MaintainOrder;
+import OrderMaintainance.Order;
 import UserMaintainance.Login;
+import Utils.IdGenerator;
+import Utils.Messages;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -12,6 +17,8 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class OperatorPage {
 
@@ -20,8 +27,16 @@ public class OperatorPage {
     private JTable table;
     JFrame frame;
     private Login login;
+    JLabel itemsSelected;
+    private ArrayList<Movie> cart;
+    private JButton placeOrderButton, addToCartButton;
+    private JTextField shippingAddressText, provinceText;
+    private MaintainOrder maintainOrder;
 
     OperatorPage(Login login) {
+        cart = new ArrayList<>();
+        maintainOrder = new MaintainOrder("../project/src/main/java/database/orders.csv");
+
         this.login = login;
         ImageIcon image11 = new ImageIcon("../project/src/main/resources/images/operator.png");
         ImageIcon image3 = new ImageIcon("../project/src/main/resources/images/error.jpg");
@@ -34,9 +49,9 @@ public class OperatorPage {
         operatorImagePanel.setBackground(Color.yellow);
         operatorImagePanel.setBounds(0, 0, 1800, 250);
 
-        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:"+"  "+  login.getUName());
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:" + "  " + login.getUName());
         loggedinAsLabel.setForeground(Color.white);
-        loggedinAsLabel.setFont(new Font("Arial", 18,18));
+        loggedinAsLabel.setFont(new Font("Arial", 18, 18));
         loggedinAsLabel.setBounds(510, 10, 450, 25);
 
         JPanel opsButtonPanel = new JPanel();
@@ -88,7 +103,7 @@ public class OperatorPage {
         shippingLabel.setBounds(40, 10, 200, 30);
         infoPanel.add(shippingLabel);
 
-        JTextField shippingAddressText = new JTextField();
+        shippingAddressText = new JTextField();
         shippingAddressText.setBounds(240, 10, 500, 25);
         infoPanel.add(shippingAddressText);
 
@@ -98,25 +113,10 @@ public class OperatorPage {
         provinceLabel.setBounds(40, 40, 200, 30);
         infoPanel.add(provinceLabel);
 
-        JTextField provinceText = new JTextField();
+        provinceText = new JTextField();
         provinceText.setBounds(240, 40, 200, 25);
         infoPanel.add(provinceText);
 
-//        tablePanel.setLayout(null);
-
-
-//        JPanel loggedinAsPanel = new JPanel();
-//        loggedinAsPanel.setBackground(Color.blue);
-//        loggedinAsPanel.setBounds(340, 10, 300, 45);
-//        loggedinAsPanel.setLayout(null);
-
-
-//        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS" + "");
-//        loggedinAsLabel.setFont(new Font("Arial", 18, 18));
-//        loggedinAsLabel.setForeground(Color.BLACK);
-//        loggedinAsLabel.setBounds(510, 10, 150, 25);
-//        loggedinAsLabel.setLayout(null);
-        // loggedinAsPanel.add(loggedinAsLabel);
 
         JButton logoutButton = new JButton("Log Out");
         logoutButton.setBounds(40, 10, 80, 25);
@@ -126,11 +126,22 @@ public class OperatorPage {
         myProfileButton.setBounds(140, 10, 80, 25);
         myProfileButton.addActionListener(profileListener);
 
-        JButton placeOrderButton = new JButton("Place Order");
-        placeOrderButton.setBounds(180, 900, 250, 60);
+        placeOrderButton = new JButton("Place Order");
+        placeOrderButton.setBounds(380, 900, 250, 60);
+        placeOrderButton.addActionListener(orderListener);
+
+        addToCartButton = new JButton("Add To Cart");
+        addToCartButton.setBounds(160, 900, 250, 60);
+        addToCartButton.addActionListener(cartListener);
+
+        itemsSelected = new JLabel("0 movies in cart");
+        itemsSelected.setForeground(Color.BLACK);
+        itemsSelected.setFont(new Font("Arial", 28, 28));
+        itemsSelected.setBounds(1400, 800, 500, 200);
+
 
         JButton checkOrderButton = new JButton("Check Order Status");
-        checkOrderButton.setBounds(420, 900, 250, 60);
+        checkOrderButton.setBounds(620, 900, 250, 60);
         checkOrderButton.addActionListener(checkStatusListener);
 
 
@@ -229,12 +240,87 @@ public class OperatorPage {
         frame.add(tablePanel);
         frame.add(placeOrderButton);
         frame.add(checkOrderButton);
+        frame.add(addToCartButton);
+        frame.add(itemsSelected);
         frame.add(infoPanel);
         frame.setLayout(null);
         frame.setVisible(true);
 
 
     }
+
+    private ActionListener cartListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int row = table.getSelectedRow();
+            String id = table.getValueAt(row, 0).toString();
+            String name = table.getValueAt(row, 1).toString();
+            String actor = table.getValueAt(row, 2).toString();
+            String director = table.getValueAt(row, 3).toString();
+            String description = table.getValueAt(row, 4).toString();
+            String genre = table.getValueAt(row, 5).toString();
+            String releaseDate = table.getValueAt(row, 6).toString();
+            String copies = table.getValueAt(row, 7).toString();
+
+            if (Integer.parseInt(copies) > 0) {
+                cart.add(new Movie(id, name, actor, director, description, genre, releaseDate, copies));
+                itemsSelected.setText(cart.size() + " movie in cart");
+            } else {
+                Messages.customMsg("Movie out of stock");
+            }
+        }
+    };
+
+    private ActionListener orderListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (cart.size() != 0) {
+
+                String id = IdGenerator.getId(5);
+                String type = "Store";
+                String placedDate = "11";
+                String deliveryDate = "12";
+                String shipping = "";
+                String status = "Placed";
+                String movies = "";
+                String movieId = "";
+                String province = "";
+                String uname = "null";
+
+                for (Movie m : cart) {
+                    movies += m.getTitle() + ";";
+                    movieId += m.getId() + ";";
+                }
+
+                if (!shippingAddressText.getText().isEmpty()) {
+                    shipping = shippingAddressText.getText();
+                } else {
+                    Messages.customMsg("Shipping Address Field Empty");
+                }
+
+
+                if (!provinceText.getText().isEmpty()) {
+                    province = provinceText.getText();
+                } else {
+                    Messages.customMsg("Province Field Empty");
+                }
+
+                Order o = new Order(id, type, placedDate, deliveryDate, shipping, status,
+                        movies, uname, movieId, province);
+
+                maintainOrder.addOrderCart(o);
+                cart.clear();
+                maintainMovie.changeCopiesAfterRemove(o,false);
+
+                frame.dispose();
+                OperatorPage operatorPage = new OperatorPage(login);
+                Messages.customMsgGreen("Order Placed");
+
+            } else {
+                Messages.customMsg("Cart Is Empty. Add movie to cart before proceeding to checkout");
+            }
+        }
+    };
 
     private ActionListener checkStatusListener = new ActionListener() {
         @Override

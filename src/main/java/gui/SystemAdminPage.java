@@ -206,7 +206,7 @@ public class SystemAdminPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            WarehousePage warehouse = new WarehousePage(new Login());
+            WarehousePage warehouse = new WarehousePage(login);
         }
     };
 }

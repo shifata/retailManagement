@@ -38,11 +38,13 @@ public class UpdateUsersPage {
         frame.setSize(1800, 1800);
 
         JPanel tablePanel = new JPanel();
-        tablePanel.setBackground(Color.gray);
+//        tablePanel.setBackground(Color.gray);
+        tablePanel.setBackground(Color.decode("#bdc17a"));
         tablePanel.setBounds(0, 100, 1800, 450);
 
         JPanel addUserInfoPanel = new JPanel();
-        addUserInfoPanel.setBackground(Color.green);
+//        addUserInfoPanel.setBackground(Color.green);
+        addUserInfoPanel.setBackground(Color.decode("#7ac1a1"));
         addUserInfoPanel.setBounds(0, 550, 1800, 250);
 
         JLabel typeLabel = new JLabel("Type");
@@ -157,7 +159,8 @@ public class UpdateUsersPage {
 
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.darkGray);
+//        buttonPanel.setBackground(Color.darkGray);
+        buttonPanel.setBackground(Color.decode("#7d7ac1"));
         buttonPanel.setBounds(0, 800, 1800, 400);
 
         addButton = new JButton("ADD");
@@ -174,7 +177,8 @@ public class UpdateUsersPage {
         loggedinAsLabel.setBounds(0,0,400,100);
 
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.lightGray);
+//        searchPanel.setBackground(Color.lightGray);
+        searchPanel.setBackground(Color.decode("#C17a9a"));
         searchPanel.setBounds(0, 0, 1800, 100);
         searchPanel.add(loggedinAsLabel);
 
