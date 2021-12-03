@@ -18,6 +18,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class OperatorPage {
@@ -55,7 +56,9 @@ public class OperatorPage {
         loggedinAsLabel.setBounds(510, 10, 450, 25);
 
         JPanel opsButtonPanel = new JPanel();
-        opsButtonPanel.setBackground(Color.orange);
+//        opsButtonPanel.setBackground(Color.orange);
+        opsButtonPanel.setBackground(Color.decode("#F7970a"));
+
         opsButtonPanel.setBounds(0, 300, 1800, 80);
         opsButtonPanel.setLayout(null);
 
@@ -276,10 +279,18 @@ public class OperatorPage {
         public void actionPerformed(ActionEvent e) {
             if (cart.size() != 0) {
 
+                //date and time code
+                Calendar cal = Calendar.getInstance();
+                Date givenDate = cal.getTime();
+                cal.add(Calendar.DAY_OF_MONTH, 7);
+                Date datePlus7 = cal.getTime(); //order will be delivered in 7 days with respect to placed order time
+
+                Date date = java.util.Calendar.getInstance().getTime();
+
                 String id = IdGenerator.getId(5);
                 String type = "Store";
-                String placedDate = "11";
-                String deliveryDate = "12";
+                String placedDate = "" + date;
+                String deliveryDate = "12" + datePlus7;
                 String shipping = "";
                 String status = "Placed";
                 String movies = "";
@@ -292,29 +303,36 @@ public class OperatorPage {
                     movieId += m.getId() + ";";
                 }
 
-                if (!shippingAddressText.getText().isEmpty()) {
+                boolean shippingFilled = !shippingAddressText.getText().isEmpty();
+
+                if (shippingFilled) {
                     shipping = shippingAddressText.getText();
                 } else {
                     Messages.customMsg("Shipping Address Field Empty");
                 }
 
+                boolean provinceFilled = !provinceText.getText().isEmpty();
 
-                if (!provinceText.getText().isEmpty()) {
+                if (provinceFilled) {
                     province = provinceText.getText();
                 } else {
                     Messages.customMsg("Province Field Empty");
                 }
 
-                Order o = new Order(id, type, placedDate, deliveryDate, shipping, status,
-                        movies, uname, movieId, province);
+                if (provinceFilled && shippingFilled) {
+                    Order o = new Order(id, type, placedDate, deliveryDate, shipping, status,
+                            movies, uname, movieId, province);
 
-                maintainOrder.addOrderCart(o);
-                cart.clear();
-                maintainMovie.changeCopiesAfterRemove(o,false);
+                    maintainOrder.addOrderCart(o);
+                    frame.dispose();
+                    OperatorPage operatorPage = new OperatorPage(login);
+                    Messages.customMsgGreen("Order Placed");
+                    cart.clear();
+                    maintainMovie.changeCopiesAfterRemove(o, false);
 
-                frame.dispose();
-                OperatorPage operatorPage = new OperatorPage(login);
-                Messages.customMsgGreen("Order Placed");
+//                    cart.clear();
+                }
+
 
             } else {
                 Messages.customMsg("Cart Is Empty. Add movie to cart before proceeding to checkout");

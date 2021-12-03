@@ -43,17 +43,20 @@ public class UpdateMoviePage {
         frame.setSize(1800, 1800);
 
         JPanel tablePanel = new JPanel();
-        tablePanel.setBackground(Color.gray);
+//        tablePanel.setBackground(Color.gray);
+        tablePanel.setBackground(Color.decode("#88eaf1"));
         tablePanel.setBounds(0, 100, 1800, 400);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.darkGray);
+//        buttonPanel.setBackground(Color.darkGray);
+        buttonPanel.setBackground(Color.decode("#b5f188"));
         buttonPanel.setBounds(0, 800, 1800, 400);
 
 
         //infopanel for adding movie
         JPanel addinfoPanel = new JPanel();
-        addinfoPanel.setBackground(Color.CYAN);
+//        addinfoPanel.setBackground(Color.CYAN);
+        addinfoPanel.setBackground(Color.decode("#f18f88"));
         addinfoPanel.setBounds(0, 500, 1800, 300);
 
 
@@ -144,7 +147,9 @@ public class UpdateMoviePage {
         loggedinAsLabel.setBounds(0,0,400,100);
 
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.lightGray);
+//        searchPanel.setBackground(Color.lightGray);
+
+        searchPanel.setBackground(Color.decode("#c388f1"));
         searchPanel.setBounds(0, 0, 1800, 100);
         searchPanel.add(loggedinAsLabel);
 

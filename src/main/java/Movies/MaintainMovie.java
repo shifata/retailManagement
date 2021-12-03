@@ -117,7 +117,6 @@ public class MaintainMovie {
         }
         String[] ids = order.getMovieId().split(";");
 
-        try {
             for (Movie m : moviesList) {
                 for (String id : ids) {
                     if (m.getId().equals(id)) {
@@ -132,15 +131,16 @@ public class MaintainMovie {
                         }
 
                         tmp.setCopiesAvailable(copies);
-                        updateMovie(tmp);
+                        try {
+                            updateMovie(tmp);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                         System.out.println("UPDATED");
                     }
                 }
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean addMovie(Movie movie) {

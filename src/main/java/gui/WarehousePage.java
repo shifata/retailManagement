@@ -33,7 +33,8 @@ public class WarehousePage {
         frame.setSize(1800, 1700);
 
         JPanel warehouseImagePanel = new JPanel();
-        warehouseImagePanel.setBackground(Color.orange);
+//        warehouseImagePanel.setBackground(Color.orange);
+        warehouseImagePanel.setBackground(Color.decode("#ac1fe0"));
         warehouseImagePanel.setBounds(0, 0, 1800, 400);
 
         JLabel sysadminImageLabel = new JLabel();
@@ -51,15 +52,19 @@ public class WarehousePage {
         warehouseImagePanel.add(backButton);
 
         JPanel warehouseCaptionPanel = new JPanel();
-        warehouseCaptionPanel.setBackground(Color.yellow);
+//        warehouseCaptionPanel.setBackground(Color.yellow);
+        warehouseCaptionPanel.setBackground(Color.decode("#f7e9fc"));
         warehouseCaptionPanel.setBounds(0,400,1800,50);
 
         JPanel placedOrderTablePanel = new JPanel();
-        placedOrderTablePanel.setBackground(Color.green);
-        placedOrderTablePanel.setBounds(0,550,1800,450);
+//        placedOrderTablePanel.setBackground(Color.green);
 
+
+        placedOrderTablePanel.setBounds(0,550,1800,450);
+        placedOrderTablePanel.setBackground(Color.decode("#6b138b"));
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.lightGray);
+//        searchPanel.setBackground(Color.lightGray);
+        searchPanel.setBackground(Color.decode("#290736"));
         searchPanel.setBounds(0, 450, 1800, 100);
 
         JLabel searchLabel = new JLabel("SEARCH");

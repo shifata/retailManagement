@@ -299,6 +299,8 @@ public class MoviesDisplayPage {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (cart.size() != 0) {
+                cart.clear();
+                itemsSelected.setText(cart.size() + " movie in cart");
                 CheckOutPage checkOutPage = new CheckOutPage(login);
             } else {
                 Messages.customMsg("Cart Is Empty. Add movie to cart before proceeding to checkout");

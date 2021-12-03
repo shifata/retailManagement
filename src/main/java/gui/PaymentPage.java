@@ -23,6 +23,7 @@ public class PaymentPage {
     final String orderPath = "../project/src/main/java/database/orders.csv";
     final String moviePath = "../project/src/main/java/database/movies.csv";
     final String userPath = "../project/src/main/java/database/users.csv";
+    JTextField nameText, cardText, expirationText, ccvText;
 
     PaymentPage(Login login) {
         this.login = login;
@@ -69,7 +70,7 @@ public class PaymentPage {
         nameLabel.setForeground(Color.white);
         nameLabel.setBounds(40, 80, 200, 30);
 
-        JTextField nameText = new JTextField();
+        nameText = new JTextField();
         nameText.setBounds(40, 120, 240, 30);
 
         JLabel cardLabel = new JLabel("Card Number");
@@ -77,7 +78,7 @@ public class PaymentPage {
         cardLabel.setForeground(Color.white);
         cardLabel.setBounds(40, 160, 200, 30);
 
-        JTextField cardText = new JTextField();
+        cardText = new JTextField();
         cardText.setBounds(40, 200, 240, 30);
 
         JLabel expirationLabel = new JLabel("Expiration Date");
@@ -85,7 +86,7 @@ public class PaymentPage {
         expirationLabel.setForeground(Color.white);
         expirationLabel.setBounds(40, 240, 200, 30);
 
-        JTextField expirationText = new JTextField();
+        expirationText = new JTextField();
         expirationText.setBounds(40, 280, 160, 30);
 
         JLabel ccvLabel = new JLabel("CCV/CV2");
@@ -93,7 +94,7 @@ public class PaymentPage {
         ccvLabel.setForeground(Color.white);
         ccvLabel.setBounds(230, 240, 170, 30);
 
-        JTextField ccvText = new JTextField();
+        ccvText = new JTextField();
         ccvText.setBounds(230, 280, 60, 30);
 
         confirmPaymentButton = new JButton("Confirm Payment");
@@ -149,16 +150,30 @@ public class PaymentPage {
     private ActionListener paymentListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
+            boolean name = nameText.getText().isEmpty();
+            boolean card = cardText.getText().isEmpty();
+            boolean exp = expirationText.getText().isEmpty();
+            boolean ccv = ccvText.getText().isEmpty();
 
-                if (maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString())) {
-                    Messages.paymentSuccessMsg();
+            if (name || card || exp || ccv) {
+                Messages.customMsg("PAYMENT UNSUCCESSFUL! ALL FIELDS MUST BE TYPED IN WITH VALID CARD INFO");
+            }
 
-                    frame.dispose();
+            if (!name && !card && !exp && !ccv) {
+                frame.dispose();
+                Messages.paymentSuccessMsg();
+                try {
+                    maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString());
+
+//                    if (maintainPayment.processPayment(order, paymentCombo.getSelectedItem().toString())) {
+//                        Messages.paymentSuccessMsg();
+//
+//                        frame.dispose();
+//                    }
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
-
-            } catch (Exception e1) {
-                e1.printStackTrace();
             }
         }
     };

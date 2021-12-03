@@ -34,9 +34,7 @@ public class MaintainPayment {
             maintainOrder.incrementPoint(order);
             maintainMovie.changeCopiesAfterRemove(order, false);
             return true;
-        }
-
-        if (paymentMethod.equals("Visa")) {
+        }else{
             maintainOrder.addOrderCart(order);
             maintainOrder.incrementPoint(order);
             maintainOrder.addProvinceCharge(order);
@@ -44,7 +42,6 @@ public class MaintainPayment {
             maintainMovie.changeCopiesAfterRemove(order, false);
             return true;
         }
-        return false;
     }
 
 }
