@@ -7,6 +7,10 @@ import UserMaintainance.Login;
 import Utils.Messages;
 import Utils.IdGenerator;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -15,7 +19,10 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class MoviesDisplayPage {
@@ -29,6 +36,7 @@ public class MoviesDisplayPage {
     private JTextField searchField;
     private static Login login;
     private JButton addMovieToCart;
+    private JLabel itemsSelected;
 
     MoviesDisplayPage(Login login) {
         this.login = login;
@@ -39,13 +47,20 @@ public class MoviesDisplayPage {
         frame = new JFrame();
         tablePanel = new JPanel();
         tablePanel.setSize(1800, 1000);
-        tablePanel.setBackground(Color.blue);
+        tablePanel.setBackground(Color.gray);
         tablePanel.setBounds(0, 380, 1800, 450);
 
         //rentalImage Panel contains the image, caption, and command buttons myProfile and Logout
         JPanel rentalImage = new JPanel();
         rentalImage.setBackground(Color.black);
         rentalImage.setBounds(0, 0, 1800, 280);
+
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:" + "  " + login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 22, 22));
+        loggedinAsLabel.setBounds(0, 0, 400, 200);
+        rentalImage.add(loggedinAsLabel);
+
 
         //rentalLabel is the object that holds the caption and image
         JLabel rentalLabel = new JLabel(); //create a label
@@ -75,7 +90,7 @@ public class MoviesDisplayPage {
 
         //searchPanel Panel contains the search engine (command buttons: search by name and search by category)
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.red);
+        searchPanel.setBackground(Color.darkGray);
         searchPanel.setBounds(0, 280, 1800, 100);
 
 
@@ -92,9 +107,16 @@ public class MoviesDisplayPage {
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setSize(100, 100);
-        bottomPanel.setBackground(Color.green);
+        bottomPanel.setBackground(Color.lightGray);
         bottomPanel.setBounds(0, 830, 1800, 200);
         bottomPanel.setLayout(null);
+
+        itemsSelected = new JLabel("0 movies in cart");
+        itemsSelected.setForeground(Color.WHITE);
+        itemsSelected.setFont(new Font("Arial", 28, 28));
+        itemsSelected.setBounds(1100, 0, 500, 200);
+
+        bottomPanel.add(itemsSelected);
 
         addMovieToCart = new JButton("Add Order To Cart");
         addMovieToCart.setBounds(600, 100, 200, 25);
@@ -194,10 +216,18 @@ public class MoviesDisplayPage {
     }
 
     public static Order getOrderFromCart() {
+        //date and time code
+        Calendar cal = Calendar.getInstance();
+        Date givenDate = cal.getTime();
+        cal.add(Calendar.DAY_OF_MONTH, 7);
+        Date datePlus7 = cal.getTime(); //order will be delivered in 7 days with respect to placed order time
+
+        Date date = java.util.Calendar.getInstance().getTime();
+
         String id = IdGenerator.getId(5);
         String type = "Online";
-        String placedDate = "23-Nov-2021";
-        String deliveryDate = null;
+        String placedDate = String.valueOf(date);
+        String deliveryDate = String.valueOf(datePlus7);
         String shippingAddress = login.getAddress();
         String status = "Placed";
         String title = "";
@@ -234,6 +264,7 @@ public class MoviesDisplayPage {
 
             if (Integer.parseInt(copies) > 0) {
                 cart.add(new Movie(id, name, actor, director, description, genre, releaseDate, copies));
+                itemsSelected.setText(cart.size() + " movie in cart");
             } else {
                 Messages.customMsg("Movie out of stock");
             }

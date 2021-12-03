@@ -160,10 +160,16 @@ public class UpdateOrdersPage {
         removeButton.setBounds(820, 40, 200, 55);
         removeButton.addActionListener(removeListener);
 
+
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:"+"  "+  login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 18,18));
+        loggedinAsLabel.setBounds(0,0,400,100);
+
         JPanel searchPanel = new JPanel();
         searchPanel.setBackground(Color.lightGray);
         searchPanel.setBounds(0, 0, 1800, 100);
-
+        searchPanel.add(loggedinAsLabel);
 
         updateButton = new JButton("UPDATE");
         updateButton.setBounds(1040, 40, 200, 55);

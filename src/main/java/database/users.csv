@@ -1,10 +1,10 @@
 Type,FName,LName,email,Contact,Address,Uname,Password,ID,Points,Balance,Province
 customer,a,a,a,a,a,a,a,505,0,0,Ontario
 customer,Shovon,Saha,mxsaha@69.com,6699899297,99 Broadview AveToronto-ON M4M 2E4,mxsaha5,shvn69S,02720,40,100.00,Ontario
-customer,Shifat,Akter,shifata@gmail.com,6699899298,154 Voltarie CresMississauga-ON L5A 2A4,shifata,test,10864,32,23.990000000000002,Ontario
+customer,Shifat,Akter,shifata@gmail.com,6699899298,154 Voltarie CresMississauga-ON L5A 2A4,shifata,test,10864,50,113.89999999999999,Ontario
 customer,Sarwat,Shaheen,sarwat12@hotmail.com,4168976534,340 Assiniboine Road-York University-North York-ON M3J 1L2,sarwat12,arsenalSucks23,16072,202,39.99,Alberta
 customer,Ali,Tashfiq,shifa@gmail.com,4168376534,Atkinson-96 The Pond Rd-North York-ON M3J 2S5,tashfiq4,YNWA22,26685,45,9.99,Quebec
-customer,Nafiz,Awsaf,nfs9blues@live.com,435645645645,1-Fountainhead Road- North York-ON M3J 1K6,awsaf11,manu,45043,21,118.94999999999997,vancouver
+customer,Nafis,Awsaf,nfs9blues@live.com,6479899297,1-Fountainhead Road- North York-ON M3J 1K6,awsaf11,Chelsea,45043,31,168.9,Ontario
 admin,admin,admin,vadmin@videoCo.ca,9999999999,admin,admin,admin,90020,null,null,Ontario
 admin,Song,Wang,wang@videoCo.ca,3245679809,204 Bergeron Centre North York ON M3J 2S5,s.wang,sadmin,90030,null,null,Ontario
 operator,Amy,Linnnnnnnnnnn,amylin@videoCo.ca,2346789012,333 Yonge St Toronto ON M5B 1R7,amy.lin,oadmin,910040,null,null,Ontario

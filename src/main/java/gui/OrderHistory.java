@@ -3,6 +3,7 @@ package gui;
 import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
+import Utils.Messages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,10 @@ public class OrderHistory {
     private Login login;
     private MaintainOrder maintainOrder;
     private final String path = "../project/src/main/java/database/orders.csv";
-    JFrame frame;
+    private JFrame frame;
+    private JButton cancelPlacedOrderButton;
+    private JTable table;
+    private Object[][] data;
 
 
     OrderHistory(Login login) {
@@ -26,9 +30,16 @@ public class OrderHistory {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
 
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:" + "  " + login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 22, 22));
+        loggedinAsLabel.setBounds(0, 0, 400, 200);
+
         JPanel orderCaptionPanel = new JPanel();
         orderCaptionPanel.setBackground(Color.CYAN);
         orderCaptionPanel.setBounds(0, 0, 1800, 200);
+        orderCaptionPanel.add(loggedinAsLabel);
+
 
         JPanel orderHistoryTablePanel = new JPanel();
         orderHistoryTablePanel.setBackground(Color.yellow);
@@ -55,8 +66,9 @@ public class OrderHistory {
         backButton.setBounds(1100, 140, 100, 25);
         backButton.addActionListener(backListener);
 
-        JButton cancelPlacedOrderButton = new JButton("CANCEL ORDER");
+        cancelPlacedOrderButton = new JButton("CANCEL ORDER");
         backButton.setBounds(1100, 140, 100, 25);
+        cancelPlacedOrderButton.addActionListener(cancelListener);
 
         maintainOrder = new MaintainOrder(path);
         Object[][] data = null;
@@ -69,7 +81,7 @@ public class OrderHistory {
         String[] columns = {"Order ID", "Order Type", "Order Placed", "Order Delivery Date", "Shipping Address", "Order Status", "Movie", "Username"};
 
 
-        JTable table = new JTable(data, columns);
+        table = new JTable(data, columns);
         table.setPreferredScrollableViewportSize(new Dimension(1700, 600));
         table.setFillsViewportHeight(true);
         table.setRowHeight(50);
@@ -104,6 +116,59 @@ public class OrderHistory {
         frame.setVisible(true);
 
     }
+
+    private ActionListener cancelListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ArrayList<Order> tmp = new ArrayList<>();
+            int row = table.getSelectedRow();
+            String id = table.getValueAt(row, 0).toString();
+            Order o = MaintainOrder.getOrderFromId(id);
+            System.out.println(o);
+            try {
+                tmp = maintainOrder.getUserOrdersList(login.getUName());
+                System.out.println("Cart size before remove: " + tmp.size());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            tmp.remove(o);
+            System.out.println("Cart size after remove: " + tmp.size());
+            data = new Object[tmp.size()][10];
+            try {
+                if (o.getStatus().equals("Placed")) {
+                    maintainOrder.removeOrder(o);
+                    Messages.customMsgGreen("Order Removed");
+                } else {
+                    Messages.customMsg("Order is delivered");
+                }
+                System.out.println("HIIIT");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+
+            for (int i = 0; i < tmp.size(); i++) {
+                Order order = tmp.get(i);
+                data[i][0] = order.getOrderId();
+                data[i][1] = order.getOrderType();
+                data[i][2] = order.getOrderDate();
+                data[i][3] = order.getDeliveryDate();
+                data[i][4] = order.getAddress();
+                data[i][5] = order.getStatus();
+                data[i][6] = order.getMovies();
+                data[i][7] = order.getUname();
+                data[i][8] = order.getMovieId();
+                data[i][9] = order.getProvince();
+
+            }
+
+            frame.dispose();
+            OrderHistory orderHistory = new OrderHistory(login);
+
+
+        }
+    };
 
     private ActionListener backListener = new ActionListener() {
         @Override

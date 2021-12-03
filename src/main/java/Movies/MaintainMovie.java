@@ -103,6 +103,10 @@ public class MaintainMovie {
         return false;
     }
 
+    private void clear() {
+        moviesList.clear();
+    }
+
     public void changeCopiesAfterRemove(Order order) {
         String[] ids = order.getMovieId().split(";");
 
@@ -119,6 +123,7 @@ public class MaintainMovie {
                     }
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,6 +136,7 @@ public class MaintainMovie {
                 movie.setId(IdGenerator.getId(4));
                 moviesList.add(movie);
                 writeToMovie();
+                clear();
                 return true;
             }
         } catch (Exception e) {
@@ -146,6 +152,7 @@ public class MaintainMovie {
             int index = getMovieIndex(movie);
             moviesList.remove(index);
             writeToMovie();
+            clear();
             return true;
         }
 
@@ -163,6 +170,7 @@ public class MaintainMovie {
             }
             moviesList.add(movie);
             writeToMovie();
+            clear();
             return true;
         }
         return false;
@@ -185,5 +193,14 @@ public class MaintainMovie {
             }
         }
         return -1;
+    }
+
+    public static Movie getMovieFromName(String name) {
+        for (Movie m : moviesList) {
+            if (m.getTitle().equals(name)) {
+                return m;
+            }
+        }
+        return null;
     }
 }

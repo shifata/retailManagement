@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MaintainOrder {
     private String path;
-    private ArrayList<Order> ordersList;
+    private static ArrayList<Order> ordersList;
     private MaintainUser maintainUser;
 
     public MaintainOrder(String path) {
@@ -22,10 +22,33 @@ public class MaintainOrder {
         maintainUser = new MaintainUser("../project/src/main/java/database/users.csv");
     }
 
-    public Object[][] getUserOrders(String uname) throws Exception {
+    public ArrayList<Order> getUserOrdersList(String uname) throws Exception {
+        clear();
         ArrayList<Order> allOrders = null, userOrders;
         userOrders = new ArrayList<>();
 
+        try {
+            allOrders = readDatabaseList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for (Order o : allOrders) {
+            if (o.getUname().equals(uname)) {
+                userOrders.add(o);
+            }
+        }
+
+        return userOrders;
+    }
+
+    private void clear(){
+        ordersList.clear();
+    }
+
+    public Object[][] getUserOrders(String uname) throws Exception {
+        ArrayList<Order> allOrders = null, userOrders;
+        userOrders = new ArrayList<>();
         try {
             allOrders = readDatabaseList();
         } catch (Exception e) {
@@ -285,11 +308,14 @@ public class MaintainOrder {
     }
 
     public boolean removeOrder(Order o) throws Exception {
+        clear();
+        readDatabaseList();
         boolean exists = orderExists(o);
 
         if (exists) {
-            int index = getOrderIndex(o);
-            ordersList.remove(index);
+//            int index = getOrderIndex(o);
+            ordersList.remove(o);
+            System.out.println(o);
             writeToOrder();
             return true;
         }
@@ -329,6 +355,15 @@ public class MaintainOrder {
             }
         }
         return -1;
+    }
+
+    public static Order getOrderFromId(String id) {
+        for (Order o : ordersList) {
+            if (o.getOrderId().equals(id)) {
+                return o;
+            }
+        }
+        return null;
     }
 
 

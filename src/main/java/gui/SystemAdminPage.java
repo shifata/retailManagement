@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SystemAdminPage {
-    JButton changeMovie, changeOrders, changeUsers;
+    JButton changeMovie, changeOrders, changeUsers, dispatchOrdersList;
     JFrame frame;
     private Login login;
 
@@ -25,7 +25,7 @@ public class SystemAdminPage {
 
         frame = new JFrame("System Admin Mode");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(800, 700);
 
         JPanel systemAdminImagePanel = new JPanel();
         systemAdminImagePanel.setBackground(Color.black);
@@ -54,6 +54,10 @@ public class SystemAdminPage {
         changeOrders = new JButton("CHANGE ORDERS");
         changeOrders.setBounds(534, 440, 267, 45);
         changeOrders.addActionListener(changeOrderListener);
+
+        dispatchOrdersList = new JButton("LIST OF ORDERS DISPATCHED TO WAREHOUSE");
+        dispatchOrdersList.setBounds(234, 540, 367, 45);
+        dispatchOrdersList.addActionListener(warehouseListener);
 
         JPanel loggedinAsPanel = new JPanel();
         loggedinAsPanel.setBackground(Color.blue);
@@ -142,6 +146,7 @@ public class SystemAdminPage {
         frame.add(changeOrders);
         frame.add(changeMovie);
         frame.add(changeUsers);
+        frame.add(dispatchOrdersList);
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -194,6 +199,14 @@ public class SystemAdminPage {
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
             MyProfilePage profile = new MyProfilePage(login);
+        }
+    };
+
+    private ActionListener warehouseListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            WarehousePage warehouse = new WarehousePage(new Login());
         }
     };
 }

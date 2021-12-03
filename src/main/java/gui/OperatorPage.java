@@ -34,6 +34,11 @@ public class OperatorPage {
         operatorImagePanel.setBackground(Color.yellow);
         operatorImagePanel.setBounds(0, 0, 1800, 250);
 
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:"+"  "+  login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 18,18));
+        loggedinAsLabel.setBounds(510, 10, 450, 25);
+
         JPanel opsButtonPanel = new JPanel();
         opsButtonPanel.setBackground(Color.orange);
         opsButtonPanel.setBounds(0, 300, 1800, 80);
@@ -106,10 +111,10 @@ public class OperatorPage {
 //        loggedinAsPanel.setLayout(null);
 
 
-        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS" + "");
-        loggedinAsLabel.setFont(new Font("Arial", 18, 18));
-        loggedinAsLabel.setForeground(Color.BLACK);
-        loggedinAsLabel.setBounds(510, 10, 150, 25);
+//        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS" + "");
+//        loggedinAsLabel.setFont(new Font("Arial", 18, 18));
+//        loggedinAsLabel.setForeground(Color.BLACK);
+//        loggedinAsLabel.setBounds(510, 10, 150, 25);
 //        loggedinAsLabel.setLayout(null);
         // loggedinAsPanel.add(loggedinAsLabel);
 
@@ -210,7 +215,7 @@ public class OperatorPage {
             }
         });
 
-
+        opsButtonPanel.add(loggedinAsLabel);
         opsButtonPanel.add(logoutButton);
         opsButtonPanel.add(myProfileButton);
         opsButtonPanel.add(loggedinAsLabel);

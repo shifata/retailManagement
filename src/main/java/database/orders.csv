@@ -1,48 +1,34 @@
 OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,MovieTitle,Uname,movieID,Province
-01176,Online,23-Nov-2020,,Atkinson-96 The Pond Rd-North York-ON M3J 2S5,Placed,Terminator;,tashfiq4,14;,Ontario
 01176,Online,23-Nov-2021,,Atkinson-96 The Pond Rd-North York-ON M3J 2S5,Placed,Terminator;,tashfiq4,14;,Ontario
 02674,Online,23-Nov-2021,,1-Fountainhead Road: North York: M3J 1K6,Placed,Harry Potter and the Order Of yThe Phoenix(2007);,awsaf11,5;,Ontario
-02813,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Prisoner of Azkaban (2004);,shifata,3;,Ontario
-03161,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
-03161,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 04380,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 04380,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 04380,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 04380,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 04380,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 04887,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Quebec
-08334,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,American Pie (1999);,shifata,13;,Ontario
 08615,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Half-Blood Prince(2009);,awsaf11,6;,Quebec
 10531,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Prisoner of Azkaban (2004);,shifata,3;,Quebec
-10733,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 11535,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Chamber of Secrets(2002);,shifata,2;,Alberta
 13664,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Chamber of Secrets(2002);,shifata,2;,Alberta
 14048,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Order Of The Phoenix(2007);,shifata,5;,Quebec
-15837,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Quebec
 16888,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Chamber of Secrets(2002);,shifata,2;,Alberta
 17620,Online,23-Nov-2021,,1-Fountainhead Road: North York: M3J 1K6,Placed,Harry Potter & The Deathly Hallows Pt 2 (2011);,awsaf11,8;,Ontario
-18236,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Terminator;,shifata,14;,Alberta
 20680,Online,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,shifata,002;,Alberta
-20712,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Alberta
 21740,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);Harry Potter & The Deathly Hallows Pt 2 (2011);Harry Potter and the Half-Blood Prince(2009);,awsaf11,1;8;6;,Ontario
 23267,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter & The Deathly Hallows Pt 1 (2010);,awsaf11,7;,Ontario
 24318,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,SpiderMan No Way Home;,awsaf11,15;,Ontario
-24362,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 24862,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999);,mxsaha,014,Ontario
 25267,Store,22-Nov-2021,null,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002;,Ontario
 25276,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Terminator;,awsaf11,14;,Alberta
 25423,aa,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,awsaf11,002;,Ontario
-26166,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Alberta
 26281,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Half-Blood Prince(2009);,awsaf11,6;,Alberta
-27134,Store,22-Nov-2021,11-11-11,1-Fountainhead Road: North York: M3J 1K6,Delivered,Harry Potter and the Philosopher's Stone (2001);,shifata,002;,Ontario
 27205,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
-27366,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario
 28008,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Half-Blood Prince(2009);,awsaf11,6;,Ontario
 31304,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Terminator;,awsaf11,14;,Ontario
 34213,Online,23-Nov-2021,,99 Broadview AveToronto-ON M4M 2E4,Placed,Harry Potter and the Philosopher's Stone(2001);,mxsaha5,1;,Ontario
 34868,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,SpiderMan No Way Home;,shifata,15;,Quebec
 37077,Online,25-Nov-2021,2-Dec-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Chamber of Secrets (2002);,shifata,003;,Ontario
-37874,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 38733,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Goblet of Fire(2005);,shifata,005;,Ontario
 40870,Online,23-Nov-2021,,Murray Ross Pkway,Placed,Harry Potter and the Chamber of Secrets(2002);Harry Potter and the Prisoner of Azkaban (2004);,sghosh,2;3;,Ontario
 41484,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Fast and Furious: Tokyo Drift(2006);,shifata,11;,Ontario
@@ -73,7 +59,6 @@ OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,
 62341,Online,23-Nov-2021,,99 Broadview AveToronto-ON M4M 2E4,Placed,Harry Potter and the Philosopher's Stone(2001);,mxsaha5,1;,Ontario
 62543,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Alberta
 63401,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Fast and Furious: Tokyo Drift(2006);,shifata,11;,Alberta
-65276,,,,,,,,,
 65608,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 66317,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 66427,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Prisoner of Azkaban (2004);,shifata,3;,Quebec
@@ -82,8 +67,6 @@ OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,
 68242,Online,25-August-2021,28-August-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Spider-Man (2002);,shifata,013;,Ontario
 68324,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Half-Blood Prince(2009);,shifata,6;,Ontario
 68546,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,American Pie (1999);,shifata,13;,Ontario
-71782,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Alberta
-72470,,,,,,,,,
 72651,Online,20-January-2020,2-February-2020,99 Broadview AveToronto:ON M4M 2E4,Delivered,American Pie (1999);,,014;,Ontario
 73784,Online,23-Nov-2021,,1-Fountainhead Road: North York: M3J 1K6,Placed,Harry Potter & The Deathly Hallows Pt 2 (2011);,awsaf11,8;,Ontario
 74714,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Quebec
@@ -93,19 +76,15 @@ OrderID,OrderType,OrderPlacedDate,OrderDeliveryDate,ShippingAddress,OrderStatus,
 78260,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 78260,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 78260,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
-80052,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario
 81343,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,SpiderMan No Way Home;,shifata,15;,Alberta
 81712,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Alberta
 81800,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Not Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,010;,Ontario
 81836,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
 82121,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,American Pie (1999);,shifata,13;,Alberta
-82668,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Quebec
 82814,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 82814,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 82814,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 82814,Online,23-Nov-2021,,1-Fountainhead Road- North York-ON M3J 1K6,Placed,Harry Potter and the Philosopher's Stone(2001);,awsaf11,1;,Alberta
 85606,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Half-Blood Prince(2009);,shifata,6;,Quebec
 87400,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,American Pie (2002);,shifata,013;,Ontario
-88177,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Fast and Furious: Tokyo Drift(2006);,shifata,012;,Ontario
 88273,Online,23-Nov-2021,,154 Voltarie CresMississauga-ON L5A 2A4,Placed,Harry Potter and the Philosopher's Stone(2001);,shifata,1;,Ontario
-88780,Online,14-April-2021,16-April-2021,154 Voltaire Crescent: Mississauga: ON L5A 2A4,Delivered,Harry Potter and the Prisoner of Azkaban (2004);,shifata,004;,Ontario

@@ -29,22 +29,29 @@ public class MyProfilePage {
 
         ImageIcon image4 = new ImageIcon("../project/src/main/resources/images/profile.png");
 
+
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:"+"  "+  login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 22,22));
+
+
         JPanel captionPanel = new JPanel();
-        captionPanel.setBackground(Color.blue);
+        captionPanel.setBackground(Color.black);
         captionPanel.setBounds(0, 0, 1200, 270);
+        captionPanel.add(loggedinAsLabel);
 
         JPanel pointsPanel = new JPanel();
-        pointsPanel.setBackground(Color.green);
-        pointsPanel.setBounds(820, 155, 200, 100);
+        pointsPanel.setBackground(Color.lightGray);
+        pointsPanel.setBounds(920, 155, 200, 100);
         pointsPanel.setLayout(null);
 
         JPanel balancePanel = new JPanel();
-        balancePanel.setBackground(Color.yellow);
+        balancePanel.setBackground(Color.lightGray);
         balancePanel.setBounds(300, 155, 200, 100);
         balancePanel.setLayout(null);
 
         JPanel profileFieldsPanel = new JPanel();
-        profileFieldsPanel.setBackground(Color.red);
+        profileFieldsPanel.setBackground(Color.gray);
         profileFieldsPanel.setBounds(0, 270, 1200, 1200);
 
         JLabel myProfileCaption = new JLabel();

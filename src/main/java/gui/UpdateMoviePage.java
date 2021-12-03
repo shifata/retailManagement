@@ -137,9 +137,16 @@ public class UpdateMoviePage {
         backButton.setBounds(1540, 40, 200, 55);
         backButton.addActionListener(backListener);
 
+
+        JLabel loggedinAsLabel = new JLabel("LOGGED IN AS:"+"  "+  login.getUName());
+        loggedinAsLabel.setForeground(Color.white);
+        loggedinAsLabel.setFont(new Font("Arial", 18,18));
+        loggedinAsLabel.setBounds(0,0,400,100);
+
         JPanel searchPanel = new JPanel();
         searchPanel.setBackground(Color.lightGray);
         searchPanel.setBounds(0, 0, 1800, 100);
+        searchPanel.add(loggedinAsLabel);
 
 
         searchField = new JTextField(20);
