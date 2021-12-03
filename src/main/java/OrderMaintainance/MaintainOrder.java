@@ -42,7 +42,40 @@ public class MaintainOrder {
         return userOrders;
     }
 
-    private void clear(){
+    public Object[][] getUserOrdersPlaced(String uname) throws Exception {
+        clear();
+        ArrayList<Order> allOrders = null, userOrders;
+        userOrders = new ArrayList<>();
+
+        try {
+            allOrders = readDatabaseList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for (Order o : allOrders) {
+            if (o.getStatus().equals("Placed")) {
+                userOrders.add(o);
+            }
+        }
+
+        Object[][] data = new Object[userOrders.size()][8];
+        for (int i = 0; i < userOrders.size(); i++) {
+            Order order = userOrders.get(i);
+            data[i][0] = order.getOrderId();
+            data[i][1] = order.getOrderType();
+            data[i][2] = order.getOrderDate();
+            data[i][3] = order.getDeliveryDate();
+            data[i][4] = order.getAddress();
+            data[i][5] = order.getStatus();
+            data[i][6] = order.getMovies();
+            data[i][7] = order.getUname();
+        }
+
+        return data;
+    }
+
+    private void clear() {
         ordersList.clear();
     }
 

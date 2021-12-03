@@ -1,9 +1,11 @@
 package gui;
 
+import Movies.MaintainMovie;
 import OrderMaintainance.MaintainOrder;
 import OrderMaintainance.Order;
 import UserMaintainance.Login;
 import Utils.Messages;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class OrderHistory {
 
     private Login login;
     private MaintainOrder maintainOrder;
+    private MaintainMovie maintainMovie;
     private final String path = "../project/src/main/java/database/orders.csv";
     private JFrame frame;
     private JButton cancelPlacedOrderButton;
@@ -25,7 +28,7 @@ public class OrderHistory {
     OrderHistory(Login login) {
         this.login = login;
         ImageIcon image5 = new ImageIcon("../project/src/main/resources/images/orderHistory.png");
-
+        maintainMovie = new MaintainMovie("../project/src/main/java/database/movies.csv");
         frame = new JFrame("Order History");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1800, 1800);
@@ -36,13 +39,13 @@ public class OrderHistory {
         loggedinAsLabel.setBounds(0, 0, 400, 200);
 
         JPanel orderCaptionPanel = new JPanel();
-        orderCaptionPanel.setBackground(Color.CYAN);
+        orderCaptionPanel.setBackground(Color.BLACK);
         orderCaptionPanel.setBounds(0, 0, 1800, 200);
         orderCaptionPanel.add(loggedinAsLabel);
 
 
         JPanel orderHistoryTablePanel = new JPanel();
-        orderHistoryTablePanel.setBackground(Color.yellow);
+        orderHistoryTablePanel.setBackground(Color.lightGray);
         orderHistoryTablePanel.setBounds(0, 200, 1800, 800);
 
         JLabel orderHistoryImageLabel = new JLabel();
@@ -138,7 +141,25 @@ public class OrderHistory {
             try {
                 if (o.getStatus().equals("Placed")) {
                     maintainOrder.removeOrder(o);
+                    maintainMovie.changeCopiesAfterRemove(o, true);
+
+                    for (int i = 0; i < tmp.size(); i++) {
+                        Order order = tmp.get(i);
+                        data[i][0] = order.getOrderId();
+                        data[i][1] = order.getOrderType();
+                        data[i][2] = order.getOrderDate();
+                        data[i][3] = order.getDeliveryDate();
+                        data[i][4] = order.getAddress();
+                        data[i][5] = order.getStatus();
+                        data[i][6] = order.getMovies();
+                        data[i][7] = order.getUname();
+                        data[i][8] = order.getMovieId();
+                        data[i][9] = order.getProvince();
+                    }
+                    frame.dispose();
+                    OrderHistory orderHistory = new OrderHistory(login);
                     Messages.customMsgGreen("Order Removed");
+
                 } else {
                     Messages.customMsg("Order is delivered");
                 }
@@ -146,26 +167,6 @@ public class OrderHistory {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
-
-            for (int i = 0; i < tmp.size(); i++) {
-                Order order = tmp.get(i);
-                data[i][0] = order.getOrderId();
-                data[i][1] = order.getOrderType();
-                data[i][2] = order.getOrderDate();
-                data[i][3] = order.getDeliveryDate();
-                data[i][4] = order.getAddress();
-                data[i][5] = order.getStatus();
-                data[i][6] = order.getMovies();
-                data[i][7] = order.getUname();
-                data[i][8] = order.getMovieId();
-                data[i][9] = order.getProvince();
-
-            }
-
-            frame.dispose();
-            OrderHistory orderHistory = new OrderHistory(login);
-
 
         }
     };

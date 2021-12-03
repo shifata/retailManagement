@@ -41,7 +41,7 @@ public class CheckOutPage {
         loggedinAsLabel.setBounds(0, 0, 400, 200);
 
         JPanel cartCaptionPanel = new JPanel();
-        cartCaptionPanel.setBackground(Color.CYAN);
+        cartCaptionPanel.setBackground(Color.BLACK);
         cartCaptionPanel.setBounds(0, 0, 1800, 280);
         cartCaptionPanel.add(loggedinAsLabel);
 
@@ -63,7 +63,7 @@ public class CheckOutPage {
 
 
         JLabel checkOutLabel = new JLabel("CHECK OUT");
-        checkOutLabel.setBackground(Color.black);
+        checkOutLabel.setBackground(Color.WHITE);
         checkOutLabel.setFont(new Font("Arial", 20, 28));
         checkOutLabel.setBounds(800, 300, 400, 200);
 
@@ -72,7 +72,7 @@ public class CheckOutPage {
         table2Panel.setBounds(0, 280, 1800, 540);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.PINK);
+        buttonPanel.setBackground(Color.lightGray);
         buttonPanel.setBounds(0, 800, 1800, 220);
         buttonPanel.add(priceLabel);
         buttonPanel.setLayout(null);

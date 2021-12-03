@@ -21,7 +21,7 @@ public class WarehousePage {
     JTable table;
     JTextField searchField;
     final String path = "../project/src/main/java/database/orders.csv";
-    MaintainOrder maintainOrder;
+    private MaintainOrder maintainOrder;
     private Login login;
 
     WarehousePage(Login login) {
@@ -85,12 +85,12 @@ public class WarehousePage {
         Object[][] data = null;
 
         try {
-            data = maintainOrder.readDatabase();
+            data = maintainOrder.getUserOrdersPlaced(login.getUName());
         } catch (Exception e) {
             e.printStackTrace();
         }
         String[] columns = {"Order ID", "Order Type", "Order Placed", "Order Delivery Date",
-                "Shipping Address", "Order Status", "Movie", "Username", "MovieID", "Province"};
+                "Shipping Address", "Order Status", "Movie", "Username"};
 
 
         table = new JTable(data, columns);

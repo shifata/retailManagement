@@ -107,7 +107,13 @@ public class MaintainMovie {
         moviesList.clear();
     }
 
-    public void changeCopiesAfterRemove(Order order) {
+    public void changeCopiesAfterRemove(Order order, boolean add) {
+        clear();
+        try {
+            readDatabaseList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         String[] ids = order.getMovieId().split(";");
 
         try {
@@ -116,7 +122,14 @@ public class MaintainMovie {
                     if (m.getId().equals(id)) {
                         Movie tmp = new Movie(m.getId(), m.getTitle(), m.getActor(), m.getDirector(),
                                 m.getDescription(), m.getGenre(), m.getReleaseDate(), m.getCopiesAvailable());
-                        String copies = (Integer.parseInt(m.getCopiesAvailable()) - 1) + "";
+                        String copies = "";
+
+                        if (add) {
+                            copies = (Integer.parseInt(m.getCopiesAvailable()) + 1) + "";
+                        } else {
+                            copies = (Integer.parseInt(m.getCopiesAvailable()) - 1) + "";
+                        }
+
                         tmp.setCopiesAvailable(copies);
                         updateMovie(tmp);
                         System.out.println("UPDATED");

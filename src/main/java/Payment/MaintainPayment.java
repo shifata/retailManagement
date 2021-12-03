@@ -32,7 +32,7 @@ public class MaintainPayment {
             maintainOrder.payWithPoints(order);
             maintainOrder.addProvinceCharge(order);
             maintainOrder.incrementPoint(order);
-            maintainMovie.changeCopiesAfterRemove(order);
+            maintainMovie.changeCopiesAfterRemove(order, false);
             return true;
         }
 
@@ -41,7 +41,7 @@ public class MaintainPayment {
             maintainOrder.incrementPoint(order);
             maintainOrder.addProvinceCharge(order);
             MoviesDisplayPage.emptyCart();
-            maintainMovie.changeCopiesAfterRemove(order);
+            maintainMovie.changeCopiesAfterRemove(order, false);
             return true;
         }
         return false;
